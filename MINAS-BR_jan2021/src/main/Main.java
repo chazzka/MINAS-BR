@@ -97,9 +97,13 @@ public class Main {
         String dataSetName = "MOA-3C";
         String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
         String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+        String outputDirecotory = "results/"+dataSetName+"/";
+        double k_ini = 0.01;
+        String theta = "1000";
+        String omega = "2000";
         int L = 5;
-        finalExperiment(dataSetName, trainPath, testPath, L, 0.01, "1000", "2000", "1.1", "kmeans+leader", "FM");
         //*****************************************
+        
 //        //****************MOA1*********************
 //        String dataSetName = "MOA1_comCardinalidade";
 //        String dataSetPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D.arff";
@@ -154,28 +158,16 @@ public class Main {
 //        finalExperiment(dataSetName, trainPath, testPath, L, 0.01, "1000", "2000", "1.1", "kmeans+leader", "FM");
       
 //            experimentsParameters(dataSetName, trainPath, testPath, L, "kmeans+leader", "FM");
-    }
-    
-    /**
-     * Executes the experiments comparing the baselines and MINAS-BR
-     * @param dataSetName
-     * @param trainPath
-     * @param testPath
-     * @param L
-     * @param k_ini
-     * @param theta
-     * @param omega
-     * @param f
-     * @param algOn
-     * @param evMetric
-     * @throws Exception 
-     */
-    private static void finalExperiment(String dataSetName, String trainPath, String testPath, int L, double k_ini, String theta, String omega, String f, String algOn, String evMetric) throws Exception {
-       String outputDirectory = "results/jan_2021/"+dataSetName+"/";
-        FilesOutput.createDirectory(outputDirectory);
-       ArrayList<Evaluator> av = new ArrayList<>();
-       av = experimentsMethods(trainPath,testPath, L, k_ini, theta, omega, f, algOn, evMetric, outputDirectory);
-       EvaluatorBR.writesAvgResults(av,outputDirectory);
+        experimentsMethods(trainPath, 
+                testPath, 
+                outputDirecotory,
+                L, 
+                k_ini,
+                theta, 
+                omega,
+                "1.1",
+                "kmeans+leader",
+                "FM");
     }
     
     public static void convertArffFile(String train, String test, String dataSetName) throws Exception{
@@ -346,7 +338,15 @@ public class Main {
         SA.close();
     }
     
-    public static EvaluatorBR MINAS_BR(ArrayList<Instance> train, ArrayList<Instance> test, int L, double k_ini, int theta, int omega, double f, String algOn, String measure, String outputDirectory) throws IOException, Exception {
+    public static EvaluatorBR MINAS_BR(ArrayList<Instance> train,
+            ArrayList<Instance> test,
+            int L, 
+            double k_ini, 
+            int theta, 
+            int omega, 
+            double f, 
+            int evaluationWindowSize,
+            String outputDirectory) throws IOException, Exception {
 //        Instances D_ = DataSetUtils.dataFileToInstance(dataSetPath);
 //        int L = D_.classIndex();
 //        int streamSize = D_.numInstances();
@@ -358,9 +358,6 @@ public class Main {
 //        ArrayList<Instance> train = new ArrayList<Instance>();
 //        ArrayList<Instance> test = new ArrayList<Instance>();
 //        slipTrainTest(train, test, stream, streamSize, 0.1);
-        System.out.println(DataSetUtils.getLabelSet(test.get(0)));
-        int evaluationWindowSize = test.size()/50;
-        Set<String> C_con = DataSetUtils.getClassesConhecidas(train); 
         int[] dist = DataSetUtils.getLabelsDistribution(train);
         int[] distTest = DataSetUtils.getLabelsDistribution(train);
         float cardinalityTrain = DataSetUtils.getCardinality(train, L);
@@ -432,18 +429,27 @@ public class Main {
      * @param dataSetName
      * @param dataSetPath
      * @param omega window size
-     * @param theta short-time memories' limit
+     * @param theta limit of short-term memory 
      * @param f
      * @param algOn
      * @param evMetric
      * @param outputDirectory
      * @throws Exception
      */
-    public static ArrayList<Evaluator> experimentsMethods(String trainPath, String testPath, int m, double k_ini, String theta, String omega, String f, String algOn, String evMetric, String outputDirectory) throws Exception {
-//        String newDataSetPath = LabelSetMining.removeInfrequentLabels(dataSetPath, dataSetName, 0.05);
+    public static void experimentsMethods(String trainPath, 
+            String testPath,
+            String outputDirectory,
+            int L, 
+            double k_ini,
+            String theta,
+            String omega, 
+            String f,
+            String algOn,
+            String evMetric) throws Exception {
         
-        ArrayList<Instance> train = new ArrayList<Instance>();
-        ArrayList<Instance> test = new ArrayList<Instance>();
+       FilesOutput.createDirectory(outputDirectory);
+       ArrayList<Instance> train = new ArrayList<Instance>();
+       ArrayList<Instance> test = new ArrayList<Instance>();
         
         MultiTargetArffFileStream file = new MultiTargetArffFileStream(trainPath, String.valueOf(m));
         file.prepareForUse();
@@ -468,16 +474,16 @@ public class Main {
 //        train.addAll(test);
 //        DataSetUtils.calculateUncondionalDependence(train);
         Set<String> C_con = DataSetUtils.getClassesConhecidas(train);
-        int wEvaluation = test.size()/50;
+        int wEvaluation = (int) Math.ceil(test.size()/50);
         ArrayList<Instance> aux = new ArrayList<>();
         aux.addAll(train);
         aux.addAll(test);
 //        double[] mean = LabelSetMining.getMeanValues(aux);
 //        LabelSetMining.replaceMissingValues(train, mean);
 //        LabelSetMining.replaceMissingValues(test, mean);
-        float cardinalityTrain = DataSetUtils.getCardinality(train, m);
-        float labelCardinality = DataSetUtils.getCardinality(aux, m);
-        float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, wEvaluation, m);
+        float cardinalityTrain = DataSetUtils.getCardinality(train, L);
+        float labelCardinality = DataSetUtils.getCardinality(aux, L);
+        float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, wEvaluation, L);
         FileWriter DsInfos = new FileWriter(new File(outputDirectory + "/dataSetInfo.txt"), false);
         
 
@@ -489,10 +495,17 @@ public class Main {
         DsInfos.write("Train distribution: " + Arrays.toString(dist) +"\n");
         DsInfos.write("Test distribution: " + Arrays.toString(distTest) +"\n");
         DsInfos.close();
-
-        ArrayList<Evaluator> av = new ArrayList<>();
-        av.add(MINAS_BR(train, test, m, k_ini, Integer.valueOf(theta), Integer.valueOf(omega), 
-                Double.valueOf(f), algOn, evMetric, outputDirectory));
+        
+        ArrayList<Evaluator> av = new ArrayList<Evaluator>();
+        av.add(MINAS_BR(train,
+                test,
+                L, 
+                k_ini,
+                Integer.valueOf(theta), 
+                Integer.valueOf(omega), 
+                Double.valueOf(f),
+                algOn, evMetric, outputDirectory)
+        );
 
         //EaHTps
 //        OzaBagAdwinML EaHTps = new OzaBagAdwinML();
@@ -698,7 +711,6 @@ public class Main {
 
         EvaluatorBR.writesAvgResults(av,outputDirectory);
         Evaluator.writeMeasuresOverTime(av, outputDirectory);
-        return av;
     }
     
 

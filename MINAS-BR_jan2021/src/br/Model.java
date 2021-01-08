@@ -34,15 +34,31 @@ public class Model {
     private ArrayList<Set<String>> classifiedUnk = new ArrayList<>(); //Unknown examples classified during the ND procedure
     private FileWriter pnInfo;
     private ShortTimeMemory shortTimeMemory = new ShortTimeMemory(new ArrayList<>(), new ArrayList<>());
-
-   
-
+    private HashMap<String,Integer> mtxLabelsFrequencies;
+    private HashMap<String, Double> mtxProbabilities;
+    private double currentCardinality;
     
+    /**
+     * Instantiate frequencies and probabilities matrices.
+     * @param classesConhecidas 
+     */
+    public void setMatrices(Set<String> classesConhecidas) {
+        this.mtxLabelsFrequencies = new HashMap<>();
+        this.mtxProbabilities = new HashMap<>();
+        
+        for (Iterator<String> iterator = classesConhecidas.iterator(); iterator.hasNext();) {
+            String label = iterator.next();
+            this.mtxLabelsFrequencies.put(label, 0);
+            this.mtxProbabilities.put(label, 0.0);
+        }
+    }
 
-   
+    public HashMap<String, Integer> getMtxLabelFrequencies() {
+        return this.mtxLabelsFrequencies;
+    }
 
     /**
-     * Represents a Novelty Pattern finded by the model
+     * Represents a Novelty Pattern found by the model
      */
     public class NoveltyPattern{
         private String label;

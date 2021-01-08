@@ -35,7 +35,6 @@ import utils.OnlinePhaseUtils;
  */
 public final class OfflinePhaseBR extends OfflinePhase{
     private Model model;
-    private double cardinality;                                  //cardinalidade de rótulo do dataset
     private Set<String> classesConhecidas;
     private double k_ini;
     
@@ -114,8 +113,6 @@ public final class OfflinePhaseBR extends OfflinePhase{
     public void setTrainingData(ArrayList<Instance> D, Set<String> classesConhecidas) throws Exception{
         int qtdeRotulos = 0;
 
-        //K -> Classe
-        //V -> Lista de exemplos de cada classe
         HashMap<String, ArrayList<Instance>> trainingData = new HashMap<String, ArrayList<Instance>>();
         Iterator iterator = classesConhecidas.iterator();
         while(iterator.hasNext()){ //Para cada classe uma lista é criada. Essa lista irá conter os exemplos de cada classe
@@ -123,20 +120,26 @@ public final class OfflinePhaseBR extends OfflinePhase{
             trainingData.put(String.valueOf(iterator.next()), lista);
         }
         
+        this.model.setMatrices(classesConhecidas);
+        
         for (int i = 0; i < D.size(); i++) {
-            Set<String> labels = DataSetUtils.getLabelSet(D.get(i)); //Pega os rótulos da instancia
+            Set<String> labels = DataSetUtils.getLabelSet(D.get(i)); 
             qtdeRotulos += labels.size();
-            ArrayList<Instance> generic; //Lista auxilar usada para receber a lista do hashmap, o exemplo é adicionado a está lista e depois retorna para a HashMap
-            for (String label : labels) { //Para cada classe do exemplo
-                generic = trainingData.get(label); //busca a lista referente a classe "label"
+            ArrayList<Instance> generic; 
+            
+            //For each label assigned to an example, add this example into it repesctive set.
+            for (String label : labels) { 
+                model.getMtxLabelFrequencies().put(label, model.getMtxLabelFrequencies().get(label) + 1);
+                generic = trainingData.get(label); 
                 if(generic != null){
-                    generic.add(D.get(i)); //Adiciona o exemplo à lista
-                    trainingData.put(label, generic); //Retorna a lista para a classe
+                    generic.add(D.get(i)); 
+                    trainingData.put(label, generic);
                 }
             }
         }
+        
         super.setTrainingData(trainingData);
-        this.cardinality = Math.ceil((double)qtdeRotulos/(double)D.size());;
+        this.model.setCurrentCardinality(Math.ceil(qtdeRotulos/D.size()));
     }
     
 
@@ -145,14 +148,6 @@ public final class OfflinePhaseBR extends OfflinePhase{
      */
     public Model getModel() {
         return model;
-    }
-
-     
-    /**
-     * @return the cardinality
-     */
-    public double getCardinality() {
-        return cardinality;
     }
 
     /**

@@ -6,13 +6,9 @@ package dataSource;
  * and open the template in the editor.
  */
 
-import ca.pfv.spmf.algorithms.frequentpatterns.apriori.AlgoApriori;
 import com.yahoo.labs.samoa.instances.Attribute;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
-import dataSource.closedItemSetsMining.AlgoAprioriClose;
-import dataSource.closedItemSetsMining.Itemset;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -28,7 +24,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import dataSource.closedItemSetsMining.Itemsets;
 import java.util.Comparator;
 import java.util.TreeMap;
 import meka.core.MLUtils;
