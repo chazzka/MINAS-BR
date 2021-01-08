@@ -9,11 +9,6 @@ package dataSource;
 
 import com.yahoo.labs.samoa.instances.Instance;
 import static dataSource.DataSetUtils.getLabelSet;
-import static dataSource.DataSetUtils.slipTrainTest;
-import dataSource.closedItemSetsMining.AlgoAprioriClose;
-import dataSource.closedItemSetsMining.FPmax;
-import dataSource.closedItemSetsMining.Itemset;
-import dataSource.closedItemSetsMining.Itemsets;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -122,37 +117,6 @@ public class LabelSetMining {
      * @return
      * @throws Exception 
      */
-    private static void labelSetMining(String dataSetPath, String dataSetName, double support) throws Exception{
-        Instances D_ = DataSetUtils.dataFileToInstance(dataSetPath);
-        int m = D_.classIndex();
-//        D_.deleteAttributeAt(0);
-        MultiTargetArffFileStream file = new MultiTargetArffFileStream(dataSetPath, String.valueOf(m));
-        file.prepareForUse();
-        ArrayList<Instance> D = new ArrayList<>();
-        while(file.hasMoreInstances()){
-            Instance instance = file.nextInstance().getData();
-            D.add(instance);
-        }
-        FPmax max = new FPmax();
-        Itemsets itemSets = max.runAlgorithm(D, support, null);
-//        AlgoAprioriClose aPriori = new AlgoAprioriClose();
-//        Itemsets itemSets = aPriori.runAlgorithm(support, D, null);
-        List<List<Itemset>> levels = itemSets.getLevels();
-        ArrayList<Set<String>> keys = new ArrayList<Set<String>>();
-        
-        //Itemsets to Strings' set
-        for (int i = 0; i < levels.size(); i++) {
-            if(levels.get(i).size() > 0){
-                for (int j = 0; j < levels.get(i).size(); j++) {
-                     Itemset itemsetModified = levels.get(i).get(j);
-                     keys.add(itemsetModified.getItemset());
-                }
-            }
-        }
-        ArrayList<Instance> D_new = removeInfrequentLabels(D, keys);
-        MaximalItemSetsTransformationDataset(D_new, keys, dataSetPath, dataSetName);
-//        transformDataSet(D_new, m, keys, dataSetPath, dataSetName);
-    }
     
     /**
      * Creates a new file representing the new pre-processed dataset
