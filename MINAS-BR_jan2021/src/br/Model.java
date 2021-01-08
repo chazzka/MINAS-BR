@@ -37,6 +37,14 @@ public class Model {
     private HashMap<String,Integer> mtxLabelsFrequencies;
     private HashMap<String, Double> mtxProbabilities;
     private double currentCardinality;
+
+    public double getCurrentCardinality() {
+        return currentCardinality;
+    }
+
+    public void setCurrentCardinality(double currentCardinality) {
+        this.currentCardinality = currentCardinality;
+    }
     
     /**
      * Instantiate frequencies and probabilities matrices.
@@ -53,8 +61,8 @@ public class Model {
         }
     }
 
-    public HashMap<String, Integer> getMtxLabelFrequencies() {
-        return this.mtxLabelsFrequencies;
+    public HashMap<String, Integer> getMtxLabelsFrequencies() {
+        return mtxLabelsFrequencies;
     }
 
     /**

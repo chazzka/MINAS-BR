@@ -358,26 +358,25 @@ public class Main {
 //        ArrayList<Instance> train = new ArrayList<Instance>();
 //        ArrayList<Instance> test = new ArrayList<Instance>();
 //        slipTrainTest(train, test, stream, streamSize, 0.1);
-        int[] dist = DataSetUtils.getLabelsDistribution(train);
-        int[] distTest = DataSetUtils.getLabelsDistribution(train);
-        float cardinalityTrain = DataSetUtils.getCardinality(train, L);
+//        int[] dist = DataSetUtils.getLabelsDistribution(train);
+//        int[] distTest = DataSetUtils.getLabelsDistribution(train);
         float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, evaluationWindowSize, L);
 
+        
+
+        OfflinePhaseBR treino = new OfflinePhaseBR(train, k_ini,C_con, fileOff, outputDirectory);
+        Model model = treino.getModel();
+        
         //Create output files
         FileWriter fileOn = new FileWriter(new File(outputDirectory + "/faseOnlineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOff = new FileWriter(new File(outputDirectory + "/faseOfflineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/results.txt"), false); //Armazena informações da fase de treinamento
         
-        fileOff.write("Known Classes: " + C_con.size() + "\n");
-        fileOff.write("Train Classes Distribution: " + Arrays.toString(dist) + "\n");
-        fileOff.write("Test Classes Distribution: " + Arrays.toString(distTest) + "\n");
-         fileOff.write("Train label cardinality: " + cardinalityTrain + "\n");
+        fileOff.write("Known Classes: " + model.getAllLabel().size() + "\n");
+         fileOff.write("Train label cardinality: " + model.getCurrentCardinality() + "\n");
         fileOff.write("Windows label cardinality: " + Arrays.toString(windowsCardinalities) + "\n");
         fileOff.write("Number of examples: " + (train.size()+test.size()) + "\n");
         fileOff.write("Number of attributes: " + train.get(0).numInputAttributes() +"\n");
-
-        OfflinePhaseBR treino = new OfflinePhaseBR(train, k_ini,C_con, fileOff, outputDirectory);
-        Model model = treino.getModel();                        
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 
         ArrayList<String> NPs = new ArrayList<String>();        
         OnlinePhaseBR onlinePhase = new OnlinePhaseBR((int)Math.ceil(treino.getCardinality()), theta, f, outputDirectory, fileOut, algOn);

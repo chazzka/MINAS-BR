@@ -35,7 +35,6 @@ import utils.OnlinePhaseUtils;
  */
 public final class OfflinePhaseBR extends OfflinePhase{
     private Model model;
-    private Set<String> classesConhecidas;
     private double k_ini;
     
     
@@ -47,13 +46,15 @@ public final class OfflinePhaseBR extends OfflinePhase{
      * @param outputDirectory
      * @throws Exception 
      */
-    public OfflinePhaseBR(ArrayList<Instance> trainingFile, double k_ini, Set<String> classesConhecidas, FileWriter fileOff, String outputDirectory) throws Exception{
+    public OfflinePhaseBR(ArrayList<Instance> trainingFile,
+            double k_ini, 
+            Set<String> classesConhecidas, 
+            FileWriter fileOff, String outputDirectory) throws Exception{
         super("kmeans", fileOff, outputDirectory);
         this.setK_ini(k_ini);
-        this.setTrainingData(trainingFile, classesConhecidas);
-        this.setClassesConhecidas(classesConhecidas);
+        this.setTrainingData(trainingFile);
         this.training();
-        fileOff.write("Label Cardinality: " + this.getCardinality() + "\n");
+        fileOff.write("Label Cardinality: " + this.model.getCurrentCardinality() + "\n");
         fileOff.close();
     }
     
@@ -110,18 +111,11 @@ public final class OfflinePhaseBR extends OfflinePhase{
      * @param classesConhecidas
      * @throws Exception 
      */
-    public void setTrainingData(ArrayList<Instance> D, Set<String> classesConhecidas) throws Exception{
+    public void setTrainingData(ArrayList<Instance> D) throws Exception{
         int qtdeRotulos = 0;
 
         HashMap<String, ArrayList<Instance>> trainingData = new HashMap<String, ArrayList<Instance>>();
-        Iterator iterator = classesConhecidas.iterator();
-        while(iterator.hasNext()){ //Para cada classe uma lista é criada. Essa lista irá conter os exemplos de cada classe
-            ArrayList<Instance> lista = new ArrayList<>();
-            trainingData.put(String.valueOf(iterator.next()), lista);
-        }
-        
-        this.model.setMatrices(classesConhecidas);
-        
+
         for (int i = 0; i < D.size(); i++) {
             Set<String> labels = DataSetUtils.getLabelSet(D.get(i)); 
             qtdeRotulos += labels.size();
@@ -129,12 +123,22 @@ public final class OfflinePhaseBR extends OfflinePhase{
             
             //For each label assigned to an example, add this example into it repesctive set.
             for (String label : labels) { 
-                model.getMtxLabelFrequencies().put(label, model.getMtxLabelFrequencies().get(label) + 1);
-                generic = trainingData.get(label); 
-                if(generic != null){
-                    generic.add(D.get(i)); 
-                    trainingData.put(label, generic);
+                try{
+                    model.getMtxLabelsFrequencies().put(label, model.getMtxLabelsFrequencies().get(label) + 1);
+                }catch(NullPointerException e){
+                    model.getMtxProbabilities().put(label, 0.0);
+                    model.getMtxLabelsFrequencies().put(label, 1);
                 }
+                
+                ArrayList<Instance> dataset = null;
+                try{
+                    dataset = trainingData.get(label); 
+                }catch(NullPointerException e){
+                    System.out.println("Create new set for label: " + label);
+                    dataset = new ArrayList<>();
+                }
+                dataset.add(D.get(i));
+                trainingData.put(label,dataset);
             }
         }
         
@@ -148,20 +152,6 @@ public final class OfflinePhaseBR extends OfflinePhase{
      */
     public Model getModel() {
         return model;
-    }
-
-    /**
-     * @return the classesConhecidas
-     */
-    public Set<String> getClassesConhecidas() {
-        return classesConhecidas;
-    }
-
-    /**
-     * @param classesConhecidas the classesConhecidas to set
-     */
-    public void setClassesConhecidas(Set<String> classesConhecidas) {
-        this.classesConhecidas = classesConhecidas;
     }
 
     /**
