@@ -37,25 +37,16 @@ public final class OfflinePhaseBR extends OfflinePhase{
     private Model model;
     private double k_ini;
     
-    
-    /**
-     * representa o classificador. Esse Objeto é responsável pela fase offline do algoritmo, ele é responsável pelo treinamento.
-     * @param trainingFile  caminho do arquivo do dataset de treino
-     * @param classesConhecidas
-     * @param fileOff
-     * @param outputDirectory
-     * @throws Exception 
-     */
     public OfflinePhaseBR(ArrayList<Instance> trainingFile,
             double k_ini, 
-            Set<String> classesConhecidas, 
-            FileWriter fileOff, String outputDirectory) throws Exception{
+            FileWriter fileOff, 
+            String outputDirectory) throws Exception{
+        
         super("kmeans", fileOff, outputDirectory);
         this.setK_ini(k_ini);
         this.setTrainingData(trainingFile);
         this.training();
         fileOff.write("Label Cardinality: " + this.model.getCurrentCardinality() + "\n");
-        fileOff.close();
     }
     
     /**
@@ -74,35 +65,24 @@ public final class OfflinePhaseBR extends OfflinePhase{
         System.out.println("" + super.getTrainingData().size());
         super.getFileOut().write("" + super.getTrainingData().size() + "\n");
         
-        model = new Model();
-        model.inicialize(super.getDirectory());
-        Set<String> knownClassesLabels = new HashSet<>();
+        
         //generate a set of micro-clusters for each class from the training set
         for(Map.Entry<String, ArrayList<Instance>> entry : super.getTrainingData().entrySet()) {
             String key = entry.getKey();
             ArrayList<Instance> subconjunto = entry.getValue();
             ArrayList<MicroCluster> clusterSet = null;
             int[] clusteringResult = new int[subconjunto.size()];
-            // if the clustering algorithm is clustream
-            if (getAlgOff().equals("clustream")) {
-                System.out.println("Clustream");
-                clusterSet = super.criarmodeloCluStreamOffline(subconjunto, key, (int) Math.ceil(subconjunto.size() * k_ini));
-            // if the clustering algorithm is kmeans
-            } else if (getAlgOff().equalsIgnoreCase("kmeans")) {
-                System.out.println("Kmeans");
-               // String aux = "datasets/mediamill/mediamill-train.arff[31, 33, 67].arff";
-                clusterSet = super.createModelKMeansOffline(subconjunto, key, clusteringResult, (int) Math.ceil(subconjunto.size() * k_ini));
-//                clusterSet = OnlinePhaseUtils.createModelKMeansLeader(subconjunto, clusteringResult, 1.25, 0);
-            }
+            
+            clusterSet = super.createModelKMeansOffline(subconjunto, 
+                    key, 
+                    clusteringResult,
+                    (int) Math.ceil(subconjunto.size() * k_ini));
+            
             model.getModel().put(key, clusterSet);
-            knownClassesLabels.add(key);
-//            model.setKnownClasses(key);
             System.out.println("Class: " + key + " size: " + clusterSet.size() + " n:" + subconjunto.size());
             super.getFileOut().write("Class: " + key + " size: " + clusterSet.size() + " n:" + subconjunto.size() + "\n");
         }
-        model.setClasses(knownClassesLabels);
-//        FreeChartGraph graphic = new FreeChartGraph(super.getDirectory(), "Offline Graph", super.getTrainingData().size());
-//        graphic.createMicroClustersPlotOffPhase(model.getModel(), super.getDirectory());
+        model.setClasses(this.getTrainingData().keySet());
     }
     
     /**
@@ -112,8 +92,9 @@ public final class OfflinePhaseBR extends OfflinePhase{
      * @throws Exception 
      */
     public void setTrainingData(ArrayList<Instance> D) throws Exception{
+        model = new Model();
+        model.inicialize(super.getDirectory());
         int qtdeRotulos = 0;
-
         HashMap<String, ArrayList<Instance>> trainingData = new HashMap<String, ArrayList<Instance>>();
 
         for (int i = 0; i < D.size(); i++) {
@@ -123,26 +104,34 @@ public final class OfflinePhaseBR extends OfflinePhase{
             
             //For each label assigned to an example, add this example into it repesctive set.
             for (String label : labels) { 
-                try{
-                    model.getMtxLabelsFrequencies().put(label, model.getMtxLabelsFrequencies().get(label) + 1);
-                }catch(NullPointerException e){
-                    model.getMtxProbabilities().put(label, 0.0);
-                    model.getMtxLabelsFrequencies().put(label, 1);
-                }
-                
-                ArrayList<Instance> dataset = null;
+                ArrayList<Instance> dataset;
                 try{
                     dataset = trainingData.get(label); 
+                    dataset.add(D.get(i));
                 }catch(NullPointerException e){
                     System.out.println("Create new set for label: " + label);
                     dataset = new ArrayList<>();
+                    dataset.add(D.get(i));
                 }
-                dataset.add(D.get(i));
                 trainingData.put(label,dataset);
+                
+                //Filling the matrix T (frequencies)
+                for (String label_column : labels) { 
+                    String mtxCordinate = label+","+label_column;
+                    int frequency = 0;
+                    try{
+                        frequency = model.getMtxLabelsFrequencies().get(mtxCordinate);
+                        frequency ++;
+                        model.getMtxLabelsFrequencies().put(mtxCordinate, frequency);
+                    }catch(NullPointerException e){
+                        model.getMtxLabelsFrequencies().put(mtxCordinate, 1);
+                    }
+                }
             }
+            this.model.incrementNumerOfObservedExamples();
         }
-        
         super.setTrainingData(trainingData);
+        this.model.setInitialProbabilities();
         this.model.setCurrentCardinality(Math.ceil(qtdeRotulos/D.size()));
     }
     

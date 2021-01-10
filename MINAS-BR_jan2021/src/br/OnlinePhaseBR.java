@@ -37,9 +37,8 @@ public class OnlinePhaseBR extends OnlinePhase {
     private ArrayList<Integer> timeStampNP = new ArrayList<>();
     private FileWriter extInfo;
 
-    public OnlinePhaseBR(int cardinality, int numExNoveltyDetection, double threshold, String outputDirectory, FileWriter fileOn, String algOn) throws Exception {
-        super(algOn, numExNoveltyDetection, outputDirectory, fileOn);
-        this.cardinalidadeAtual = cardinality;
+    public OnlinePhaseBR(int theta, double threshold, String outputDirectory, FileWriter fileOn, String algOn) throws Exception {
+        super(algOn, theta, outputDirectory, fileOn);
         this.threshold = threshold;
         extInfo = new FileWriter(new File(outputDirectory+"/extInfo.txt"),false);
     }
@@ -49,11 +48,10 @@ public class OnlinePhaseBR extends OnlinePhase {
      * @param model
      * @param av
      * @param data
-     * @param noveltyPatterns
      * @param fileOut
      * @throws IOException 
      */
-    public void classify(Model model, EvaluatorBR av, Instance data, ArrayList<String> noveltyPatterns, FileWriter fileOut) throws IOException {
+    public void classify(Model model, EvaluatorBR av, Instance data, FileWriter fileOut) throws IOException {
         Set<String> labels = DataSetUtils.getLabelSet(data); //get true labels
         model.verifyConceptEvolution(labels, super.getTimestamp());
         ArrayList<Voting> voting = identifyExample(data, model); //get predict labels
@@ -62,12 +60,13 @@ public class OnlinePhaseBR extends OnlinePhase {
         String information = "Ex: " + super.getTimestamp() + "\t True Labels: " + labels.toString() + "\t MINAS-BR Prediction: ";
         
         //An example is consider unknown when it is outside all of micro-clusters' models
-//        if (voting.size() > this.cardinalidadeAtual) {
-        if (!voting.isEmpty()) {
+        if (voting.size() >= this.cardinalidadeAtual) {
+//        if (!voting.isEmpty()) {
             //classifies
-            //Set<String> Z = av.thresholding(voting, this.getCardinalidadeAtual());
-            Set<String> Z = av.thresholding(voting, voting.size());
+            Set<String> Z = this.thresholding(voting, (int)Math.ceil(model.getCurrentCardinality()));
             model.addPrediction(labels, Z);
+            model.updateMtxFrequencies(Z);
+            model.incrementNumerOfObservedExamples();
 
             //write in the file
             String textOut = information;
@@ -89,9 +88,31 @@ public class OnlinePhaseBR extends OnlinePhase {
             //********** Searching for new valid micro-clusters created from unknown examples        	
             if ((model.getShortTimeMemory().size() >= this.getNumExNoveltyDetection()) && (this.getLastCheck() + this.getNumExNoveltyDetection() < this.getTimestamp())) {
                 System.out.println("************Novelty Detection Phase***********");
-                noveltyPatternProcedure(model,noveltyPatterns,fileOut,av);
+                noveltyPatternProcedure(model,fileOut,av);
             }
         }
+    }
+    
+    /**
+     * Seleciona os rótulos mais relevantes de acordo com a menor distância
+     *
+     * @param voting lista com as informações dos micro-grupos mais próximos
+     * @param cardinality cardinalidade atual
+     * @return vetor de bipartições
+     */
+    public Set<String> thresholding(ArrayList<Voting> voting, int cardinality) {
+        Collections.sort(voting); //Ordenando da menor distância para a maior
+        Set<String> Z = new HashSet<String>();
+        if(voting.size() <= cardinality){
+            for (int i = 0; i < voting.size(); i++) {
+                Z.add(voting.get(i).getKey());
+            }
+        }else{
+            for (int i = 0; i < cardinality; i++) {
+                Z.add(voting.get(i).getKey()); //associando só os primeiros rótulos ao exemplo
+            }
+        }
+        return Z;
     }
 
     /**

@@ -98,7 +98,7 @@ public class Main {
         String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
         String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
         String outputDirecotory = "results/"+dataSetName+"/";
-        double k_ini = 0.01;
+        double k_ini = 0.001;
         String theta = "1000";
         String omega = "2000";
         int L = 5;
@@ -347,6 +347,7 @@ public class Main {
             double f, 
             int evaluationWindowSize,
             String outputDirectory) throws IOException, Exception {
+        
 //        Instances D_ = DataSetUtils.dataFileToInstance(dataSetPath);
 //        int L = D_.classIndex();
 //        int streamSize = D_.numInstances();
@@ -362,15 +363,13 @@ public class Main {
 //        int[] distTest = DataSetUtils.getLabelsDistribution(train);
         float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, evaluationWindowSize, L);
 
-        
-
-        OfflinePhaseBR treino = new OfflinePhaseBR(train, k_ini,C_con, fileOff, outputDirectory);
-        Model model = treino.getModel();
-        
         //Create output files
         FileWriter fileOn = new FileWriter(new File(outputDirectory + "/faseOnlineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOff = new FileWriter(new File(outputDirectory + "/faseOfflineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/results.txt"), false); //Armazena informações da fase de treinamento
+        
+        OfflinePhaseBR treino = new OfflinePhaseBR(train, k_ini, fileOff, outputDirectory);
+        Model model = treino.getModel();
         
         fileOff.write("Known Classes: " + model.getAllLabel().size() + "\n");
          fileOff.write("Train label cardinality: " + model.getCurrentCardinality() + "\n");
@@ -378,14 +377,13 @@ public class Main {
         fileOff.write("Number of examples: " + (train.size()+test.size()) + "\n");
         fileOff.write("Number of attributes: " + train.get(0).numInputAttributes() +"\n");
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 
-        ArrayList<String> NPs = new ArrayList<String>();        
-        OnlinePhaseBR onlinePhase = new OnlinePhaseBR((int)Math.ceil(treino.getCardinality()), theta, f, outputDirectory, fileOut, algOn);
+        OnlinePhaseBR onlinePhase = new OnlinePhaseBR(theta, f, outputDirectory, fileOut, "kmeans+leader");
         
         //Classification phase
         for (int i = 0; i < test.size(); i++) {
             onlinePhase.incrementarTimeStamp();
             System.out.println("Timestamp: " + onlinePhase.getTimestamp());
-            onlinePhase.classify(model, av, test.get(i), NPs, fileOn);
+            onlinePhase.classify(model, av, test.get(i), fileOn);
             
             //for each model deletes the micro-clusters wich have not been used
             if((onlinePhase.getTimestamp()%omega) == 0){
@@ -410,6 +408,7 @@ public class Main {
         av.writeConceptEvolutionNP(model, outputDirectory);
         fileOn.close();
         fileOut.close();
+        fileOff.close();
         System.out.println("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem());
         model.getPnInfo().write("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem() + "\n");
         System.out.println("Number of examples removed from short-time-memory = " + model.getShortTimeMemory().getQtdeExDeleted());
@@ -450,7 +449,7 @@ public class Main {
        ArrayList<Instance> train = new ArrayList<Instance>();
        ArrayList<Instance> test = new ArrayList<Instance>();
         
-        MultiTargetArffFileStream file = new MultiTargetArffFileStream(trainPath, String.valueOf(m));
+        MultiTargetArffFileStream file = new MultiTargetArffFileStream(trainPath, String.valueOf(L));
         file.prepareForUse();
         while(file.hasMoreInstances()){
             train.add(file.nextInstance().getData());
@@ -460,7 +459,7 @@ public class Main {
 ////            System.out.println(DataSetUtils.getLabelSet(train.get(i)));
 //        }
         
-        file = new MultiTargetArffFileStream(testPath, String.valueOf(m));
+        file = new MultiTargetArffFileStream(testPath, String.valueOf(L));
         file.prepareForUse();
         
         while(file.hasMoreInstances()){
@@ -503,7 +502,8 @@ public class Main {
                 Integer.valueOf(theta), 
                 Integer.valueOf(omega), 
                 Double.valueOf(f),
-                algOn, evMetric, outputDirectory)
+                wEvaluation,
+                outputDirectory)
         );
 
         //EaHTps

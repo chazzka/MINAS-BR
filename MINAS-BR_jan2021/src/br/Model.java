@@ -34,9 +34,10 @@ public class Model {
     private ArrayList<Set<String>> classifiedUnk = new ArrayList<>(); //Unknown examples classified during the ND procedure
     private FileWriter pnInfo;
     private ShortTimeMemory shortTimeMemory = new ShortTimeMemory(new ArrayList<>(), new ArrayList<>());
-    private HashMap<String,Integer> mtxLabelsFrequencies;
+    private HashMap<String, Integer> mtxLabelsFrequencies;
     private HashMap<String, Double> mtxProbabilities;
     private double currentCardinality;
+    private int numberOfObservedExamples;
 
     public double getCurrentCardinality() {
         return currentCardinality;
@@ -46,23 +47,51 @@ public class Model {
         this.currentCardinality = currentCardinality;
     }
     
+    public HashMap<String, Integer> getMtxLabelsFrequencies() {
+        return mtxLabelsFrequencies;
+    }
+
+    public HashMap<String, Double> getMtxProbabilities() {
+        return mtxProbabilities;
+    }
+    
     /**
-     * Instantiate frequencies and probabilities matrices.
-     * @param classesConhecidas 
+     * Fill matrix P (probabilities) after training phase
      */
-    public void setMatrices(Set<String> classesConhecidas) {
-        this.mtxLabelsFrequencies = new HashMap<>();
-        this.mtxProbabilities = new HashMap<>();
-        
-        for (Iterator<String> iterator = classesConhecidas.iterator(); iterator.hasNext();) {
-            String label = iterator.next();
-            this.mtxLabelsFrequencies.put(label, 0);
-            this.mtxProbabilities.put(label, 0.0);
+    public void setInitialProbabilities() {
+        for (String mtxCordinate : this.mtxLabelsFrequencies.keySet()) {
+            //j --> lines
+            //n --> columns
+            String j = mtxCordinate.split(",")[0];
+            String n = mtxCordinate.split(",")[1];
+            
+            if(j.equals(n)){
+                //prior probability p(y_j)
+                double p_yj = mtxLabelsFrequencies.get(mtxCordinate) / this.numberOfObservedExamples;
+                this.mtxProbabilities.put(mtxCordinate, p_yj);
+            }else{
+                double p_yn = mtxLabelsFrequencies.get(mtxCordinate);
+                double p_yj_pyn = this.mtxLabelsFrequencies.get(mtxCordinate) / p_yn;
+                this.mtxProbabilities.put(mtxCordinate, p_yj_pyn);
+            }
         }
     }
 
-    public HashMap<String, Integer> getMtxLabelsFrequencies() {
-        return mtxLabelsFrequencies;
+    public void incrementNumerOfObservedExamples() {
+        this.numberOfObservedExamples++;
+    }
+
+    public void updateMtxFrequencies(Set<String> Z) {
+        for (String j : Z) {
+            for (String n : Z) {
+                try{
+                    int frequency = this.mtxLabelsFrequencies.get(j+","+n) + 1;
+                    this.mtxLabelsFrequencies.put(j+","+n, frequency);
+                }catch(NullPointerException e){
+                    this.mtxLabelsFrequencies.put(j+","+n, 1);
+                }
+            }
+        }
     }
 
     /**
@@ -538,6 +567,8 @@ public class Model {
     
      public void inicialize(String outputDir) throws IOException {
         this.model = new HashMap<String, ArrayList<MicroCluster>>();
+        this.mtxLabelsFrequencies = new HashMap<>();
+        this.mtxProbabilities = new HashMap<>();
         this.NPs = new ArrayList<>();
         this.timestampNP = new ArrayList<>();
         this.Classes = new ArrayList<>();
