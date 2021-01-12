@@ -3,7 +3,7 @@ package main;
 
 import br.Model;
 import br.OfflinePhase;
-import br.OnlinePhaseBR;
+import br.OnlinePhase;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Prediction;
 import dataSource.DataSetUtils;
@@ -377,7 +377,7 @@ public class Main {
         fileOff.write("Number of examples: " + (train.size()+test.size()) + "\n");
         fileOff.write("Number of attributes: " + train.get(0).numInputAttributes() +"\n");
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 
-        OnlinePhaseBR onlinePhase = new OnlinePhaseBR(theta, f, outputDirectory, fileOut, "kmeans+leader");
+        OnlinePhase onlinePhase = new OnlinePhase(theta, f, outputDirectory, fileOut, "kmeans+leader");
         
         //Classification phase
         for (int i = 0; i < test.size(); i++) {

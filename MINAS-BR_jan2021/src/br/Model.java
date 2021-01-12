@@ -24,7 +24,7 @@ import utils.ShortTimeMemory;
  * @author joel
  */
 public class Model {
-    private HashMap<String, ArrayList<MicroCluster>> model;
+    private HashMap<String, ArrayList<MicroClusterBR>> model;
     private ArrayList<NoveltyPattern> NPs;
     private ArrayList<Class> Classes;
     private ArrayList<Integer> timestampNP;
@@ -542,14 +542,14 @@ public class Model {
     /**
      * @return the model
      */
-    public HashMap<String, ArrayList<MicroCluster>> getModel() {
+    public HashMap<String, ArrayList<MicroClusterBR>> getModel() {
         return model;
     }
 
     /**
      * @param model the model to set
      */
-    public void setModel(HashMap<String, ArrayList<MicroCluster>> model) {
+    public void setModel(HashMap<String, ArrayList<MicroClusterBR>> model) {
         this.model = model;
     }
 
@@ -561,7 +561,7 @@ public class Model {
     }
     
      public void inicialize(String outputDir) throws IOException {
-        this.model = new HashMap<String, ArrayList<MicroCluster>>();
+        this.model = new HashMap<String, ArrayList<MicroClusterBR>>();
         this.mtxLabelsFrequencies = new HashMap<>();
         this.mtxProbabilities = new HashMap<>();
         this.NPs = new ArrayList<>();
