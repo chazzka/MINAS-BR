@@ -11,36 +11,52 @@ import NoveltyDetection.MicroCluster;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 import dataSource.DataSetUtils;
+//import evaluate.FreeChartGraph;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import moa.cluster.CFCluster;
 import moa.cluster.Clustering;
+import utils.OnlinePhaseUtils;
 
 /**
- *
+ * 
  * @author joel
+ * 
  */
-public abstract class OfflinePhase {
-    private HashMap<String, ArrayList<Instance>> trainingData;
+public final class OfflinePhase{
+    private Model model;
+    private double k_ini;
+     private HashMap<String, ArrayList<Instance>> trainingData;
     private String algOff;                                      //algoritmo de agrupamento na fase offline  
     private FileWriter fileOut;
     private String directory;
-
-    public OfflinePhase(String algOff, FileWriter fileOut, String directory) {
-        System.out.println("******** Inicio Fase Offline ********");
-        this.algOff = algOff;
-        this.fileOut = fileOut;
-        this.directory = directory;
+    
+    public OfflinePhase(ArrayList<Instance> trainingFile,
+            double k_ini, 
+            FileWriter fileOff, 
+            String outputDirectory) throws Exception{
+        
+        this.algOff = "kmeans";
+        this.fileOut = fileOff;
+        this.directory = outputDirectory;
+        this.setK_ini(k_ini);
+        this.setTrainingData(trainingFile);
+        this.training();
+        fileOff.write("Label Cardinality: " + this.model.getCurrentCardinality() + "\n");
     }
     
-    public ArrayList<MicroCluster> createModelKMeansOffline(ArrayList<Instance> dataSet, String label, int[] exampleCluster, int numMClusters) throws NumberFormatException, IOException {
-        ArrayList<MicroCluster> modelSet = new ArrayList<MicroCluster>();
+    public ArrayList<MicroClusterBR> createModelKMeansOffline(ArrayList<Instance> dataSet, String label, int[] exampleCluster, int numMClusters) throws NumberFormatException, IOException {
+        ArrayList<MicroClusterBR> modelSet = new ArrayList<MicroClusterBR>();
         List<ClustreamKernelMOAModified> examples = new LinkedList<ClustreamKernelMOAModified>();
         if(numMClusters < 1){
             numMClusters = 1;
@@ -143,10 +159,10 @@ public abstract class OfflinePhase {
             }
         }
 
-        MicroCluster model_tmp;
+        MicroClusterBR model_tmp;
         for (int w = 0; w < numMClusters; w++) {
             if ((micros.get(w) != null)) {
-                model_tmp = new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0);
+                model_tmp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0));
                 modelSet.add(model_tmp);
             }
         }
@@ -162,14 +178,14 @@ public abstract class OfflinePhase {
      * @throws NumberFormatException
      * @throws IOException 
      */
-    public ArrayList<MicroCluster> criarmodeloCluStreamOffline(ArrayList<Instance> examples, String label, int numMClusters) throws NumberFormatException, IOException {
-        ArrayList<MicroCluster> conjModelos = new ArrayList<>();
+    public ArrayList<MicroClusterBR> criarmodeloCluStreamOffline(ArrayList<Instance> examples, String label, int numMClusters) throws NumberFormatException, IOException {
+        ArrayList<MicroClusterBR> conjModelos = new ArrayList<>();
         ClustreamOfflineBR jc = new ClustreamOfflineBR();
 
         Clustering micros = jc.CluStream(examples, examples.get(0).numOutputAttributes(), numMClusters, true, true /*executa kmeans*/);
 
         for (int w = 0; w < micros.size(); w++) {
-            MicroCluster mdtemp = new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0);
+            MicroClusterBR mdtemp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0));
             // add the temporary model to the decision model 
             conjModelos.add(mdtemp);
         }
@@ -219,7 +235,106 @@ public abstract class OfflinePhase {
     }
     
     
+    
+    /**
+     * Builds the model
+     * @throws IOException
+     * @throws Exception 
+     */
+    public void training() throws IOException, Exception {
+        //create one training file for each problem class 
+        System.out.print("Classes for the training phase (offline): ");
+        this.fileOut.write("Classes for the training phase (offline): ");
+        System.out.println("" + this.trainingData.keySet().toString());
+        this.fileOut.write("" + this.trainingData.keySet().toString());
+        System.out.print("\nQuantidade de classes: ");
+        this.fileOut.write("\nQuantidade de classes: ");
+        System.out.println("" + this.trainingData.size());
+        this.fileOut.write("" + this.trainingData.size() + "\n");
+        
+        
+        //generate a set of micro-clusters for each class from the training set
+        for(Map.Entry<String, ArrayList<Instance>> entry : this.trainingData.entrySet()) {
+            String key = entry.getKey();
+            ArrayList<Instance> subconjunto = entry.getValue();
+            ArrayList<MicroClusterBR> clusterSet = null;
+            int[] clusteringResult = new int[subconjunto.size()];
+            
+            clusterSet = this.createModelKMeansOffline(subconjunto, 
+                    key, 
+                    clusteringResult,
+                    (int) Math.ceil(subconjunto.size() * k_ini));
+            
+            model.getModel().put(key, clusterSet);
+            System.out.println("Class: " + key + " size: " + clusterSet.size() + " n:" + subconjunto.size());
+            this.fileOut.write("Class: " + key + " size: " + clusterSet.size() + " n:" + subconjunto.size() + "\n");
+        }
+        model.setClasses(this.getTrainingData().keySet());
+    }
+    
+    /**
+     * Separa os exemplos em subconjuntos, um para cada classe
+     * @param D conjunto de treino
+     * @param classesConhecidas
+     * @throws Exception 
+     */
+    public void setTrainingData(ArrayList<Instance> D) throws Exception{
+        model = new Model();
+        model.inicialize(this.directory);
+        int qtdeRotulos = 0;
+        HashMap<String, ArrayList<Instance>> trainingData = new HashMap<String, ArrayList<Instance>>();
 
+        for (int i = 0; i < D.size(); i++) {
+            Set<String> labels = DataSetUtils.getLabelSet(D.get(i)); 
+            qtdeRotulos += labels.size();
+            ArrayList<Instance> generic; 
+            
+            //For each label assigned to an example, add this example into it repesctive set.
+            for (String label : labels) { 
+                ArrayList<Instance> dataset;
+                try{
+                    dataset = trainingData.get(label); 
+                    dataset.add(D.get(i));
+                }catch(NullPointerException e){
+                    System.out.println("Create new set for label: " + label);
+                    dataset = new ArrayList<>();
+                    dataset.add(D.get(i));
+                }
+                trainingData.put(label,dataset);
+                
+                //Filling the matrix T (frequencies)
+                for (String label_column : labels) { 
+                    String mtxCordinate = label+","+label_column;
+                    int frequency = 0;
+                    try{
+                        frequency = model.getMtxLabelsFrequencies().get(mtxCordinate);
+                        frequency ++;
+                        model.getMtxLabelsFrequencies().put(mtxCordinate, frequency);
+                    }catch(NullPointerException e){
+                        model.getMtxLabelsFrequencies().put(mtxCordinate, 1);
+                    }
+                }
+            }
+            this.model.incrementNumerOfObservedExamples();
+        }
+        this.trainingData = trainingData;
+        this.model.setInitialProbabilities();
+        this.model.setCurrentCardinality(Math.ceil(qtdeRotulos/D.size()));
+    }
     
-    
+
+    /**
+     * @return the model
+     */
+    public Model getModel() {
+        return model;
+    }
+
+    /**
+     * @param k_ini the k_ini to set
+     */
+    public void setK_ini(double k_ini) {
+        this.k_ini = k_ini;
+    }
+
 }

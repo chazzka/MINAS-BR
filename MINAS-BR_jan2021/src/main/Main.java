@@ -2,7 +2,7 @@ package main;
 
 
 import br.Model;
-import br.OfflinePhaseBR;
+import br.OfflinePhase;
 import br.OnlinePhaseBR;
 import com.yahoo.labs.samoa.instances.Instance;
 import com.yahoo.labs.samoa.instances.Prediction;
@@ -368,7 +368,7 @@ public class Main {
         FileWriter fileOff = new FileWriter(new File(outputDirectory + "/faseOfflineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/results.txt"), false); //Armazena informações da fase de treinamento
         
-        OfflinePhaseBR treino = new OfflinePhaseBR(train, k_ini, fileOff, outputDirectory);
+        OfflinePhase treino = new OfflinePhase(train, k_ini, fileOff, outputDirectory);
         Model model = treino.getModel();
         
         fileOff.write("Known Classes: " + model.getAllLabel().size() + "\n");

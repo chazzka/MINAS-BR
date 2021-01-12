@@ -553,11 +553,6 @@ public class Model {
         this.model = model;
     }
 
-    
-    public void incrementEvaluatedExample(){
-        this.evaluatedExamples += 1;
-    }
-
     /**
      * @return the evaluatedExamples
      */

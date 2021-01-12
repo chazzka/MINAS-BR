@@ -56,31 +56,7 @@ public abstract class OnlinePhase {
         this.sleepMemory = new ArrayList<>();
     }
     
-    /**
-     * Select the cluster algorithm based on algOn variable
-     *
-     * @param par_data data
-     * @param par_k k-value
-     * @param grupos examples to remove
-     * @param maxRadius
-     * @return micro-clusters
-     * @throws IOException
-     */
-    public ArrayList<MicroCluster> createModelFromExamples(ArrayList<Instance> par_data, int par_k, int[] grupos, double maxRadius) throws IOException {
-        ArrayList<MicroCluster> modelUnk = null;
-        if (getAlgOnl().equals("kmeans")) {
-            modelUnk = this.createModelKMeansOnline(par_k, par_data, grupos);
-        }
-        
-        if (getAlgOnl().equals("kmeans+leader")) {
-            modelUnk = OnlinePhaseUtils.createModelKMeansLeader(par_data, grupos, maxRadius, this.timestamp);
-        }
-
-        if (getAlgOnl().equals("clustream")) {
-//            modelUnk = criamodeloCluStreamOnline(par_data, par_k, grupos);
-        }
-        return (modelUnk);
-    }
+    
     
     /**
      * Cluster with k-means

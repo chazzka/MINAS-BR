@@ -84,27 +84,7 @@ public class Evaluator {
         return Z;
     }
 
-    /**
-     * Seleciona os rótulos mais relevantes de acordo com a menor distância
-     *
-     * @param voting lista com as informações dos micro-grupos mais próximos
-     * @param cardinality cardinalidade atual
-     * @return vetor de bipartições
-     */
-    public Set<String> thresholding(ArrayList<Voting> voting, int cardinality) {
-        Collections.sort(voting); //Ordenando da menor distância para a maior
-        Set<String> Z = new HashSet<String>();
-        if(voting.size() < cardinality){
-            for (int i = 0; i < voting.size(); i++) {
-                Z.add(voting.get(i).getKey());
-            }
-        }else{
-            for (int i = 0; i < cardinality; i++) {
-                Z.add(voting.get(i).getKey()); //associando só os primeiros rótulos ao exemplo
-            }
-        }
-        return Z;
-    }
+    
     
     /**
      * Seleciona os rótulos mais relevantes através de um limiar
