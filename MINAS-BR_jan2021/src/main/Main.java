@@ -378,6 +378,7 @@ public class Main {
         fileOff.write("Number of attributes: " + train.get(0).numInputAttributes() +"\n");
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 
         OnlinePhase onlinePhase = new OnlinePhase(theta, f, outputDirectory, fileOut, "kmeans+leader");
+        String measure = "FM";
         
         //Classification phase
         for (int i = 0; i < test.size(); i++) {

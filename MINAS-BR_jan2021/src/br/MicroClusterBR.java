@@ -33,6 +33,7 @@ public class MicroClusterBR {
      * @return the averOut
      */
     public double getAverOut() {
+        
         return averOut;
     }
 

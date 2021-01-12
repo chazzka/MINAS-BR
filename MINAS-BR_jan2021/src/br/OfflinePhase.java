@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.Set;
 import moa.cluster.CFCluster;
 import moa.cluster.Clustering;
+import moa.clusterers.KMeans;
 import utils.OnlinePhaseUtils;
 
 /**
@@ -56,8 +57,8 @@ public final class OfflinePhase{
     }
     
     public ArrayList<MicroClusterBR> createModelKMeansOffline(ArrayList<Instance> dataSet, String label, int[] exampleCluster, int numMClusters) throws NumberFormatException, IOException {
-        ArrayList<MicroClusterBR> modelSet = new ArrayList<MicroClusterBR>();
-        List<ClustreamKernelMOAModified> examples = new LinkedList<ClustreamKernelMOAModified>();
+        ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
+        List<ClustreamKernelMOAModified> examples = new LinkedList<>();
         if(numMClusters < 1){
             numMClusters = 1;
         }
@@ -72,7 +73,6 @@ public final class OfflinePhase{
             double[] data = Arrays.copyOfRange(dataSet.get(k).toDoubleArray(), dataSet.get(k).numOutputAttributes(), dataSet.get(k).numAttributes());
             Instance inst = new DenseInstance(1, data);
             examples.add(new ClustreamKernelMOAModified(inst, numAtt, 0));
-            exampleCluster = new int[dataSet.size()];
         }
 
         //********* K-Means ***********************
@@ -90,13 +90,7 @@ public final class OfflinePhase{
         }
 
         //execution of the KMeans  
-        Clustering centers;
-        moa.clusterers.KMeans cm = new moa.clusterers.KMeans();
-//        try{
-            centers = cm.kMeans(centrosIni, examples);
-//        }catch(Exception e){
-//            System.out.println("");
-//        }
+        Clustering centers = KMeans.kMeans(centrosIni, dataSet);
         
         //*********results     
         // transform the results of kmeans in a data structure used by MINAS
@@ -122,8 +116,7 @@ public final class OfflinePhase{
             exampleCluster[j] = closestCluster;
         }
 
-        Clustering micros;
-        micros = new Clustering(res);
+        Clustering micros = new Clustering(res);
 
         //*********remove micro-cluster with few examples
         ArrayList<ArrayList<Integer>> mapClustersExamples = new ArrayList<ArrayList<Integer>>();
@@ -135,6 +128,8 @@ public final class OfflinePhase{
         }
 
         int value;
+        HashMap<Integer, ArrayList<Instance>> mcInstances = new HashMap<>();
+        
         for (int i = 0; i < micros.size(); i++) {
             //remove micro-cluster with less than 3 examples
             if (micros.get(i) != null) {
@@ -142,10 +137,12 @@ public final class OfflinePhase{
                     value = -1;
                 } else {
                     value = i;
+                    mcInstances.put(i, new ArrayList<>());
                 }
 
                 for (int j = 0; j < mapClustersExamples.get(i).size(); j++) {
                     exampleCluster[mapClustersExamples.get(i).get(j)] = value;
+                    mcInstances.get(i).add(dataSet.get(mapClustersExamples.get(i).get(j)));
                 }
                 if (((ClustreamKernelMOAModified) micros.get(i)).getWeight() < 3) {
                     micros.remove(i);
@@ -159,10 +156,14 @@ public final class OfflinePhase{
             }
         }
 
-        MicroClusterBR model_tmp;
         for (int w = 0; w < numMClusters; w++) {
             if ((micros.get(w) != null)) {
-                model_tmp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0));
+                MicroClusterBR model_tmp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0));
+                ArrayList<Instance> mcInstances = new ArrayList<>();
+                for (int i = 0; i < exampleCluster.length; i++) {
+                    
+                }
+                model_tmp.setAverOutput(exampleCluster, w);
                 modelSet.add(model_tmp);
             }
         }
@@ -199,12 +200,6 @@ public final class OfflinePhase{
         return trainingData;
     }
 
-    /**
-     * @param trainingData the trainingData to set
-     */
-    public void setTrainingData(HashMap<String, ArrayList<Instance>> trainingData) {
-        this.trainingData = trainingData;
-    }
 
     /**
      * @return the algOff
@@ -275,14 +270,13 @@ public final class OfflinePhase{
     /**
      * Separa os exemplos em subconjuntos, um para cada classe
      * @param D conjunto de treino
-     * @param classesConhecidas
      * @throws Exception 
      */
     public void setTrainingData(ArrayList<Instance> D) throws Exception{
         model = new Model();
         model.inicialize(this.directory);
         int qtdeRotulos = 0;
-        HashMap<String, ArrayList<Instance>> trainingData = new HashMap<String, ArrayList<Instance>>();
+        HashMap<String, ArrayList<Instance>> trainingData = new HashMap<>();
 
         for (int i = 0; i < D.size(); i++) {
             Set<String> labels = DataSetUtils.getLabelSet(D.get(i)); 

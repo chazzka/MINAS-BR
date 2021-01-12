@@ -11,7 +11,6 @@ import NoveltyDetection.MicroCluster;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 import dataSource.DataSetUtils;
-import evaluate.Evaluator;
 import evaluate.EvaluatorBR;
 import java.io.File;
 import java.io.FileWriter;
@@ -29,7 +28,6 @@ import java.util.Random;
 import java.util.Set;
 import moa.cluster.CFCluster;
 import moa.cluster.Clustering;
-import utils.OnlinePhaseUtils;
 import utils.Voting;
 
 public class OnlinePhase {
