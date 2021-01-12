@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import moa.cluster.CFCluster;
+import moa.cluster.Cluster;
 import moa.cluster.Clustering;
 import moa.clusterers.KMeans;
 import utils.OnlinePhaseUtils;
@@ -94,8 +95,9 @@ public final class OfflinePhase{
         
         //*********results     
         // transform the results of kmeans in a data structure used by MINAS
-        ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
+        MicroClusterBR[] modelAux = new MicroClusterBR[centers.size()];
         HashMap<Integer, ArrayList<double[]>> mcInstances = new HashMap<>();
+        
         for (int j = 0; j < examples.size(); j++) {
             // Find closest kMeans cluster
             double minDistance = Double.MAX_VALUE;
@@ -109,23 +111,27 @@ public final class OfflinePhase{
             }
             
             // add to the cluster
-            if (modelSet.get(closestCluster) == null) {
-                modelSet.add(new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) examples.get(j).copy(), label, "normal", 0)));
+            if (modelAux[closestCluster] == null)
+                modelAux[closestCluster] = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) examples.get(j).copy(), label, "normal", 0));
+            else
+                modelAux[closestCluster].getMicroCluster().add(examples.get(j));
+
+            try{
+                mcInstances.get(closestCluster).add(examples.get(j).getCenter());
+            }catch(NullPointerException e){
                 mcInstances.put(closestCluster, new ArrayList<>());
-            } else {
-                modelSet.get(closestCluster).getMicroCluster().add(examples.get(j));
                 mcInstances.get(closestCluster).add(examples.get(j).getCenter());
             }
         }
         
-        for (int i = 0; i < modelSet.size(); i++) {
-            modelSet.get(i).calculateInitialAverOutput(mcInstances.get(i));
-            if(modelSet.get(i).getMicroCluster().getN() < 3){
-                modelSet.remove(i);
-                i--;
+        ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
+        for (int i = 0; i < modelAux.length; i++) {
+            //Do not considering non-representative clusters
+            if(modelAux[i].getMicroCluster().getN() > 3){
+                modelAux[i].calculateInitialAverOutput(mcInstances.get(i));
+                modelAux[i].calculateInicialThreshold(model.getMtxLabelsFrequencies(), model.getNumberOfObservedExamples());
+                modelSet.add(modelAux[i]);
             }
-            modelSet.get(i).calculateInicialThreshold(model.getMtxLabelsFrequencies());
-            
         }
         return modelSet;
     }
@@ -212,10 +218,9 @@ public final class OfflinePhase{
         for(Map.Entry<String, ArrayList<Instance>> entry : this.trainingData.entrySet()) {
             String key = entry.getKey();
             ArrayList<Instance> subconjunto = entry.getValue();
-            ArrayList<MicroClusterBR> clusterSet = null;
             int[] clusteringResult = new int[subconjunto.size()];
             
-            clusterSet = this.createModelKMeansOffline(subconjunto, 
+            ArrayList<MicroClusterBR> clusterSet = this.createModelKMeansOffline(subconjunto, 
                     key, 
                     clusteringResult,
                     (int) Math.ceil(subconjunto.size() * k_ini));
@@ -225,6 +230,7 @@ public final class OfflinePhase{
             this.fileOut.write("Class: " + key + " size: " + clusterSet.size() + " n:" + subconjunto.size() + "\n");
         }
         model.setClasses(this.getTrainingData().keySet());
+        model.writeBayesRulesElements();
     }
     
     /**

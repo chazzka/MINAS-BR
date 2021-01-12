@@ -72,24 +72,28 @@ public class MicroClusterBR {
 
     public void calculateInitialAverOutput(ArrayList<double[]> X_b) {
         double sum = 0;
-        for (double[] x_i : X_b) {
-            sum += Math.exp(-KMeansMOAModified.distance(this.getMicroCluster().getCenter(), x_i));
-        }
+        sum = X_b.stream()
+                .map(x_i -> Math.exp(-KMeansMOAModified.distance(this.getMicroCluster().getCenter(), x_i)))
+                .reduce(sum, (accumulator, _item) -> accumulator + _item);
         this.averOut = sum / X_b.size();
     }
 
-    public void calculateInicialThreshold(HashMap<String, Integer> mtxLabelsFrequencies) {
+    public void calculateInicialThreshold(HashMap<String, Integer> mtxLabelsFrequencies, double observedExamples) {
         String j = this.getMicroCluster().getLabelClass();
-        double p_yj = mtxLabelsFrequencies.get(j + "," + j);
+        int yj = mtxLabelsFrequencies.get(j + "," + j);
+        double p_yj =  yj / observedExamples;
         double prod = 1;
+        double prod1 = 1;
         for (Map.Entry<String, Integer> entry : mtxLabelsFrequencies.entrySet()) {
             String key[] = entry.getKey().split(",");
-            if(key[1].equals(j)){
-                double p_yk_yj = entry.getValue() / p_yj;
-                prod *= p_yk_yj * this.averOut;
+            if(!key[0].equals(j) && key[1].equals(j)){
+                double p_yk_yj = (double) entry.getValue() / (double) yj;
+                prod *= p_yk_yj;
+                prod1 *= p_yk_yj * this.averOut;
             }
         }
-        this.threshold = p_yj * prod;
+        this.threshold = p_yj * prod * this.averOut;
+        prod1 = p_yj * prod1;
     }
     
 }

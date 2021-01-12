@@ -17,6 +17,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.ShortTimeMemory;
 
 /**
@@ -38,6 +40,10 @@ public class Model {
     private HashMap<String, Double> mtxProbabilities;
     private double currentCardinality;
     private int numberOfObservedExamples;
+
+    public int getNumberOfObservedExamples() {
+        return numberOfObservedExamples;
+    }
 
     public double getCurrentCardinality() {
         return currentCardinality;
@@ -91,6 +97,22 @@ public class Model {
                     this.mtxLabelsFrequencies.put(j+","+n, 1);
                 }
             }
+        }
+    }
+
+    void writeBayesRulesElements() {
+        try {
+            FileWriter file = new FileWriter(new File("thresholdsInfo.csv"), false);
+            file.write("threshold,averOut" +"\n");
+            for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : model.entrySet()) {
+                ArrayList<MicroClusterBR> mcSet = entry.getValue();
+                for (MicroClusterBR mc : mcSet) {
+                    file.write(mc.getThreshold()+","+mc.getAverOut()+"\n");
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Falha no arquivo thresholdsInfo.csv");
         }
     }
 
