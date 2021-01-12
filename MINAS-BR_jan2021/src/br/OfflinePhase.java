@@ -57,7 +57,7 @@ public final class OfflinePhase{
     }
     
     public ArrayList<MicroClusterBR> createModelKMeansOffline(ArrayList<Instance> dataSet, String label, int[] exampleCluster, int numMClusters) throws NumberFormatException, IOException {
-        ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
+        
         List<ClustreamKernelMOAModified> examples = new LinkedList<>();
         if(numMClusters < 1){
             numMClusters = 1;
@@ -90,11 +90,12 @@ public final class OfflinePhase{
         }
 
         //execution of the KMeans  
-        Clustering centers = KMeans.kMeans(centrosIni, dataSet);
+        Clustering centers = KMeans.kMeans(centrosIni, examples);
         
         //*********results     
         // transform the results of kmeans in a data structure used by MINAS
-        CFCluster[] res = new CFCluster[centers.size()];
+        ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
+        HashMap<Integer, ArrayList<double[]>> mcInstances = new HashMap<>();
         for (int j = 0; j < examples.size(); j++) {
             // Find closest kMeans cluster
             double minDistance = Double.MAX_VALUE;
@@ -106,66 +107,25 @@ public final class OfflinePhase{
                     minDistance = distance;
                 }
             }
-
+            
             // add to the cluster
-            if (res[closestCluster] == null) {
-                res[closestCluster] = (CFCluster) examples.get(j).copy();
+            if (modelSet.get(closestCluster) == null) {
+                modelSet.add(new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) examples.get(j).copy(), label, "normal", 0)));
+                mcInstances.put(closestCluster, new ArrayList<>());
             } else {
-                res[closestCluster].add(examples.get(j));
+                modelSet.get(closestCluster).getMicroCluster().add(examples.get(j));
+                mcInstances.get(closestCluster).add(examples.get(j).getCenter());
             }
-            exampleCluster[j] = closestCluster;
         }
-
-        Clustering micros = new Clustering(res);
-
-        //*********remove micro-cluster with few examples
-        ArrayList<ArrayList<Integer>> mapClustersExamples = new ArrayList<ArrayList<Integer>>();
-        for (int a = 0; a < centrosIni.length; a++) {
-            mapClustersExamples.add(new ArrayList<Integer>());
-        }
-        for (int g = 0; g < exampleCluster.length; g++) {
-            mapClustersExamples.get(exampleCluster[g]).add(g);
-        }
-
-        int value;
-        HashMap<Integer, ArrayList<Instance>> mcInstances = new HashMap<>();
         
-        for (int i = 0; i < micros.size(); i++) {
-            //remove micro-cluster with less than 3 examples
-            if (micros.get(i) != null) {
-                if (((ClustreamKernelMOAModified) micros.get(i)).getWeight() < 3) {
-                    value = -1;
-                } else {
-                    value = i;
-                    mcInstances.put(i, new ArrayList<>());
-                }
-
-                for (int j = 0; j < mapClustersExamples.get(i).size(); j++) {
-                    exampleCluster[mapClustersExamples.get(i).get(j)] = value;
-                    mcInstances.get(i).add(dataSet.get(mapClustersExamples.get(i).get(j)));
-                }
-                if (((ClustreamKernelMOAModified) micros.get(i)).getWeight() < 3) {
-                    micros.remove(i);
-                    mapClustersExamples.remove(i);
-                    i--;
-                }
-            } else {
-                micros.remove(i);
-                mapClustersExamples.remove(i);
+        for (int i = 0; i < modelSet.size(); i++) {
+            modelSet.get(i).calculateInitialAverOutput(mcInstances.get(i));
+            if(modelSet.get(i).getMicroCluster().getN() < 3){
+                modelSet.remove(i);
                 i--;
             }
-        }
-
-        for (int w = 0; w < numMClusters; w++) {
-            if ((micros.get(w) != null)) {
-                MicroClusterBR model_tmp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0));
-                ArrayList<Instance> mcInstances = new ArrayList<>();
-                for (int i = 0; i < exampleCluster.length; i++) {
-                    
-                }
-                model_tmp.setAverOutput(exampleCluster, w);
-                modelSet.add(model_tmp);
-            }
+            modelSet.get(i).calculateInicialThreshold(model.getMtxLabelsFrequencies());
+            
         }
         return modelSet;
     }

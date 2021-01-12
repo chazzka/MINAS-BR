@@ -8,6 +8,9 @@ package br;
 import NoveltyDetection.KMeansMOAModified;
 import NoveltyDetection.MicroCluster;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
@@ -65,6 +68,28 @@ public class MicroClusterBR {
         } else {
             return false;
         }
+    }
+
+    public void calculateInitialAverOutput(ArrayList<double[]> X_b) {
+        double sum = 0;
+        for (double[] x_i : X_b) {
+            sum += Math.exp(-KMeansMOAModified.distance(this.getMicroCluster().getCenter(), x_i));
+        }
+        this.averOut = sum / X_b.size();
+    }
+
+    public void calculateInicialThreshold(HashMap<String, Integer> mtxLabelsFrequencies) {
+        String j = this.getMicroCluster().getLabelClass();
+        double p_yj = mtxLabelsFrequencies.get(j + "," + j);
+        double prod = 1;
+        for (Map.Entry<String, Integer> entry : mtxLabelsFrequencies.entrySet()) {
+            String key[] = entry.getKey().split(",");
+            if(key[1].equals(j)){
+                double p_yk_yj = entry.getValue() / p_yj;
+                prod *= p_yk_yj * this.averOut;
+            }
+        }
+        this.threshold = p_yj * prod;
     }
     
 }
