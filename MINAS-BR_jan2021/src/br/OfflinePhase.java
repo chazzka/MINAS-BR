@@ -129,7 +129,7 @@ public final class OfflinePhase{
             //Do not considering non-representative clusters
             if(modelAux[i].getMicroCluster().getN() > 3){
                 modelAux[i].calculateInitialAverOutput(mcInstances.get(i));
-                modelAux[i].calculateInicialThreshold(model.getMtxLabelsFrequencies(), model.getNumberOfObservedExamples());
+                modelAux[i].calculateThreshold(model.getMtxLabelsFrequencies(), model.getNumberOfObservedExamples());
                 modelSet.add(modelAux[i]);
             }
         }
@@ -230,7 +230,7 @@ public final class OfflinePhase{
             this.fileOut.write("Class: " + key + " size: " + clusterSet.size() + " n:" + subconjunto.size() + "\n");
         }
         model.setClasses(this.getTrainingData().keySet());
-        model.writeBayesRulesElements();
+        model.writeBayesRulesElements(0);
     }
     
     /**

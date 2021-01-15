@@ -97,7 +97,7 @@ public class Main {
         String dataSetName = "MOA-3C";
         String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
         String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-        String outputDirecotory = "results/"+dataSetName+"/";
+        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
         double k_ini = 0.001;
         String theta = "1000";
         String omega = "2000";
@@ -364,9 +364,12 @@ public class Main {
 //        float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, evaluationWindowSize, L);
 
         //Create output files
-        FileWriter fileOn = new FileWriter(new File(outputDirectory + "/faseOnlineInfo.txt"), false); //Armazena informações da fase online
+        FileWriter filePredictions = new FileWriter(new File(outputDirectory + "/predictionsInfo.csv"), false); //Armazena informações da fase online
+        filePredictions.write("timestamp,actual,predicted" + "\n");
         FileWriter fileOff = new FileWriter(new File(outputDirectory + "/faseOfflineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/results.txt"), false); //Armazena informações da fase de treinamento
+        FileWriter fileMicroClusterThresholdInfo = new FileWriter(new File(outputDirectory + "/microClusterThresholdInfo.txt"), false);
+        fileMicroClusterThresholdInfo.write("timestamp,aver_out,threshold"+"\n");
         
         OfflinePhase treino = new OfflinePhase(train, k_ini, fileOff, outputDirectory);
         Model model = treino.getModel();
@@ -376,6 +379,7 @@ public class Main {
 //        fileOff.write("Windows label cardinality: " + Arrays.toString(windowsCardinalities) + "\n");
         fileOff.write("Number of examples: " + (train.size()+test.size()) + "\n");
         fileOff.write("Number of attributes: " + train.get(0).numInputAttributes() +"\n");
+        
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 
         OnlinePhase onlinePhase = new OnlinePhase(theta, f, outputDirectory, fileOut, "kmeans+leader");
         String measure = "FM";
@@ -384,14 +388,15 @@ public class Main {
         for (int i = 0; i < test.size(); i++) {
             onlinePhase.incrementarTimeStamp();
             System.out.println("Timestamp: " + onlinePhase.getTimestamp());
-            onlinePhase.classify(model, av, test.get(i), fileOn);
+            onlinePhase.classify(model, av, test.get(i),filePredictions);
             
             //for each model deletes the micro-clusters wich have not been used
             if((onlinePhase.getTimestamp()%omega) == 0){
-                model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(), fileOn, false);
+                model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(),filePredictions, false);
                 onlinePhase.removeOldMicroClusters(omega, model, fileOut);
             }
             if((onlinePhase.getTimestamp()%evaluationWindowSize) == 0){
+                model.writeBayesRulesElements(onlinePhase.getTimestamp());
                 model.associatesNPs(evaluationWindowSize, onlinePhase.getTimestamp(), measure);
 //                av.getDeletedExamples().add(model.getShortTimeMemory().getQtdeExDeleted());
                 av.updateExampleBasedMeasure(model, evaluationWindowSize);
@@ -407,15 +412,15 @@ public class Main {
         av.setQtdeNP(model.getNPs().size());
         av.writeMeasuresOverTime(outputDirectory);
         av.writeConceptEvolutionNP(model, outputDirectory);
-        fileOn.close();
         fileOut.close();
+        filePredictions.close();
         fileOff.close();
         System.out.println("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem());
         model.getPnInfo().write("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem() + "\n");
         System.out.println("Number of examples removed from short-time-memory = " + model.getShortTimeMemory().getQtdeExDeleted());
         model.getPnInfo().write("Number of examples removed from short-time-memory = " + model.getShortTimeMemory().getQtdeExDeleted()+ "\n");
-        System.out.println("Number of NPs = " + NPs.size());
-        model.getPnInfo().write("Number of NPs = " + NPs.size()+ "\n");
+        System.out.println("Number of NPs = " + model.getNPs().size());
+        model.getPnInfo().write("Number of NPs = " + model.getNPs().size()+ "\n");
         model.getPnInfo().close();
         return av;
     }

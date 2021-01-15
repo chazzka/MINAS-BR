@@ -188,7 +188,7 @@ public class EvaluatorBR extends Evaluator{
                 if(Z.containsAll(Y) && Y.containsAll(Z)){
                     super.setSumSubAcc(getSumSubAcc() + 1);
                 }
-                setSumHL(getSumHL() + delta.size() / this.knownClasses.size());
+                setSumHL(getSumHL() + delta.size() / model.getClasses().size());
             }else{
                contUnk++;
             }

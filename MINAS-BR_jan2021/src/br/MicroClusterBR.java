@@ -79,7 +79,7 @@ public class MicroClusterBR {
         this.averOut = sum / X_b.size();
     }
 
-    public void calculateInicialThreshold(HashMap<String, Integer> mtxLabelsFrequencies, double observedExamples) {
+    public void calculateThreshold(HashMap<String, Integer> mtxLabelsFrequencies, double observedExamples) {
         String j = this.getMicroCluster().getLabelClass();
         int yj = mtxLabelsFrequencies.get(j + "," + j);
         double p_yj =  yj / observedExamples;
@@ -95,6 +95,10 @@ public class MicroClusterBR {
         }
         this.threshold = p_yj * prod * this.averOut;
         prod1 = p_yj * prod1;
+    }
+
+    public void updateAverOut(double exp_dist) {
+        this.averOut += exp_dist;
     }
 
 }

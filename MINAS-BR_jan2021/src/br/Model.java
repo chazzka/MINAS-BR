@@ -105,16 +105,19 @@ public class Model {
         }
     }
 
-    void writeBayesRulesElements() {
+    public void writeBayesRulesElements(int timestamp) {
         try {
-            FileWriter file = new FileWriter(new File("thresholdsInfo.csv"), false);
-            file.write("threshold,averOut" +"\n");
+            FileWriter file = new FileWriter(new File("thresholdsInfo.csv"), true);
+            if(timestamp <= 0)
+                file.write("timestamp,threshold,averOut" +"\n");
+            
             for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : model.entrySet()) {
                 ArrayList<MicroClusterBR> mcSet = entry.getValue();
                 for (MicroClusterBR mc : mcSet) {
-                    file.write(mc.getThreshold()+","+mc.getAverOut()+"\n");
+                    file.write(timestamp+","+mc.getThreshold()+","+mc.getAverOut()+"\n");
                 }
             }
+            file.close();
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Falha no arquivo thresholdsInfo.csv");
@@ -135,7 +138,7 @@ public class Model {
             }
             
             //Getting the k-nearst micro-clusters and put them into Voting
-            while(cont <= k || removableMicroClusterList.isEmpty()){
+            while(cont <= k && !removableMicroClusterList.isEmpty()){
                 double distance = 0.0;
                 String key = microClustersList.getKey();
                 double minDist = Double.MAX_VALUE;
@@ -192,20 +195,23 @@ public class Model {
             
             double prod = 1;
             for (String y_k : Y_pred) {
-                if(!y_k.equals(voting.get(i).getlabel()))
-                    System.out.println("");
                 double p_yk_yc = this.getPosteriorProbability(y_k, voting.get(i).getlabel());
                 prod *= p_yk_yc;
             }
             
             double proba = p_yc * prod * p_xi_yc;
             
-            if(proba >= winMC.getThreshold())
+            if(proba >= winMC.getThreshold()){
                 Y_pred.add(winMC.getMicroCluster().getLabelClass());
+                winMC.updateAverOut(p_xi_yc);
+                winMC.calculateThreshold(mtxLabelsFrequencies, currentCardinality);
+            }
         }
         
         return Y_pred;
     }
+    
+    
 
     private double getPriorProbability(String c) {
         return (double)this.mtxLabelsFrequencies.get(c+","+c) / (double)this.numberOfObservedExamples;
@@ -213,6 +219,41 @@ public class Model {
 
     private double getPosteriorProbability(String y_k, String y_c) {
         return (double) this.mtxLabelsFrequencies.get(y_k+","+y_c) / (double) this.mtxLabelsFrequencies.get(y_c+","+y_c);
+    }
+
+    public void updateCurrentCardinality(int z_new) {
+        this.currentCardinality = (double) (this.numberOfObservedExamples * this.currentCardinality + z_new) /
+                (double)(this.numberOfObservedExamples + z_new);
+    }
+    
+    /**
+     * Get the greatest micro-cluster radius of the model
+     * @param modelo
+     * @return 
+     */
+    public double getGlobalMaxRadius() {
+        double maxRadius = 0;
+        for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : this.model.entrySet()) {
+            ArrayList<MicroClusterBR> value = entry.getValue();
+            if(maxRadius < this.getLocalMaxRadius(value)){
+                maxRadius = this.getLocalMaxRadius(value);
+            }
+        }
+        return maxRadius;
+    }
+    
+    /**
+     * Get the greatest micro-cluster radius of the model
+     * @param modelo
+     * @return 
+     */
+    private double getLocalMaxRadius(ArrayList<MicroClusterBR> modelo) {
+        double maxRadius = 0;
+        for (MicroClusterBR m : modelo) {
+            if(m.getMicroCluster().getRadius() > maxRadius)
+                maxRadius = m.getMicroCluster().getRadius();
+        }
+        return maxRadius;
     }
 
     /**

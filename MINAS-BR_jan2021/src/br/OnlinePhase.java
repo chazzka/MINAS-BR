@@ -357,14 +357,12 @@ public class OnlinePhase {
      * @param fileOut
      * @throws IOException 
      */
-    public void classify(Model model, EvaluatorBR av, Instance data, FileWriter fileOut) throws IOException {
+    public void classify(Model model, EvaluatorBR av, Instance data, FileWriter filePredictions) throws IOException {
         Set<String> labels = DataSetUtils.getLabelSet(data); //get true labels
+        filePredictions.write(this.getTimestamp() + "," + labels.toString()+",");
         model.verifyConceptEvolution(labels, this.timestamp);
+
         ArrayList<Voting> voting = model.getClosestMicroClusters(data, 10);
-        
-        //information about the classification
-        String information = "Ex: " + this.getTimestamp() + "\t True Labels: " + labels.toString() + "\t MINAS-BR Prediction: ";
-        
         //An example is consider unknown when it is outside all of micro-clusters' models
         if (!voting.isEmpty()) {
             //classifies
@@ -372,29 +370,20 @@ public class OnlinePhase {
             model.addPrediction(labels, Z);
             model.updateMtxFrequencies(Z);
             model.incrementNumerOfObservedExamples();
-
-            //write in the file
-            String textOut = information;
-            fileOut.write(textOut + Z.toString());
-            fileOut.write("\n");
+            model.updateCurrentCardinality(Z.size());
+            filePredictions.write(Z.toString()+"\n");
         } else {
             //rejects
             model.addPrediction(labels, null);
-            
-            //********** Example not explained by the current decision model: marked as unknown
-            information = information + "unknwon";
-            fileOut.write(information);
-            fileOut.write("\n");
+            filePredictions.write("unknwon"+"\n");
             exShortTimeMem++;
-
-            //adding the example to the unkown memory 
             model.getShortTimeMemory().add(data, this.getTimestamp());
-
-            //********** Searching for new valid micro-clusters created from unknown examples        	
+            
+            //If short-term memory reach its limit, then NP procedure
             if ((model.getShortTimeMemory().size() >= this.getShortTermMemoryLimit()) && 
                     (this.getLastCheck() + this.getShortTermMemoryLimit() < this.getTimestamp())) {
                 System.out.println("************Novelty Detection Phase***********");
-                noveltyPatternProcedure(model,fileOut,av);
+                noveltyPatternProcedure(model, av);
             }
         }
     }
@@ -411,11 +400,11 @@ public class OnlinePhase {
         Set<String> Z = new HashSet<String>();
         if(voting.size() <= cardinality){
             for (int i = 0; i < voting.size(); i++) {
-                Z.add(voting.get(i).getKey());
+                Z.add(voting.get(i).getlabel());
             }
         }else{
             for (int i = 0; i < cardinality; i++) {
-                Z.add(voting.get(i).getKey());
+                Z.add(voting.get(i).getlabel());
             }
         }
         return Z;
@@ -430,52 +419,52 @@ public class OnlinePhase {
      * @param fileOut arquivo para a saida dos resultados
      * @throws IOException
      */
-    public void noveltyPatternProcedure(Model model, FileWriter fileOut, EvaluatorBR ev) throws IOException {
+    private void noveltyPatternProcedure(Model model, EvaluatorBR ev) throws IOException {
 //        int numMinExCluster = 10;
         int numMinExCluster = 3;
         this.setLastCheck(this.getTimestamp());
         String textoArq = "";
         
-        //vector indicating the examples to be removed from short-time-memory because they were used to create a new valid micro-cluster                
+        //vector for mapping examples to be removed from short-time-memory because they were used to create a new valid micro-cluster                
         int[] removeExamples = new int[model.getShortTimeMemory().size()];
+        Arrays.fill(removeExamples, -1);
         
         //temporary new micro-cluster formed by unknown examples
-        
-        ArrayList<MicroClusterBR> model_unk = this.createModelKMeansLeader(model.getShortTimeMemory().getData(), 
+        ArrayList<MicroClusterBR> modelUnk = this.createModelKMeansLeader(model, 
                 removeExamples,
-                this.getMaxRadius(model.getModel()),
                 this.getTimestamp()
         );
 
         ArrayList<MicroClusterBR> newMicroClusters = new ArrayList<MicroClusterBR>();
         
         //for each candidate micro-cluster
-        for (int temp_count_k = 0; temp_count_k < model_unk.size(); temp_count_k++) {
-            MicroClusterBR model_unk_aux = model_unk.get(temp_count_k);
-            ArrayList<Instance> toClassify = new ArrayList<>(); //stores for classification examples which will form the new micro-clusters 
+        for (int index_inst = 0; index_inst < modelUnk.size(); index_inst++) {
+            MicroClusterBR currentEvaluatedMC = modelUnk.get(index_inst);
+            ArrayList<Instance> toClassify = new ArrayList<>(); //stores examples which will form the new micro-clusters to classify them afterwards
             ArrayList<MicroClusterBR> extModels = new ArrayList<>();
             ArrayList<MicroClusterBR> novModels = new ArrayList<>();
+            
             //Representative validation
-            if ((!model_unk_aux.getMicroCluster().isEmpty()) && (model_unk_aux.getMicroCluster().getWeight() >= numMinExCluster)) {
+            if ((!currentEvaluatedMC.getMicroCluster().isEmpty()) && (currentEvaluatedMC.getMicroCluster().getWeight() >= numMinExCluster)) {
                 //For each BR-model
                 for (Map.Entry<String, ArrayList<MicroClusterBR>> listaMicroClusters : model.getModel().entrySet()) {
                     //Silhouette validation
-                    if (model_unk_aux.clusterValidationSilhouette(listaMicroClusters.getValue()) == true) {
+                    if (currentEvaluatedMC.clusterValidationSilhouette(listaMicroClusters.getValue()) == true) {
                         //********** The new micro-cluster is valid ****************
-                        for (int count_remove = 0; count_remove < removeExamples.length; count_remove++) {
+                        for (int indexForRemoving = 0; indexForRemoving < removeExamples.length; indexForRemoving++) {
                             // mark the examples to be removed with the label -2
-                            if (removeExamples[count_remove] == temp_count_k) {
-                                removeExamples[count_remove] = -2;
-                                toClassify.add(model.getShortTimeMemory().getData().get(count_remove)); //add to classify
+                            if (removeExamples[indexForRemoving] == index_inst) {
+                                removeExamples[indexForRemoving] = -2;
+                                toClassify.add(model.getShortTimeMemory().getData().get(indexForRemoving)); //add to classify
                             }
                         }
                         //identifies the closer micro-cluster to the new valid micro-cluster 
 //                        ret_func[0] <- posMinDist
 //                        ret_func[1] <- minDist
 //                        ret_func[0] <- threshold                        
-                        double[] ret_func = identifyCloserMicroClusterTV1(model_unk_aux, listaMicroClusters.getValue(), this.getThreashold());
-//                        Voting ret_func = identifyCloserMicroClusterTV2(model_unk_aux, listaMicroClusters.getValue(), this.getThreashold());
-//                        Voting ret_func = identifyCloserMicroClusterTV3(model_unk_aux, listaMicroClusters.getValue(), this.getThreashold());
+                        double[] ret_func = identifyCloserMicroClusterTV1(currentEvaluatedMC, listaMicroClusters.getValue(), this.getThreashold());
+//                        Voting ret_func = identifyCloserMicroClusterTV2(currentEvaluatedMC, listaMicroClusters.getValue(), this.getThreashold());
+//                        Voting ret_func = identifyCloserMicroClusterTV3(currentEvaluatedMC, listaMicroClusters.getValue(), this.getThreashold());
                         //if dist < (stdDev * f) than extension, otherwise NP
                         if (ret_func[1] < ret_func[2]) {
                             textoArq = "Thinking " +
@@ -483,7 +472,7 @@ public class OnlinePhase {
                                     "C " +
                                     listaMicroClusters.getKey() + 
                                     " - " + 
-                                    (int) model_unk_aux.getMicroCluster().getWeight() +
+                                    (int) currentEvaluatedMC.getMicroCluster().getWeight() +
                                     " examples";
                             extModels.add(listaMicroClusters.getValue().get((int)ret_func[0]));
                         } else {
@@ -492,14 +481,14 @@ public class OnlinePhase {
                                     "N " +
                                     listaMicroClusters.getKey() + 
                                     " - " + 
-                                    (int) model_unk_aux.getMicroCluster().getWeight() + 
+                                    (int) currentEvaluatedMC.getMicroCluster().getWeight() + 
                                     " examples";
                             novModels.add(listaMicroClusters.getValue().get((int)ret_func[0]));
                         }
                     } //End of micro-cluster validation
                 } //End of all models
                 
-                Set<String> labelSet = new HashSet<>();
+                Set<String> Z = new HashSet<>();
                 if (!novModels.isEmpty() || !extModels.isEmpty()) {
                     //If the number of models which considered the new micro-cluster as NP is greater than label cardinality
 //                    if (extModels.size() > 0) {
@@ -514,14 +503,14 @@ public class OnlinePhase {
                             if ((extModels.get(i).getMicroCluster().getCategory().equalsIgnoreCase("normal")) || 
                                     (extModels.get(i).getMicroCluster().getCategory().equalsIgnoreCase("ext"))) {
                                 //extension of a class learned offline
-                                newMicroClusters.add(this.updateModel(model_unk_aux, model.getModel().get(extModels.get(i).getMicroCluster().getLabelClass()), extModels.get(i).getMicroCluster().getLabelClass(), "ext"));
-                                textoArq = textoArq.concat("Thinking " + "Extension: " + "C " + extModels.get(i).getMicroCluster().getLabelClass() + " - " + (int) model_unk_aux.getMicroCluster().getWeight() + " examples" + "\n");
+                                newMicroClusters.add(this.updateModel(currentEvaluatedMC, model.getModel().get(extModels.get(i).getMicroCluster().getLabelClass()), extModels.get(i).getMicroCluster().getLabelClass(), "ext"));
+                                textoArq = textoArq.concat("Thinking " + "Extension: " + "C " + extModels.get(i).getMicroCluster().getLabelClass() + " - " + (int) currentEvaluatedMC.getMicroCluster().getWeight() + " examples" + "\n");
                             } else {
                                 //extension of a novelty pattern
-                                newMicroClusters.add(this.updateModel(model_unk_aux, model.getModel().get(extModels.get(i).getMicroCluster().getLabelClass()), extModels.get(i).getMicroCluster().getLabelClass(), "extNov"));
-                                textoArq = textoArq.concat("Thinking " + "NoveltyExtension: " + "N " + extModels.get(i).getMicroCluster().getLabelClass() + " - " + (int) model_unk.get(temp_count_k).getMicroCluster().getWeight() + " examples");
+                                newMicroClusters.add(this.updateModel(currentEvaluatedMC, model.getModel().get(extModels.get(i).getMicroCluster().getLabelClass()), extModels.get(i).getMicroCluster().getLabelClass(), "extNov"));
+                                textoArq = textoArq.concat("Thinking " + "NoveltyExtension: " + "N " + extModels.get(i).getMicroCluster().getLabelClass() + " - " + (int) modelUnk.get(index_inst).getMicroCluster().getWeight() + " examples");
                             }
-                            labelSet.add(extModels.get(i).getMicroCluster().getLabelClass());
+                            Z.add(extModels.get(i).getMicroCluster().getLabelClass());
                             i++;
                             this.getExtInfo().write(textoArq+"\n");
                         }
@@ -532,19 +521,20 @@ public class OnlinePhase {
                         this.timeStampNP.add(this.getTimestamp());
                         
                         for (MicroClusterBR mc : extModels) {
-                            labelSet.add(mc.getMicroCluster().getLabelClass());
+                            Z.add(mc.getMicroCluster().getLabelClass());
                         }
-                        labelSet.add("NP" + Integer.toString(model.getNPs().size() + 1));
-                        extModels.add(model_unk_aux);
+                        Z.add("NP" + Integer.toString(model.getNPs().size() + 1));
+                        extModels.add(currentEvaluatedMC);
                         this.createModel(model, extModels, textoArq);
-//                        newMicroClusters.add(model_unk_aux);
-//                        NPlist.put(model_unk_aux, extModels);
+//                        newMicroClusters.add(currentEvaluatedMC);
+//                        NPlist.put(currentEvaluatedMC, extModels);
                     }
                     for (Instance inst : toClassify) {
-                        model.addPrediction(DataSetUtils.getLabelSet(inst), labelSet);
-                        model.updateMtxFrequencies(labelSet);
+                        model.addPrediction(DataSetUtils.getLabelSet(inst), Z);
+                        model.updateCurrentCardinality(Z.size());
+                        model.updateMtxFrequencies(Z);
                         model.incrementNumerOfObservedExamples();
-                        model.removerUnknown(labelSet);
+                        model.removerUnknown(Z);
                     }
                 }else
                     System.out.println("None valid micro-clusters");
@@ -552,8 +542,8 @@ public class OnlinePhase {
         }
         
         System.out.println(textoArq);
-        fileOut.write(textoArq);
-        fileOut.write("\n");
+        this.fileOn.write(textoArq);
+        this.fileOn.write("\n");
         //remove the examples marked with label -2, i. e., the unknown examples used in the creation of new valid micro-clusters
         int count_rem = 0;
         for (int g = 0; g < removeExamples.length; g++) {
@@ -598,9 +588,9 @@ public class OnlinePhase {
 
         while (i < extModels.size()) {
             //Adiciona os z (cardinalidadeAtual) micro-grupos dos modelos mais próximos
-            ArrayList<Integer> ret_func = getClosestsNPMicroClusters(novidade, model.getModel().get(extModels.get(i).getKey()));
+            ArrayList<Integer> ret_func = getClosestsNPMicroClusters(novidade, model.getModel().get(extModels.get(i).getlabel()));
             MicroClusterBR mic = new MicroClusterBR(
-                    new MicroCluster(model.getModel().get(extModels.get(i).getKey()).get(ret_func.get(i)).getMicroCluster(),
+                    new MicroCluster(model.getModel().get(extModels.get(i).getlabel()).get(ret_func.get(i)).getMicroCluster(),
                             label, 
                             category,
                             this.getTimestamp()
@@ -859,7 +849,7 @@ public class OnlinePhase {
 
             if (minDist <= listaMicroClusters.getValue().get(posMinDist).getMicroCluster().getRadius()) {
                 Voting result = new Voting();
-                result.setKey(key);
+                result.setlabel(key);
                 result.setCategory(listaMicroClusters.getValue().get(posMinDist).getMicroCluster().getCategory()); //Normal, extension ou novelty
                 result.setDistance(minDist);
 
@@ -999,20 +989,18 @@ public class OnlinePhase {
         return extInfo;
     }
     
-    public static ArrayList<MicroClusterBR> createModelKMeansLeader(ArrayList<Instance> dataSet, int[] exampleCluster, double maxRadius, int timestamp) throws NumberFormatException, IOException {
-        ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
+    private ArrayList<MicroClusterBR> createModelKMeansLeader(Model model, int[] exampleCluster, int timestamp) throws NumberFormatException, IOException {
         List<ClustreamKernelMOAModified> examples = new LinkedList<>();
-        
         //Adicionando os exemplos ao algoritmo
-        for (int k = 0; k < dataSet.size(); k++) {
-            double[] data = Arrays.copyOfRange(dataSet.get(k).toDoubleArray(), dataSet.get(k).numOutputAttributes(), dataSet.get(k).numAttributes());
+        for (int k = 0; k < model.getShortTimeMemory().getData().size(); k++) {
+            double[] data = Arrays.copyOfRange(model.getShortTimeMemory().getData().get(k).toDoubleArray(), model.getShortTimeMemory().getData().get(k).numOutputAttributes(), model.getShortTimeMemory().getData().get(k).numAttributes());
             Instance inst = new DenseInstance(1, data);
             examples.add(new ClustreamKernelMOAModified(inst, inst.numAttributes(), k));
         }
 
         //********* K-Means ***********************
         //generate initial centers with leader algorithmn
-        ArrayList<Integer> centroids = leaderAlgorithm(dataSet, dataSet.get(0).numOutputAttributes(), maxRadius);
+        ArrayList<Integer> centroids = this.leaderAlgorithm(model.getShortTimeMemory().getData(), model.getGlobalMaxRadius());
         ClustreamKernelMOAModified[] centrosIni = new ClustreamKernelMOAModified[centroids.size()];
         for (int i = 0; i < centroids.size(); i++) {
             centrosIni[i] = examples.get(centroids.get(i));
@@ -1052,44 +1040,46 @@ public class OnlinePhase {
         micros = new Clustering(res);
 
         //*********remove micro-cluster with few examples
-        ArrayList<ArrayList<Integer>> mapClustersExamples = new ArrayList<ArrayList<Integer>>();
-        for (int a = 0; a < centrosIni.length; a++) {
-            mapClustersExamples.add(new ArrayList<Integer>());
-        }
-        for (int g = 0; g < exampleCluster.length; g++) {
-            mapClustersExamples.get(exampleCluster[g]).add(g);
-        }
+        MicroClusterBR[] modelAux = new MicroClusterBR[centers.size()];
+        HashMap<Integer, ArrayList<double[]>> mcInstances = new HashMap<>();
+        
+        for (int j = 0; j < examples.size(); j++) {
+            // Find closest kMeans cluster
+            double minDistance = Double.MAX_VALUE;
+            int closestCluster = 0;
+            for (int i = 0; i < centers.size(); i++) {
+                double distance = KMeansMOAModified.distance(centers.get(i).getCenter(), examples.get(j).getCenter());
+                if (distance < minDistance) {
+                    closestCluster = i;
+                    minDistance = distance;
+                }
+            }
+            
+            // add to the cluster
+            if (modelAux[closestCluster] == null)
+                modelAux[closestCluster] = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) examples.get(j).copy(), "", "", 0));
+            else
+                modelAux[closestCluster].getMicroCluster().add(examples.get(j));
+            
+            exampleCluster[j] = closestCluster;
 
-        int value;
-        for (int i = 0; i < micros.size(); i++) {
-            //remove micro-cluster with less than 3 examples
-            if (micros.get(i) != null) {
-                if (((ClustreamKernelMOAModified) micros.get(i)).getWeight() < 3) {
-                    value = -1;
-                } else {
-                    value = i;
-                }
-
-                for (int j = 0; j < mapClustersExamples.get(i).size(); j++) {
-                    exampleCluster[mapClustersExamples.get(i).get(j)] = value;
-                }
-                if (((ClustreamKernelMOAModified) micros.get(i)).getWeight() < 3) {
-                    micros.remove(i);
-                    mapClustersExamples.remove(i);
-                    i--;
-                }
-            } else {
-                micros.remove(i);
-                mapClustersExamples.remove(i);
-                i--;
+            try{
+                mcInstances.get(closestCluster).add(examples.get(j).getCenter());
+            }catch(NullPointerException e){
+                mcInstances.put(closestCluster, new ArrayList<>());
+                mcInstances.get(closestCluster).add(examples.get(j).getCenter());
             }
         }
-
-        MicroClusterBR model_tmp;
-        for (int w = 0; w < centroids.size(); w++) {
-            if ((micros.get(w) != null)) {
-                model_tmp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), "", "ext", timestamp));
-                modelSet.add(model_tmp);
+        
+        ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
+        for (int i = 0; i < modelAux.length; i++) {
+            //Do not considering non-representative clusters
+            if(modelAux[i].getMicroCluster().getN() > 3){
+                modelAux[i].calculateInitialAverOutput(mcInstances.get(i));
+                modelAux[i].calculateThreshold(model.getMtxLabelsFrequencies(), model.getNumberOfObservedExamples());
+                modelSet.add(modelAux[i]);
+            }else{
+                exampleCluster[i] = -1;
             }
         }
         return modelSet;
@@ -1145,12 +1135,8 @@ public class OnlinePhase {
 //        return retorno;
 //    }
     
-    /**
-     * Get the kmeans k number
-     * @param dataSet
-     * @return 
-     */
-    private static ArrayList<Integer> leaderAlgorithm(ArrayList<Instance> dataSet, int qtdeTotalClasses, double maxRadius) {
+    
+    private ArrayList<Integer> leaderAlgorithm(ArrayList<Instance> dataSet, double maxRadius) {
         ArrayList<Integer> centroids = new ArrayList<Integer>();
         Random random = new Random();
         random.setSeed(42);
@@ -1159,8 +1145,14 @@ public class OnlinePhase {
         for (int i = 1; i < dataSet.size(); i++) {
             boolean centroid = false;
             for (int j = 0; j < centroids.size(); j++) {
-                double[] data1 = Arrays.copyOfRange(dataSet.get(i).toDoubleArray(), qtdeTotalClasses, dataSet.get(1).numAttributes());
-                double[] data2 = Arrays.copyOfRange(dataSet.get(centroids.get(j)).toDoubleArray(), qtdeTotalClasses, dataSet.get(centroids.get(j)).numAttributes());
+                double[] data1 = Arrays.copyOfRange(dataSet.get(i).toDoubleArray(),
+                        dataSet.get(i).numOutputAttributes(), 
+                        dataSet.get(1).numAttributes()
+                );
+                double[] data2 = Arrays.copyOfRange(dataSet.get(centroids.get(j)).toDoubleArray(), 
+                        dataSet.get(i).numOutputAttributes(), 
+                        dataSet.get(centroids.get(j)).numAttributes()
+                );
                 double dist = KMeansMOAModified.distance(data1, data2);
                 if(dist < maxRadius){
                     centroid = false;
@@ -1176,65 +1168,39 @@ public class OnlinePhase {
         return centroids;
     }
     
-    /**
-     * Get the kmeans k number
-     * @param dataSet
-     * @return 
-     */
-    private static ArrayList<Integer> leaderAlgorithm(ArrayList<MicroClusterBR> dataSet, double maxRadius) {
-        ArrayList<Integer> centroids = new ArrayList<Integer>();
-        centroids.add(0);
-        for (int i = 1; i < dataSet.size(); i++) {
-            boolean centroid = false;
-            for (int j = 0; j < centroids.size(); j++) {
-                double[] data1 = dataSet.get(i).getMicroCluster().getCenter();
-                double[] data2 = dataSet.get(centroids.get(j)).getMicroCluster().getCenter();
-                double dist = KMeansMOAModified.distance(data1, data2);
-                if(dist < maxRadius){
-                    centroid = false;
-                    break;
-                }else{
-                    centroid = true;
-                }
-            }
-            if(centroid){
-                centroids.add(i);
-            }
-        }
-        return centroids;
-    }
+//    /**
+//     * Get the kmeans k number
+//     * @param dataSet
+//     * @return 
+//     */
+//    private static ArrayList<Integer> leaderAlgorithm(ArrayList<MicroClusterBR> dataSet, double maxRadius) {
+//        ArrayList<Integer> centroids = new ArrayList<Integer>();
+//        centroids.add(0);
+//        for (int i = 1; i < dataSet.size(); i++) {
+//            boolean centroid = false;
+//            for (int j = 0; j < centroids.size(); j++) {
+//                double[] data1 = dataSet.get(i).getMicroCluster().getCenter();
+//                double[] data2 = dataSet.get(centroids.get(j)).getMicroCluster().getCenter();
+//                double dist = KMeansMOAModified.distance(data1, data2);
+//                if(dist < maxRadius){
+//                    centroid = false;
+//                    break;
+//                }else{
+//                    centroid = true;
+//                }
+//            }
+//            if(centroid){
+//                centroids.add(i);
+//            }
+//        }
+//        return centroids;
+//    }
     
     
     
-    /**
-     * Get the greatest micro-cluster radius of the model
-     * @param modelo
-     * @return 
-     */
-    private double getMaxRadius(ArrayList<MicroClusterBR> modelo) {
-        double maxRadius = 0;
-        for (MicroClusterBR m : modelo) {
-            if(m.getMicroCluster().getRadius() > maxRadius)
-                maxRadius = m.getMicroCluster().getRadius();
-        }
-        return maxRadius;
-    }
     
-    /**
-     * Get the greatest micro-cluster radius of the model
-     * @param modelo
-     * @return 
-     */
-    private double getMaxRadius(HashMap<String, ArrayList<MicroClusterBR>> modelo) {
-        double maxRadius = 0;
-        for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : modelo.entrySet()) {
-            ArrayList<MicroClusterBR> value = entry.getValue();
-            if(maxRadius < getMaxRadius(value)){
-                maxRadius = getMaxRadius(value);
-            }
-        }
-        return maxRadius;
-    }
+    
+    
     
     /**
      * Select the cluster algorithm based on algOn variable
