@@ -360,15 +360,15 @@ public class OnlinePhase {
     public void classify(Model model, EvaluatorBR av, Instance data, FileWriter fileOut) throws IOException {
         Set<String> labels = DataSetUtils.getLabelSet(data); //get true labels
         model.verifyConceptEvolution(labels, this.timestamp);
-        ArrayList<Voting> voting = identifyExample(data, model); //get predict labels
+        ArrayList<Voting> voting = model.getClosestMicroClusters(data, 10);
         
         //information about the classification
         String information = "Ex: " + this.getTimestamp() + "\t True Labels: " + labels.toString() + "\t MINAS-BR Prediction: ";
         
         //An example is consider unknown when it is outside all of micro-clusters' models
-//        if (voting.size() >= this.cardinalidadeAtual) {
         if (!voting.isEmpty()) {
             //classifies
+            Set<String> Z = model.bayesRuleToClassify(voting, data);
             Set<String> Z = this.thresholding(voting, (int)Math.ceil(model.getCurrentCardinality()));
             model.addPrediction(labels, Z);
             model.updateMtxFrequencies(Z);
@@ -416,7 +416,7 @@ public class OnlinePhase {
             }
         }else{
             for (int i = 0; i < cardinality; i++) {
-                Z.add(voting.get(i).getKey()); //associando só os primeiros rótulos ao exemplo
+                Z.add(voting.get(i).getKey());
             }
         }
         return Z;
@@ -829,6 +829,8 @@ public class OnlinePhase {
         return new Voting(categoria, classe, minDistance, posMinDistance, vthreshold);
     }
 
+    
+    
     /**
      * Identifies which models explain an example
      *
@@ -840,38 +842,37 @@ public class OnlinePhase {
         ArrayList<Voting> voting = new ArrayList<>();
         for (Map.Entry<String, ArrayList<MicroClusterBR>> listaMicroClusters : model.getModel().entrySet()) {
             double distance = 0.0;
-            if (listaMicroClusters.getValue().size() > 0) {
-                String key = listaMicroClusters.getKey();
-                double minDist = Double.MAX_VALUE;
-                int posMinDist = 0;
-                int pos = 0;
-                for (MicroClusterBR microCluster : listaMicroClusters.getValue()) {
-                    double[] aux = Arrays.copyOfRange(data.toDoubleArray(), data.numOutputAttributes(), data.numAttributes());
-                    Instance inst = new DenseInstance(1, aux);
-                    distance = microCluster.getMicroCluster().getCenterDistance(inst);
-                    if(distance < minDist){
-                        minDist = distance;
-                        posMinDist = pos;
-                    }
-                    pos++;
+            assert(listaMicroClusters.getValue().size() > 0);
+            
+            String key = listaMicroClusters.getKey();
+            double minDist = Double.MAX_VALUE;
+            int posMinDist = 0;
+            int pos = 0;
+            for (MicroClusterBR microCluster : listaMicroClusters.getValue()) {
+                double[] aux = Arrays.copyOfRange(data.toDoubleArray(), data.numOutputAttributes(), data.numAttributes());
+                distance = KMeansMOAModified.distance(aux, microCluster.getMicroCluster().getCenter());
+                if(distance < minDist){
+                    minDist = distance;
+                    posMinDist = pos;
                 }
-                
-                if (minDist <= listaMicroClusters.getValue().get(posMinDist).getMicroCluster().getRadius()) {
-                    Voting result = new Voting();
-                    result.setKey(key);
-                    result.setCategory(listaMicroClusters.getValue().get(posMinDist).getMicroCluster().getCategory()); //Normal, extension ou novelty
-                    result.setDistance(minDist);
+                pos++;
+            }
 
-                    /*add the examples in micro-clusters*/
-                    //                        double[] aux = Arrays.copyOfRange(data.toDoubleArray(), this.qtdeTotalClasses, data.numAttributes());
-                    //                        Instance inst = new DenseInstance(1, aux);
-                    //                        listaMicroClusters.getValue().get(posMinDistance).insert(inst, this.timestamp);
-                    //                    System.out.println("Classificado como: " + key + "\n");
-                    
-                    voting.add(result);
+            if (minDist <= listaMicroClusters.getValue().get(posMinDist).getMicroCluster().getRadius()) {
+                Voting result = new Voting();
+                result.setKey(key);
+                result.setCategory(listaMicroClusters.getValue().get(posMinDist).getMicroCluster().getCategory()); //Normal, extension ou novelty
+                result.setDistance(minDist);
 
-                    listaMicroClusters.getValue().get(posMinDist).getMicroCluster().setTime(this.getTimestamp());
-                }
+                /*add the examples in micro-clusters*/
+                //                        double[] aux = Arrays.copyOfRange(data.toDoubleArray(), this.qtdeTotalClasses, data.numAttributes());
+                //                        Instance inst = new DenseInstance(1, aux);
+                //                        listaMicroClusters.getValue().get(posMinDistance).insert(inst, this.timestamp);
+                //                    System.out.println("Classificado como: " + key + "\n");
+
+                voting.add(result);
+
+                listaMicroClusters.getValue().get(posMinDist).getMicroCluster().setTime(this.getTimestamp());
             }
         }
         return voting;

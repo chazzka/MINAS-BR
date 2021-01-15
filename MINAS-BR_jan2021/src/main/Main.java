@@ -361,7 +361,7 @@ public class Main {
 //        slipTrainTest(train, test, stream, streamSize, 0.1);
 //        int[] dist = DataSetUtils.getLabelsDistribution(train);
 //        int[] distTest = DataSetUtils.getLabelsDistribution(train);
-        float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, evaluationWindowSize, L);
+//        float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, evaluationWindowSize, L);
 
         //Create output files
         FileWriter fileOn = new FileWriter(new File(outputDirectory + "/faseOnlineInfo.txt"), false); //Armazena informações da fase online
@@ -373,7 +373,7 @@ public class Main {
         
         fileOff.write("Known Classes: " + model.getAllLabel().size() + "\n");
          fileOff.write("Train label cardinality: " + model.getCurrentCardinality() + "\n");
-        fileOff.write("Windows label cardinality: " + Arrays.toString(windowsCardinalities) + "\n");
+//        fileOff.write("Windows label cardinality: " + Arrays.toString(windowsCardinalities) + "\n");
         fileOff.write("Number of examples: " + (train.size()+test.size()) + "\n");
         fileOff.write("Number of attributes: " + train.get(0).numInputAttributes() +"\n");
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 

@@ -5,6 +5,7 @@
  */
 package br;
 
+import NoveltyDetection.KMeansMOAModified;
 import NoveltyDetection.MicroCluster;
 import com.yahoo.labs.samoa.instances.Instance;
 import dataSource.DataSetUtils;
@@ -12,6 +13,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,6 +24,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.ShortTimeMemory;
+import utils.Voting;
 
 /**
  *
@@ -114,6 +119,96 @@ public class Model {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Falha no arquivo thresholdsInfo.csv");
         }
+    }
+    
+    public ArrayList<Voting> getClosestMicroClusters(Instance data, int k) {
+        ArrayList<Voting> voting = new ArrayList<>();
+        for (Map.Entry<String, ArrayList<MicroClusterBR>> microClustersList : this.getModel().entrySet()) {
+            int cont = 1;
+            ArrayList<MicroClusterBR>  removableMicroClusterList = null;
+            try{
+                removableMicroClusterList =  new ArrayList(microClustersList.getValue());
+            }catch(NullPointerException e){
+                System.out.println("ModelSet empty --> getClosestMicroClusters function");
+                e.printStackTrace();
+                System.exit(0);
+            }
+            
+            //Getting the k-nearst micro-clusters and put them into Voting
+            while(cont <= k || removableMicroClusterList.isEmpty()){
+                double distance = 0.0;
+                String key = microClustersList.getKey();
+                double minDist = Double.MAX_VALUE;
+                int posMinDist = 0;
+                for (int i = 0; i < removableMicroClusterList.size(); i++) {
+                    double[] aux = Arrays.copyOfRange(data.toDoubleArray(), data.numOutputAttributes(), data.numAttributes());
+                    distance = KMeansMOAModified.distance(aux, removableMicroClusterList.get(i).getMicroCluster().getCenter());
+                    if(distance < minDist){
+                        minDist = distance;
+                        posMinDist = i;
+                    }
+                }
+
+                if (minDist <= removableMicroClusterList.get(posMinDist).getMicroCluster().getRadius()) {
+                    Voting result = new Voting();
+                    result.setlabel(key);
+                    result.setCategory(removableMicroClusterList.get(posMinDist).getMicroCluster().getCategory()); //Normal, extension ou novelty
+                    result.setDistance(minDist);
+                    result.setPosMC(posMinDist);
+
+                    /*add the examples in micro-clusters*/
+                    //                        double[] aux = Arrays.copyOfRange(data.toDoubleArray(), this.qtdeTotalClasses, data.numAttributes());
+                    //                        Instance inst = new DenseInstance(1, aux);
+                    //                        listaMicroClusters.getValue().get(posMinDistance).insert(inst, this.timestamp);
+                    //                    System.out.println("Classificado como: " + key + "\n");
+
+                    voting.add(result);
+                    removableMicroClusterList.remove(posMinDist);
+                }
+                cont++;
+            }
+        }
+        return voting;
+    }
+
+    public Set<String> bayesRuleToClassify(ArrayList<Voting> voting, Instance x_i) {
+        Collections.sort(voting);
+        Set<String> Y_pred = new HashSet<>();
+        Y_pred.add(this.getModel().get(voting.get(0).getlabel()).
+                get(voting.get(0).getPosMC()).
+                getMicroCluster().
+                getLabelClass()
+        );
+        
+        for (int i = 1; i < voting.size(); i++) {
+            double p_yc = this.getPriorProbability(voting.get(i).getlabel());
+            
+            double[] x_i_inputs = Arrays.copyOfRange(x_i.toDoubleArray(), x_i.numOutputAttributes(), x_i.numAttributes());
+            MicroClusterBR winMC = this.getModel().get(voting.get(i).getlabel()).
+                    get(voting.get(i).getPosMC());
+            double p_xi_yc = Math.exp(-KMeansMOAModified.distance(x_i_inputs, winMC.getMicroCluster().getCenter()));
+            
+            double prod = 1;
+            for (String y_k : Y_pred) {
+                double p_yk_yc = this.getPosteriorProbability(y_k, voting.get(i).getlabel());
+                prod *= p_yk_yc;
+            }
+            
+            double proba = p_yc * prod * p_xi_yc;
+            
+            if(proba >= winMC.getThreshold())
+                Y_pred.add(winMC.getMicroCluster().getLabelClass());
+        }
+        
+        return Y_pred;
+    }
+
+    private double getPriorProbability(String c) {
+        return this.mtxLabelsFrequencies.get(c+","+c) / this.numberOfObservedExamples;
+    }
+
+    private double getPosteriorProbability(String y_k, String y_c) {
+        return this.mtxLabelsFrequencies.get(y_k+","+y_c) / this.mtxLabelsFrequencies.get(y_c+","+y_c);
     }
 
     /**

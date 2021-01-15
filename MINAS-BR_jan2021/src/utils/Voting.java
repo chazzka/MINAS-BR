@@ -14,15 +14,19 @@ import java.util.ArrayList;
  */
 public class Voting implements Comparable<Voting>{
     private String category;
-    private String key;
+    private String label;
     private double distance;
     private double threashold;
     private String tipoNov;
     private int posMC;
 
-    public Voting(String category, String key, double distance, int posMC, double threashold) {
+    public void setPosMC(int posMC) {
+        this.posMC = posMC;
+    }
+
+    public Voting(String category, String label, double distance, int posMC, double threashold) {
         this.category = category;
-        this.key = key;
+        this.label = label;
         this.distance = distance;
         this.threashold = threashold;
         this.posMC = posMC;
@@ -70,15 +74,15 @@ public class Voting implements Comparable<Voting>{
     /**
      * @return the key
      */
-    public String getKey() {
-        return key;
+    public String getlabel() {
+        return label;
     }
 
     /**
      * @param key the key to set
      */
-    public void setKey(String key) {
-        this.key = key;
+    public void setlabel(String label) {
+        this.label = label;
     }
 
     /**
