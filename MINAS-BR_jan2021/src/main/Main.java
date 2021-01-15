@@ -98,7 +98,7 @@ public class Main {
         String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
         String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
         String outputDirecotory = "results_jan2021/"+dataSetName+"/";
-        double k_ini = 0.01;
+        double k_ini = 0.001;
         String theta = "1000";
         String omega = "2000";
         int L = 5;

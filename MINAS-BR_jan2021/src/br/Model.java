@@ -66,28 +66,6 @@ public class Model {
         return mtxProbabilities;
     }
     
-    /**
-     * Fill matrix P (probabilities) after training phase
-     */
-    public void setInitialProbabilities() {
-        for (String mtxCordinate : this.mtxLabelsFrequencies.keySet()) {
-            //j --> lines
-            //n --> columns
-            String j = mtxCordinate.split(",")[0];
-            String n = mtxCordinate.split(",")[1];
-            
-            if(j.equals(n)){
-                //prior probability p(y_j)
-                double p_yj = mtxLabelsFrequencies.get(mtxCordinate) / this.numberOfObservedExamples;
-                this.mtxProbabilities.put(mtxCordinate, p_yj);
-            }else{
-                double p_yn = mtxLabelsFrequencies.get(mtxCordinate);
-                double p_yj_pyn = this.mtxLabelsFrequencies.get(mtxCordinate) / p_yn;
-                this.mtxProbabilities.put(mtxCordinate, p_yj_pyn);
-            }
-        }
-    }
-
     public void incrementNumerOfObservedExamples() {
         this.numberOfObservedExamples++;
     }
@@ -223,7 +201,13 @@ public class Model {
     }
 
     private double getPosteriorProbability(String y_k, String y_c) {
-        return (double) this.mtxLabelsFrequencies.get(y_k+","+y_c) / (double) this.mtxLabelsFrequencies.get(y_c+","+y_c);
+        try{
+            return (double) this.mtxLabelsFrequencies.get(y_k+","+y_c) / (double) this.mtxLabelsFrequencies.get(y_c+","+y_c);
+        }catch(NullPointerException e){
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return 0;
     }
 
     public void updateCurrentCardinality(int z_new) {
@@ -275,7 +259,6 @@ public class Model {
             mc.getMicroCluster().setTime(timestamp);
             mc.getMicroCluster().setCategory("nov");
             mc.getMicroCluster().setLabelClass("NP" + Integer.toString(this.getNPs().size() + 1));
-            mc.calculateThreshold(this.mtxLabelsFrequencies, this.numberOfObservedExamples);
         }
         this.getModel().put("NP" + Integer.toString(this.getNPs().size() + 1), novelty);
         this.addNPs(timestamp);
@@ -301,6 +284,13 @@ public class Model {
         model.get(label).add(modelUnk);
     }
 
+    public void updateMicroClusterThresholds() {
+        model.entrySet().forEach(entry -> {
+            entry.getValue().stream().map(x -> x).forEach(mc -> {
+                mc.calculateThreshold(mtxLabelsFrequencies, currentCardinality);
+            });
+        });
+    }
 
     /**
      * Represents a Novelty Pattern found by the model

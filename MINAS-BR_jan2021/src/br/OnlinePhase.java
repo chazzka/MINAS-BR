@@ -372,6 +372,7 @@ public class OnlinePhase {
             model.updateMtxFrequencies(Z);
             model.incrementNumerOfObservedExamples();
             model.updateCurrentCardinality(Z.size());
+            model.updateMicroClusterThresholds();
             filePredictions.write(Z.toString()+"\n");
         } else {
             //rejects
@@ -501,6 +502,16 @@ public class OnlinePhase {
                         this.getTimeStampExtension().add(this.getTimestamp());
                         int i = 0;
                         while ( i < extModels.size()) {
+                            //We must update mtxFrequencies and cardinality for calculating 
+                            Z.add(extModels.get(i).getMicroCluster().getLabelClass());
+                            for (Instance inst: toClassify) {
+                                model.updateCurrentCardinality(Z.size());
+                                model.updateMtxFrequencies(Z);
+                                model.addPrediction(DataSetUtils.getLabelSet(inst), Z);
+                                model.incrementNumerOfObservedExamples();
+                                model.removerUnknown(Z);
+                            }
+                            
                             if ((extModels.get(i).getMicroCluster().getCategory().equalsIgnoreCase("normal")) || 
                                     (extModels.get(i).getMicroCluster().getCategory().equalsIgnoreCase("ext"))) {
                                 //extension of a class learned offline
@@ -534,7 +545,7 @@ public class OnlinePhase {
                                         " examples");
                             }
                             
-                            Z.add(extModels.get(i).getMicroCluster().getLabelClass());
+                            
                             i++;
                             this.getExtInfo().write(textoArq+"\n");
                         }
@@ -547,18 +558,20 @@ public class OnlinePhase {
                         for (MicroClusterBR mc : extModels) {
                             Z.add(mc.getMicroCluster().getLabelClass());
                         }
-                        
                         Z.add("NP" + Integer.toString(model.getNPs().size() + 1));
+                        
+                        for (Instance inst: toClassify) {
+                            model.updateCurrentCardinality(Z.size());
+                            model.updateMtxFrequencies(Z);
+                            model.addPrediction(DataSetUtils.getLabelSet(inst), Z);
+                            model.incrementNumerOfObservedExamples();
+                            model.removerUnknown(Z);
+                        }
+                        
                         extModels.add(currentEvaluatedMC);
                         model.createModel(extModels, this.timestamp, this.getExtInfo(), textoArq);
                     }
-                    for (Instance inst : toClassify) {
-                        model.addPrediction(DataSetUtils.getLabelSet(inst), Z);
-                        model.updateCurrentCardinality(Z.size());
-                        model.updateMtxFrequencies(Z);
-                        model.incrementNumerOfObservedExamples();
-                        model.removerUnknown(Z);
-                    }
+                    model.updateMicroClusterThresholds();
                 }else
                     System.out.println("None valid micro-clusters");
             } //end of each valid cluster
