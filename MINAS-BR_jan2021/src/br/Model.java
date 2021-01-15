@@ -181,6 +181,8 @@ public class Model {
         );
         
         for (int i = 1; i < voting.size(); i++) {
+            if(Y_pred.contains(voting.get(i).getlabel()))
+                continue;
             double p_yc = this.getPriorProbability(voting.get(i).getlabel());
             
             double[] x_i_inputs = Arrays.copyOfRange(x_i.toDoubleArray(), x_i.numOutputAttributes(), x_i.numAttributes());
@@ -190,6 +192,8 @@ public class Model {
             
             double prod = 1;
             for (String y_k : Y_pred) {
+                if(!y_k.equals(voting.get(i).getlabel()))
+                    System.out.println("");
                 double p_yk_yc = this.getPosteriorProbability(y_k, voting.get(i).getlabel());
                 prod *= p_yk_yc;
             }
@@ -204,11 +208,11 @@ public class Model {
     }
 
     private double getPriorProbability(String c) {
-        return this.mtxLabelsFrequencies.get(c+","+c) / this.numberOfObservedExamples;
+        return (double)this.mtxLabelsFrequencies.get(c+","+c) / (double)this.numberOfObservedExamples;
     }
 
     private double getPosteriorProbability(String y_k, String y_c) {
-        return this.mtxLabelsFrequencies.get(y_k+","+y_c) / this.mtxLabelsFrequencies.get(y_c+","+y_c);
+        return (double) this.mtxLabelsFrequencies.get(y_k+","+y_c) / (double) this.mtxLabelsFrequencies.get(y_c+","+y_c);
     }
 
     /**

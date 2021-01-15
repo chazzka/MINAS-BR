@@ -369,7 +369,6 @@ public class OnlinePhase {
         if (!voting.isEmpty()) {
             //classifies
             Set<String> Z = model.bayesRuleToClassify(voting, data);
-            Set<String> Z = this.thresholding(voting, (int)Math.ceil(model.getCurrentCardinality()));
             model.addPrediction(labels, Z);
             model.updateMtxFrequencies(Z);
             model.incrementNumerOfObservedExamples();
