@@ -109,12 +109,12 @@ public class Model {
         try {
             FileWriter file = new FileWriter(new File("thresholdsInfo.csv"), true);
             if(timestamp <= 0)
-                file.write("timestamp,threshold,averOut" +"\n");
+                file.write("timestamp,threshold,averOut,label" +"\n");
             
             for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : model.entrySet()) {
                 ArrayList<MicroClusterBR> mcSet = entry.getValue();
                 for (MicroClusterBR mc : mcSet) {
-                    file.write(timestamp+","+mc.getThreshold()+","+mc.getAverOut()+"\n");
+                    file.write(timestamp+","+mc.getThreshold()+","+mc.getAverOut()+mc.getMicroCluster().getLabelClass()+"\n");
                 }
             }
             file.close();
@@ -166,6 +166,7 @@ public class Model {
                     //                    System.out.println("Classificado como: " + key + "\n");
 
                     voting.add(result);
+//                    microClustersList.getValue().get(posMinDist).getMicroCluster().setTime(timestamp);
                     removableMicroClusterList.remove(posMinDist);
                 }
                 cont++;
@@ -174,7 +175,7 @@ public class Model {
         return voting;
     }
 
-    public Set<String> bayesRuleToClassify(ArrayList<Voting> voting, Instance x_i) {
+    public Set<String> bayesRuleToClassify(ArrayList<Voting> voting, Instance x_i, int timestamp) {
         Collections.sort(voting);
         Set<String> Y_pred = new HashSet<>();
         Y_pred.add(this.getModel().get(voting.get(0).getlabel()).
@@ -182,6 +183,9 @@ public class Model {
                 getMicroCluster().
                 getLabelClass()
         );
+        this.getModel().get(voting.get(0).getlabel()).
+                get(voting.get(0).getPosMC()).
+                getMicroCluster().setTime(timestamp);
         
         for (int i = 1; i < voting.size(); i++) {
             if(Y_pred.contains(voting.get(i).getlabel()))
@@ -205,6 +209,7 @@ public class Model {
                 Y_pred.add(winMC.getMicroCluster().getLabelClass());
                 winMC.updateAverOut(p_xi_yc);
                 winMC.calculateThreshold(mtxLabelsFrequencies, currentCardinality);
+                winMC.getMicroCluster().setTime(timestamp);
             }
         }
         
@@ -242,6 +247,7 @@ public class Model {
         return maxRadius;
     }
     
+    
     /**
      * Get the greatest micro-cluster radius of the model
      * @param modelo
@@ -255,6 +261,46 @@ public class Model {
         }
         return maxRadius;
     }
+    
+    /**
+     * creates a new model to represent the new Novelty Pattern
+     * @param model
+     * @param novelty
+     * @param noveltyPatternsControl
+     * @param textoArq
+     * @throws java.io.IOException
+     */
+    public void createModel(ArrayList<MicroClusterBR> novelty, int timestamp, FileWriter fileOut, String textoArq) throws NumberFormatException, IOException {
+        for (MicroClusterBR mc : novelty) {
+            mc.getMicroCluster().setTime(timestamp);
+            mc.getMicroCluster().setCategory("nov");
+            mc.getMicroCluster().setLabelClass("NP" + Integer.toString(this.getNPs().size() + 1));
+            mc.calculateThreshold(this.mtxLabelsFrequencies, this.numberOfObservedExamples);
+        }
+        this.getModel().put("NP" + Integer.toString(this.getNPs().size() + 1), novelty);
+        this.addNPs(timestamp);
+        textoArq = textoArq.concat("ThinkingNov: " + "Novelty " + "NP" + Integer.toString(this.getNPs().size() + 1) + " - " + novelty.size() + " micro-clusters" + "\n");
+        fileOut.write(textoArq+"\n");
+        System.out.println("ThinkingNov: " + "Novelty " + "NP" + Integer.toString(this.getNPs().size() + 1) + " - " + novelty.size() + " micro-clusters");
+    }
+    
+    /**
+     * Updates the models adding the new micro-clusters
+     *
+     * @param modelUnk micro-grupo novidade
+     * @param model modelo a ser atualizado
+     * @param classLabel rotulo do modelo
+     * @param category tipo de micro-grupo (ext, nov,...)
+     */
+    public void updateModel(MicroClusterBR modelUnk, String label, String category, int timestamp) {
+        //update the decision model by adding new valid micro-clusters
+        modelUnk.getMicroCluster().setCategory(category);
+        modelUnk.getMicroCluster().setLabelClass(label);
+        modelUnk.getMicroCluster().setTime(timestamp);
+        modelUnk.calculateThreshold(mtxLabelsFrequencies, numberOfObservedExamples);
+        model.get(label).add(modelUnk);
+    }
+
 
     /**
      * Represents a Novelty Pattern found by the model
