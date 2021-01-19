@@ -230,7 +230,7 @@ public final class OfflinePhase{
             this.fileOut.write("Class: " + key + " size: " + clusterSet.size() + " n:" + subconjunto.size() + "\n");
         }
         model.setClasses(this.getTrainingData().keySet());
-        model.writeBayesRulesElements(0);
+        model.writeBayesRulesElements(0, this.directory);
     }
     
     /**

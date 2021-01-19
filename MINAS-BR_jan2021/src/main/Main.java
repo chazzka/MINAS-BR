@@ -94,22 +94,26 @@ public class Main {
         //**********************************************
           
         //****************MOA-3C*********************
-        String dataSetName = "MOA-3C";
-        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
-        double k_ini = 0.001;
-        String theta = "1000";
-        String omega = "2000";
-        int L = 5;
+//        String dataSetName = "MOA-3C";
+//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+//        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
+//        double k_ini = 0.001;
+//        String theta = "1000";
+//        String omega = "2000";
+//        int L = 5;
         //*****************************************
         
 //        //****************MOA1*********************
-//        String dataSetName = "MOA1_comCardinalidade";
-//        String dataSetPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D.arff";
-//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
-//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
-//        int L = 7;
+        String dataSetName = "MOA1";
+        String dataSetPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D.arff";
+        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
+        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
+        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
+        double k_ini = 0.01;
+        String theta = "1000";
+        String omega = "2000";
+        int L = 7;
 //        finalExperiment(dataSetName, trainPath, testPath, L, 0.01, "1000", "2000", "1.1", "kmeans+leader", "FM");
 //        //*****************************************
         
@@ -365,14 +369,13 @@ public class Main {
 
         //Create output files
         FileWriter filePredictions = new FileWriter(new File(outputDirectory + "/predictionsInfo.csv"), false); //Armazena informações da fase online
-        filePredictions.write("timestamp,actual,predicted" + "\n");
+        filePredictions.write("timestamp;actual;predicted" + "\n");
         FileWriter fileOff = new FileWriter(new File(outputDirectory + "/faseOfflineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/results.txt"), false); //Armazena informações da fase de treinamento
-        FileWriter fileMicroClusterThresholdInfo = new FileWriter(new File(outputDirectory + "/microClusterThresholdInfo.txt"), false);
-        fileMicroClusterThresholdInfo.write("timestamp,aver_out,threshold"+"\n");
         
         OfflinePhase treino = new OfflinePhase(train, k_ini, fileOff, outputDirectory);
         Model model = treino.getModel();
+        model.writeCurrentCardinality(1, outputDirectory);
         
         fileOff.write("Known Classes: " + model.getAllLabel().size() + "\n");
          fileOff.write("Train label cardinality: " + model.getCurrentCardinality() + "\n");
@@ -392,11 +395,12 @@ public class Main {
             
             //for each model deletes the micro-clusters wich have not been used
             if((onlinePhase.getTimestamp()%omega) == 0){
-                model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(),filePredictions, false);
+                model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(),fileOut, false);
                 onlinePhase.removeOldMicroClusters(omega, model, fileOut);
             }
             if((onlinePhase.getTimestamp()%evaluationWindowSize) == 0){
-                model.writeBayesRulesElements(onlinePhase.getTimestamp());
+                model.writeBayesRulesElements(onlinePhase.getTimestamp(), outputDirectory);
+                model.writeCurrentCardinality(onlinePhase.getTimestamp(), outputDirectory);
                 model.associatesNPs(evaluationWindowSize, onlinePhase.getTimestamp(), measure);
 //                av.getDeletedExamples().add(model.getShortTimeMemory().getQtdeExDeleted());
                 av.updateExampleBasedMeasure(model, evaluationWindowSize);

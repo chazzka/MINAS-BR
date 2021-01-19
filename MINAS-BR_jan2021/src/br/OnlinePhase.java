@@ -359,7 +359,7 @@ public class OnlinePhase {
      */
     public void classify(Model model, EvaluatorBR av, Instance data, FileWriter filePredictions) throws IOException {
         Set<String> labels = DataSetUtils.getLabelSet(data); //get true labels
-        filePredictions.write(this.getTimestamp() + "," + labels.toString()+",");
+        filePredictions.write(this.getTimestamp() + ";" + labels.toString()+";");
         model.verifyConceptEvolution(labels, this.timestamp);
 
         ArrayList<Voting> voting = model.getClosestMicroClusters(data, 10);
@@ -917,7 +917,7 @@ public class OnlinePhase {
                     }
                 }
                 try{
-                    this.getFileOn().write("Timestamp: " + this.getTimestamp() + " - removed micro-clusters: " + listaMicro.size() + " - model's size ["+value.get(0).getMicroCluster().getLabelClass()+"]:" + value.size() + "\n");
+                     fileOut.write("Timestamp: " + this.getTimestamp() + " - removed micro-clusters: " + listaMicro.size() + " - model's size ["+value.get(0).getMicroCluster().getLabelClass()+"]:" + value.size() + "\n");
                     System.out.println("Timestamp: " + this.getTimestamp() + " - removed micro-clusters: " + listaMicro.size() + " - model's size ["+value.get(0).getMicroCluster().getLabelClass()+"]:" + value.size());
                 }catch(IndexOutOfBoundsException e){
                     

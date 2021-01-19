@@ -90,15 +90,24 @@ public class MicroClusterBR {
             if(!key[0].equals(j) && key[1].equals(j)){
                 double p_yk_yj = (double) entry.getValue() / (double) yj;
                 prod *= p_yk_yj;
-                prod1 *= p_yk_yj * this.averOut;
+//                prod1 *= p_yk_yj * this.averOut;
             }
         }
         this.threshold = p_yj * prod * this.averOut;
-        prod1 = p_yj * prod1;
+        if (this.threshold > 1){
+            System.err.println("Deu ruim");
+            System.exit(0);
+        }
+//        this.threshold = p_yj * prod1;
     }
 
     public void updateAverOut(double exp_dist) {
-        this.averOut += exp_dist;
+        this.averOut = ((double) this.getMicroCluster().getN() * this.averOut + exp_dist) / (double) (this.getMicroCluster().getN() + 1);
+        if(this.averOut > 1){
+            System.err.println("Deu ruim");
+            System.exit(0);
+        }
+//        this.averOut += exp_dist;
     }
 
 }

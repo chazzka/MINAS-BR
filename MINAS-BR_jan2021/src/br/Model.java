@@ -83,16 +83,16 @@ public class Model {
         }
     }
 
-    public void writeBayesRulesElements(int timestamp) {
+    public void writeBayesRulesElements(int timestamp, String outputDirectory) {
         try {
-            FileWriter file = new FileWriter(new File("thresholdsInfo.csv"), true);
+            FileWriter file = new FileWriter(new File(outputDirectory+"thresholdsInfo.csv"), true);
             if(timestamp <= 0)
                 file.write("timestamp,threshold,averOut,label" +"\n");
             
             for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : model.entrySet()) {
                 ArrayList<MicroClusterBR> mcSet = entry.getValue();
                 for (MicroClusterBR mc : mcSet) {
-                    file.write(timestamp+","+mc.getThreshold()+","+mc.getAverOut()+mc.getMicroCluster().getLabelClass()+"\n");
+                    file.write(timestamp+","+mc.getThreshold()+","+mc.getAverOut()+","+mc.getMicroCluster().getLabelClass()+"\n");
                 }
             }
             file.close();
@@ -100,6 +100,20 @@ public class Model {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Falha no arquivo thresholdsInfo.csv");
         }
+    }
+    
+    public void writeCurrentCardinality(int timestamp, String outputDirectory) throws IOException{
+        FileWriter file = null;
+        try {
+            file = new FileWriter(new File(outputDirectory + "cardinalitiesOverTime.csv"), true);
+        } catch (IOException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Falha no arquivo cardinalitiesOverTime.csv");
+        }
+        if(timestamp <= 0)
+                file.write("timestamp,cardinality" +"\n");
+        
+        file.write(timestamp + "," + this.currentCardinality + "\n");
     }
     
     public ArrayList<Voting> getClosestMicroClusters(Instance data, int k) {
@@ -156,24 +170,40 @@ public class Model {
     public Set<String> bayesRuleToClassify(ArrayList<Voting> voting, Instance x_i, int timestamp) {
         Collections.sort(voting);
         Set<String> Y_pred = new HashSet<>();
+        double[] x_i_inputs = Arrays.copyOfRange(x_i.toDoubleArray(), x_i.numOutputAttributes(), x_i.numAttributes());
+        
         Y_pred.add(this.getModel().get(voting.get(0).getlabel()).
                 get(voting.get(0).getPosMC()).
                 getMicroCluster().
                 getLabelClass()
         );
+        
+        double p_xi_yc = Math.exp(-KMeansMOAModified.distance(x_i_inputs, 
+                this.getModel().get(voting.get(0).getlabel()).
+                        get(voting.get(0).getPosMC()).
+                        getMicroCluster().getCenter()
+                ));
+        
         this.getModel().get(voting.get(0).getlabel()).
                 get(voting.get(0).getPosMC()).
                 getMicroCluster().setTime(timestamp);
+        
+        this.getModel().get(voting.get(0).getlabel()).
+                get(voting.get(0).getPosMC()).updateAverOut(p_xi_yc);
+        
+        this.getModel().get(voting.get(0).getlabel()).
+                get(voting.get(0).getPosMC()).
+                calculateThreshold(mtxLabelsFrequencies, this.numberOfObservedExamples);
         
         for (int i = 1; i < voting.size(); i++) {
             if(Y_pred.contains(voting.get(i).getlabel()))
                 continue;
             double p_yc = this.getPriorProbability(voting.get(i).getlabel());
             
-            double[] x_i_inputs = Arrays.copyOfRange(x_i.toDoubleArray(), x_i.numOutputAttributes(), x_i.numAttributes());
+            
             MicroClusterBR winMC = this.getModel().get(voting.get(i).getlabel()).
                     get(voting.get(i).getPosMC());
-            double p_xi_yc = Math.exp(-KMeansMOAModified.distance(x_i_inputs, winMC.getMicroCluster().getCenter()));
+            p_xi_yc = Math.exp(-KMeansMOAModified.distance(x_i_inputs, winMC.getMicroCluster().getCenter()));
             
             double prod = 1;
             for (String y_k : Y_pred) {
@@ -186,7 +216,7 @@ public class Model {
             if(proba >= winMC.getThreshold()){
                 Y_pred.add(winMC.getMicroCluster().getLabelClass());
                 winMC.updateAverOut(p_xi_yc);
-                winMC.calculateThreshold(mtxLabelsFrequencies, currentCardinality);
+                winMC.calculateThreshold(mtxLabelsFrequencies, this.numberOfObservedExamples);
                 winMC.getMicroCluster().setTime(timestamp);
             }
         }
@@ -204,10 +234,8 @@ public class Model {
         try{
             return (double) this.mtxLabelsFrequencies.get(y_k+","+y_c) / (double) this.mtxLabelsFrequencies.get(y_c+","+y_c);
         }catch(NullPointerException e){
-            e.printStackTrace();
-            System.exit(0);
+            return 1;
         }
-        return 0;
     }
 
     public void updateCurrentCardinality(int z_new) {
@@ -287,7 +315,7 @@ public class Model {
     public void updateMicroClusterThresholds() {
         model.entrySet().forEach(entry -> {
             entry.getValue().stream().map(x -> x).forEach(mc -> {
-                mc.calculateThreshold(mtxLabelsFrequencies, currentCardinality);
+                mc.calculateThreshold(mtxLabelsFrequencies, this.numberOfObservedExamples);
             });
         });
     }
