@@ -81,7 +81,12 @@ public class MicroClusterBR {
 
     public void calculateThreshold(HashMap<String, Integer> mtxLabelsFrequencies, double observedExamples) {
         String j = this.getMicroCluster().getLabelClass();
-        int yj = mtxLabelsFrequencies.get(j + "," + j);
+        int yj = 0;
+        try{
+            yj = mtxLabelsFrequencies.get(j + "," + j);
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
         double p_yj =  yj / observedExamples;
         double prod = 1;
         double prod1 = 1;
@@ -95,7 +100,7 @@ public class MicroClusterBR {
         }
         this.threshold = p_yj * prod * this.averOut;
         if (this.threshold > 1){
-            System.err.println("Deu ruim");
+            System.err.println("Threshold > 1");
             System.exit(0);
         }
 //        this.threshold = p_yj * prod1;
@@ -104,7 +109,7 @@ public class MicroClusterBR {
     public void updateAverOut(double exp_dist) {
         this.averOut = ((double) this.getMicroCluster().getN() * this.averOut + exp_dist) / (double) (this.getMicroCluster().getN() + 1);
         if(this.averOut > 1){
-            System.err.println("Deu ruim");
+            System.err.println("AverOut > 1");
             System.exit(0);
         }
 //        this.averOut += exp_dist;

@@ -85,9 +85,14 @@ public class Model {
 
     public void writeBayesRulesElements(int timestamp, String outputDirectory) {
         try {
-            FileWriter file = new FileWriter(new File(outputDirectory+"thresholdsInfo.csv"), true);
-            if(timestamp <= 0)
+            FileWriter file = null;
+            if(timestamp <= 0){
+                file = new FileWriter(new File(outputDirectory+"thresholdsInfo.csv"), false);
                 file.write("timestamp,threshold,averOut,label" +"\n");
+            }else{
+               file = new FileWriter(new File(outputDirectory+"thresholdsInfo.csv"), true);
+            }
+            
             
             for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : model.entrySet()) {
                 ArrayList<MicroClusterBR> mcSet = entry.getValue();
@@ -105,13 +110,18 @@ public class Model {
     public void writeCurrentCardinality(int timestamp, String outputDirectory) throws IOException{
         FileWriter file = null;
         try {
-            file = new FileWriter(new File(outputDirectory + "cardinalitiesOverTime.csv"), true);
+            if(timestamp <= 0){
+                file = new FileWriter(new File(outputDirectory + "cardinalitiesOverTime.csv"), false);
+                file.write("timestamp,cardinality" +"\n");
+            }else{
+                file = new FileWriter(new File(outputDirectory + "cardinalitiesOverTime.csv"), true);
+            }
+                
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Falha no arquivo cardinalitiesOverTime.csv");
         }
-        if(timestamp <= 0)
-                file.write("timestamp,cardinality" +"\n");
+        
         
         file.write(timestamp + "," + this.currentCardinality + "\n");
         file.close();
@@ -240,8 +250,8 @@ public class Model {
     }
 
     public void updateCurrentCardinality(int z_new) {
-        this.currentCardinality = (double) (this.numberOfObservedExamples * this.currentCardinality + z_new) /
-                (double)(this.numberOfObservedExamples + z_new);
+        this.currentCardinality =  ((double) this.numberOfObservedExamples * this.currentCardinality + (double) z_new) /
+                ((double)this.numberOfObservedExamples + (double)z_new);
     }
     
     /**

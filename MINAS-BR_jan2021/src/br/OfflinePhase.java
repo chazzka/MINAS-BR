@@ -278,7 +278,7 @@ public final class OfflinePhase{
             this.model.incrementNumerOfObservedExamples();
         }
         this.trainingData = trainingData;
-        this.model.setCurrentCardinality(Math.ceil(qtdeRotulos/D.size()));
+        this.model.setCurrentCardinality(Math.ceil((double)qtdeRotulos/(double)D.size()));
     }
     
 

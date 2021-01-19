@@ -106,10 +106,12 @@ public class Main {
         
 //        //****************MOA1*********************
 //        String dataSetName = "MOA1";
+////        String dataSetName = "MOA1_kini=0.001";
 //        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
 //        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
 //        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
 //        double k_ini = 0.01;
+////        double k_ini = 0.001;
 //        String theta = "1000";
 //        String omega = "2000";
 //        int L = 7;
@@ -121,8 +123,8 @@ public class Main {
         String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-test.arff";
         String outputDirecotory = "results_jan2021/"+dataSetName+"/";
         double k_ini = 0.01;
-        String theta = "1000";
-        String omega = "2000";
+        String theta = "200";
+        String omega = "200";
         int L = 4;
 //        //*****************************************
         
@@ -288,11 +290,11 @@ public class Main {
                         for (int l = 0; l < k_ini.length; l++) {
                             outputDirectory = dir + theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l] +"/";
                             FilesOutput.createDirectory(outputDirectory);
-                            EvaluatorBR avMINAS = MINAS_BR(train, test, L, k_ini[l],theta[i],omega[j], f[k], 
-                                    algClus, evMeasure, outputDirectory);
-                            F1M.write(avMINAS.getAvgF1M() + "," + avMINAS.getQtdeNP() + ",");
-                            F1.write(avMINAS.getAvgF1() + ",");
-                            SA.write(avMINAS.getAvgSA() + ",");
+//                            EvaluatorBR avMINAS = MINAS_BR(train, test, L, k_ini[l],theta[i],omega[j], f[k], 
+//                                    algClus, evMeasure, outputDirectory);
+//                            F1M.write(avMINAS.getAvgF1M() + "," + avMINAS.getQtdeNP() + ",");
+//                            F1.write(avMINAS.getAvgF1() + ",");
+//                            SA.write(avMINAS.getAvgSA() + ",");
                         }
                     }
                     F1M.write("\n");
@@ -382,7 +384,6 @@ public class Main {
         av.writeConceptEvolutionNP(model, outputDirectory);
         fileOut.close();
         filePredictions.close();
-        file
         fileOff.close();
         System.out.println("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem());
         model.getPnInfo().write("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem() + "\n");
