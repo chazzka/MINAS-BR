@@ -1,0 +1,751 @@
+======== FM NP1 timestamp = 32400=========
+C: 5 - a: 9 b: 447 c: 222 d: 1014 score: 0.026200874
+NP1 --> 5 - t: 32400 - score: 0.026200873777270317
+====================================
+======== FM NP2 timestamp = 32400=========
+C: 5 - a: 100 b: 356 c: 42 d: 1194 score: 0.33444816
+NP2 --> 5 - t: 32400 - score: 0.3344481587409973
+====================================
+======== FM NP3 timestamp = 32400=========
+C: 5 - a: 0 b: 456 c: 48 d: 1188 score: 0.0
+NP3 had no class associated with it until the timestamp 32400
+====================================
+======== FM NP4 timestamp = 32400=========
+C: 5 - a: 41 b: 415 c: 79 d: 1157 score: 0.14236112
+NP4 --> 5 - t: 32400 - score: 0.142361119389534
+====================================
+======== FM NP5 timestamp = 32400=========
+C: 5 - a: 0 b: 456 c: 57 d: 1179 score: 0.0
+NP5 had no class associated with it until the timestamp 32400
+====================================
+======== FM NP6 timestamp = 32400=========
+C: 5 - a: 0 b: 456 c: 32 d: 1204 score: 0.0
+NP6 had no class associated with it until the timestamp 32400
+====================================
+======== FM NP7 timestamp = 32400=========
+C: 5 - a: 0 b: 456 c: 60 d: 1176 score: 0.0
+NP7 had no class associated with it until the timestamp 32400
+====================================
+======== FM NP8 timestamp = 32400=========
+C: 5 - a: 12 b: 444 c: 80 d: 1156 score: 0.04379562
+NP8 --> 5 - t: 32400 - score: 0.043795619159936905
+====================================
+======== FM NP9 timestamp = 32400=========
+C: 5 - a: 0 b: 456 c: 199 d: 1037 score: 0.0
+NP9 had no class associated with it until the timestamp 32400
+====================================
+======== FM NP10 timestamp = 32400=========
+C: 5 - a: 82 b: 374 c: 0 d: 1236 score: 0.3048327
+NP10 --> 5 - t: 32400 - score: 0.30483269691467285
+====================================
+======== FM NP11 timestamp = 32400=========
+C: 5 - a: 78 b: 378 c: 0 d: 1236 score: 0.29213482
+NP11 --> 5 - t: 32400 - score: 0.2921348214149475
+====================================
+======== FM NP12 timestamp = 32400=========
+C: 5 - a: 166 b: 290 c: 2 d: 1234 score: 0.53205127
+NP12 --> 5 - t: 32400 - score: 0.5320512652397156
+====================================
+======== FM NP13 timestamp = 32400=========
+C: 5 - a: 0 b: 456 c: 12 d: 1224 score: 0.0
+NP13 had no class associated with it until the timestamp 32400
+====================================
+======== FM NP3 timestamp = 34200=========
+C: 5 - a: 0 b: 859 c: 117 d: 2511 score: 0.0
+NP3 had no class associated with it until the timestamp 34200
+====================================
+======== FM NP5 timestamp = 34200=========
+C: 5 - a: 0 b: 859 c: 96 d: 2532 score: 0.0
+NP5 had no class associated with it until the timestamp 34200
+====================================
+======== FM NP6 timestamp = 34200=========
+C: 5 - a: 0 b: 859 c: 52 d: 2576 score: 0.0
+NP6 had no class associated with it until the timestamp 34200
+====================================
+======== FM NP7 timestamp = 34200=========
+C: 5 - a: 0 b: 859 c: 145 d: 2483 score: 0.0
+NP7 had no class associated with it until the timestamp 34200
+====================================
+======== FM NP9 timestamp = 34200=========
+C: 5 - a: 0 b: 859 c: 399 d: 2229 score: 0.0
+NP9 had no class associated with it until the timestamp 34200
+====================================
+======== FM NP13 timestamp = 34200=========
+C: 5 - a: 0 b: 859 c: 25 d: 2603 score: 0.0
+NP13 had no class associated with it until the timestamp 34200
+====================================
+======== FM NP3 timestamp = 36000=========
+C: 5 - a: 0 b: 1260 c: 181 d: 3838 score: 0.0
+NP3 had no class associated with it until the timestamp 36000
+====================================
+======== FM NP5 timestamp = 36000=========
+C: 5 - a: 0 b: 1260 c: 128 d: 3891 score: 0.0
+NP5 had no class associated with it until the timestamp 36000
+====================================
+======== FM NP6 timestamp = 36000=========
+C: 5 - a: 0 b: 1260 c: 78 d: 3941 score: 0.0
+NP6 had no class associated with it until the timestamp 36000
+====================================
+======== FM NP7 timestamp = 36000=========
+C: 5 - a: 0 b: 1260 c: 211 d: 3808 score: 0.0
+NP7 had no class associated with it until the timestamp 36000
+====================================
+======== FM NP9 timestamp = 36000=========
+C: 5 - a: 0 b: 1260 c: 602 d: 3417 score: 0.0
+NP9 had no class associated with it until the timestamp 36000
+====================================
+======== FM NP13 timestamp = 36000=========
+C: 5 - a: 0 b: 1260 c: 42 d: 3977 score: 0.0
+NP13 had no class associated with it until the timestamp 36000
+====================================
+======== FM NP3 timestamp = 37800=========
+C: 5 - a: 0 b: 1621 c: 260 d: 5191 score: 0.0
+NP3 had no class associated with it until the timestamp 37800
+====================================
+======== FM NP5 timestamp = 37800=========
+C: 5 - a: 0 b: 1621 c: 165 d: 5286 score: 0.0
+NP5 had no class associated with it until the timestamp 37800
+====================================
+======== FM NP6 timestamp = 37800=========
+C: 5 - a: 0 b: 1621 c: 102 d: 5349 score: 0.0
+NP6 had no class associated with it until the timestamp 37800
+====================================
+======== FM NP7 timestamp = 37800=========
+C: 5 - a: 0 b: 1621 c: 295 d: 5156 score: 0.0
+NP7 had no class associated with it until the timestamp 37800
+====================================
+======== FM NP9 timestamp = 37800=========
+C: 5 - a: 0 b: 1621 c: 804 d: 4647 score: 0.0
+NP9 had no class associated with it until the timestamp 37800
+====================================
+======== FM NP13 timestamp = 37800=========
+C: 5 - a: 0 b: 1621 c: 55 d: 5396 score: 0.0
+NP13 had no class associated with it until the timestamp 37800
+====================================
+======== FM NP3 timestamp = 39600=========
+C: 5 - a: 0 b: 2054 c: 325 d: 6478 score: 0.0
+NP3 had no class associated with it until the timestamp 39600
+====================================
+======== FM NP5 timestamp = 39600=========
+C: 5 - a: 0 b: 2054 c: 210 d: 6593 score: 0.0
+NP5 had no class associated with it until the timestamp 39600
+====================================
+======== FM NP6 timestamp = 39600=========
+C: 5 - a: 0 b: 2054 c: 125 d: 6678 score: 0.0
+NP6 had no class associated with it until the timestamp 39600
+====================================
+======== FM NP7 timestamp = 39600=========
+C: 5 - a: 0 b: 2054 c: 361 d: 6442 score: 0.0
+NP7 had no class associated with it until the timestamp 39600
+====================================
+======== FM NP9 timestamp = 39600=========
+C: 5 - a: 4 b: 2050 c: 1020 d: 5783 score: 0.0025990903
+NP9 --> 5 - t: 39600 - score: 0.002599090337753296
+====================================
+======== FM NP13 timestamp = 39600=========
+C: 5 - a: 0 b: 2054 c: 76 d: 6727 score: 0.0
+NP13 had no class associated with it until the timestamp 39600
+====================================
+======== FM NP3 timestamp = 41400=========
+C: 5 - a: 0 b: 2493 c: 383 d: 7767 score: 0.0
+NP3 had no class associated with it until the timestamp 41400
+====================================
+======== FM NP5 timestamp = 41400=========
+C: 5 - a: 0 b: 2493 c: 257 d: 7893 score: 0.0
+NP5 had no class associated with it until the timestamp 41400
+====================================
+======== FM NP6 timestamp = 41400=========
+C: 5 - a: 0 b: 2493 c: 158 d: 7992 score: 0.0
+NP6 had no class associated with it until the timestamp 41400
+====================================
+======== FM NP7 timestamp = 41400=========
+C: 5 - a: 0 b: 2493 c: 434 d: 7716 score: 0.0
+NP7 had no class associated with it until the timestamp 41400
+====================================
+======== FM NP13 timestamp = 41400=========
+C: 5 - a: 0 b: 2493 c: 94 d: 8056 score: 0.0
+NP13 had no class associated with it until the timestamp 41400
+====================================
+======== FM NP3 timestamp = 43200=========
+C: 5 - a: 0 b: 2939 c: 425 d: 9050 score: 0.0
+NP3 had no class associated with it until the timestamp 43200
+====================================
+======== FM NP5 timestamp = 43200=========
+C: 5 - a: 0 b: 2939 c: 306 d: 9169 score: 0.0
+NP5 had no class associated with it until the timestamp 43200
+====================================
+======== FM NP6 timestamp = 43200=========
+C: 5 - a: 0 b: 2939 c: 185 d: 9290 score: 0.0
+NP6 had no class associated with it until the timestamp 43200
+====================================
+======== FM NP7 timestamp = 43200=========
+C: 5 - a: 0 b: 2939 c: 509 d: 8966 score: 0.0
+NP7 had no class associated with it until the timestamp 43200
+====================================
+======== FM NP13 timestamp = 43200=========
+C: 5 - a: 0 b: 2939 c: 113 d: 9362 score: 0.0
+NP13 had no class associated with it until the timestamp 43200
+====================================
+======== FM NP3 timestamp = 45000=========
+C: 5 - a: 0 b: 3359 c: 481 d: 10331 score: 0.0
+NP3 had no class associated with it until the timestamp 45000
+====================================
+======== FM NP5 timestamp = 45000=========
+C: 5 - a: 0 b: 3359 c: 363 d: 10449 score: 0.0
+NP5 had no class associated with it until the timestamp 45000
+====================================
+======== FM NP6 timestamp = 45000=========
+C: 5 - a: 0 b: 3359 c: 208 d: 10604 score: 0.0
+NP6 had no class associated with it until the timestamp 45000
+====================================
+======== FM NP7 timestamp = 45000=========
+C: 5 - a: 0 b: 3359 c: 576 d: 10236 score: 0.0
+NP7 had no class associated with it until the timestamp 45000
+====================================
+======== FM NP13 timestamp = 45000=========
+C: 5 - a: 0 b: 3359 c: 128 d: 10684 score: 0.0
+NP13 had no class associated with it until the timestamp 45000
+====================================
+======== FM NP3 timestamp = 46800=========
+C: 5 - a: 0 b: 3812 c: 536 d: 11581 score: 0.0
+NP3 had no class associated with it until the timestamp 46800
+====================================
+======== FM NP5 timestamp = 46800=========
+C: 5 - a: 0 b: 3812 c: 417 d: 11700 score: 0.0
+NP5 had no class associated with it until the timestamp 46800
+====================================
+======== FM NP6 timestamp = 46800=========
+C: 5 - a: 0 b: 3812 c: 230 d: 11887 score: 0.0
+NP6 had no class associated with it until the timestamp 46800
+====================================
+======== FM NP7 timestamp = 46800=========
+C: 5 - a: 0 b: 3812 c: 642 d: 11475 score: 0.0
+NP7 had no class associated with it until the timestamp 46800
+====================================
+======== FM NP13 timestamp = 46800=========
+C: 5 - a: 0 b: 3812 c: 140 d: 11977 score: 0.0
+NP13 had no class associated with it until the timestamp 46800
+====================================
+======== FM NP3 timestamp = 48600=========
+C: 5 - a: 0 b: 4300 c: 577 d: 12793 score: 0.0
+NP3 had no class associated with it until the timestamp 48600
+====================================
+======== FM NP5 timestamp = 48600=========
+C: 5 - a: 0 b: 4300 c: 472 d: 12898 score: 0.0
+NP5 had no class associated with it until the timestamp 48600
+====================================
+======== FM NP6 timestamp = 48600=========
+C: 5 - a: 0 b: 4300 c: 263 d: 13107 score: 0.0
+NP6 had no class associated with it until the timestamp 48600
+====================================
+======== FM NP7 timestamp = 48600=========
+C: 5 - a: 0 b: 4300 c: 706 d: 12664 score: 0.0
+NP7 had no class associated with it until the timestamp 48600
+====================================
+======== FM NP13 timestamp = 48600=========
+C: 5 - a: 0 b: 4300 c: 156 d: 13214 score: 0.0
+NP13 had no class associated with it until the timestamp 48600
+====================================
+======== FM NP3 timestamp = 50400=========
+C: 5 - a: 0 b: 4797 c: 606 d: 14022 score: 0.0
+NP3 had no class associated with it until the timestamp 50400
+====================================
+======== FM NP5 timestamp = 50400=========
+C: 5 - a: 0 b: 4797 c: 522 d: 14106 score: 0.0
+NP5 had no class associated with it until the timestamp 50400
+====================================
+======== FM NP6 timestamp = 50400=========
+C: 5 - a: 0 b: 4797 c: 288 d: 14340 score: 0.0
+NP6 had no class associated with it until the timestamp 50400
+====================================
+======== FM NP7 timestamp = 50400=========
+C: 5 - a: 0 b: 4797 c: 756 d: 13872 score: 0.0
+NP7 had no class associated with it until the timestamp 50400
+====================================
+======== FM NP13 timestamp = 50400=========
+C: 5 - a: 0 b: 4797 c: 166 d: 14462 score: 0.0
+NP13 had no class associated with it until the timestamp 50400
+====================================
+======== FM NP3 timestamp = 52200=========
+C: 5 - a: 0 b: 5287 c: 649 d: 15223 score: 0.0
+NP3 had no class associated with it until the timestamp 52200
+====================================
+======== FM NP5 timestamp = 52200=========
+C: 5 - a: 0 b: 5287 c: 576 d: 15296 score: 0.0
+NP5 had no class associated with it until the timestamp 52200
+====================================
+======== FM NP6 timestamp = 52200=========
+C: 5 - a: 0 b: 5287 c: 315 d: 15557 score: 0.0
+NP6 had no class associated with it until the timestamp 52200
+====================================
+======== FM NP7 timestamp = 52200=========
+C: 5 - a: 0 b: 5287 c: 808 d: 15064 score: 0.0
+NP7 had no class associated with it until the timestamp 52200
+====================================
+======== FM NP13 timestamp = 52200=========
+C: 5 - a: 0 b: 5287 c: 171 d: 15701 score: 0.0
+NP13 had no class associated with it until the timestamp 52200
+====================================
+======== FM NP3 timestamp = 54000=========
+C: 5 - a: 0 b: 5815 c: 694 d: 16371 score: 0.0
+NP3 had no class associated with it until the timestamp 54000
+====================================
+======== FM NP5 timestamp = 54000=========
+C: 5 - a: 0 b: 5815 c: 626 d: 16439 score: 0.0
+NP5 had no class associated with it until the timestamp 54000
+====================================
+======== FM NP6 timestamp = 54000=========
+C: 5 - a: 0 b: 5815 c: 347 d: 16718 score: 0.0
+NP6 had no class associated with it until the timestamp 54000
+====================================
+======== FM NP7 timestamp = 54000=========
+C: 5 - a: 0 b: 5815 c: 871 d: 16194 score: 0.0
+NP7 had no class associated with it until the timestamp 54000
+====================================
+======== FM NP13 timestamp = 54000=========
+C: 5 - a: 0 b: 5815 c: 184 d: 16881 score: 0.0
+NP13 had no class associated with it until the timestamp 54000
+====================================
+======== FM NP3 timestamp = 55800=========
+C: 5 - a: 0 b: 6389 c: 720 d: 17489 score: 0.0
+NP3 had no class associated with it until the timestamp 55800
+====================================
+======== FM NP5 timestamp = 55800=========
+C: 5 - a: 0 b: 6389 c: 683 d: 17526 score: 0.0
+NP5 had no class associated with it until the timestamp 55800
+====================================
+======== FM NP6 timestamp = 55800=========
+C: 5 - a: 0 b: 6389 c: 383 d: 17826 score: 0.0
+NP6 had no class associated with it until the timestamp 55800
+====================================
+======== FM NP7 timestamp = 55800=========
+C: 5 - a: 0 b: 6389 c: 928 d: 17281 score: 0.0
+NP7 had no class associated with it until the timestamp 55800
+====================================
+======== FM NP13 timestamp = 55800=========
+C: 5 - a: 0 b: 6389 c: 191 d: 18018 score: 0.0
+NP13 had no class associated with it until the timestamp 55800
+====================================
+======== FM NP3 timestamp = 57600=========
+C: 5 - a: 0 b: 7027 c: 753 d: 18534 score: 0.0
+NP3 had no class associated with it until the timestamp 57600
+====================================
+======== FM NP5 timestamp = 57600=========
+C: 5 - a: 0 b: 7027 c: 747 d: 18540 score: 0.0
+NP5 had no class associated with it until the timestamp 57600
+====================================
+======== FM NP6 timestamp = 57600=========
+C: 5 - a: 0 b: 7027 c: 419 d: 18868 score: 0.0
+NP6 had no class associated with it until the timestamp 57600
+====================================
+======== FM NP7 timestamp = 57600=========
+C: 5 - a: 0 b: 7027 c: 987 d: 18300 score: 0.0
+NP7 had no class associated with it until the timestamp 57600
+====================================
+======== FM NP13 timestamp = 57600=========
+C: 5 - a: 0 b: 7027 c: 201 d: 19086 score: 0.0
+NP13 had no class associated with it until the timestamp 57600
+====================================
+======== FM NP3 timestamp = 59400=========
+C: 5 - a: 0 b: 7700 c: 782 d: 19535 score: 0.0
+NP3 had no class associated with it until the timestamp 59400
+====================================
+======== FM NP5 timestamp = 59400=========
+C: 5 - a: 0 b: 7700 c: 791 d: 19526 score: 0.0
+NP5 had no class associated with it until the timestamp 59400
+====================================
+======== FM NP6 timestamp = 59400=========
+C: 5 - a: 0 b: 7700 c: 454 d: 19863 score: 0.0
+NP6 had no class associated with it until the timestamp 59400
+====================================
+======== FM NP7 timestamp = 59400=========
+C: 5 - a: 0 b: 7700 c: 1019 d: 19298 score: 0.0
+NP7 had no class associated with it until the timestamp 59400
+====================================
+======== FM NP13 timestamp = 59400=========
+C: 5 - a: 0 b: 7700 c: 213 d: 20104 score: 0.0
+NP13 had no class associated with it until the timestamp 59400
+====================================
+======== FM NP3 timestamp = 61200=========
+C: 5 - a: 0 b: 8425 c: 804 d: 20499 score: 0.0
+NP3 had no class associated with it until the timestamp 61200
+====================================
+======== FM NP5 timestamp = 61200=========
+C: 5 - a: 0 b: 8425 c: 839 d: 20464 score: 0.0
+NP5 had no class associated with it until the timestamp 61200
+====================================
+======== FM NP6 timestamp = 61200=========
+C: 5 - a: 0 b: 8425 c: 481 d: 20822 score: 0.0
+NP6 had no class associated with it until the timestamp 61200
+====================================
+======== FM NP7 timestamp = 61200=========
+C: 5 - a: 0 b: 8425 c: 1052 d: 20251 score: 0.0
+NP7 had no class associated with it until the timestamp 61200
+====================================
+======== FM NP13 timestamp = 61200=========
+C: 5 - a: 0 b: 8425 c: 222 d: 21081 score: 0.0
+NP13 had no class associated with it until the timestamp 61200
+====================================
+======== FM NP3 timestamp = 63000=========
+C: 5 - a: 0 b: 9116 c: 833 d: 21450 score: 0.0
+NP3 had no class associated with it until the timestamp 63000
+====================================
+======== FM NP5 timestamp = 63000=========
+C: 5 - a: 0 b: 9116 c: 898 d: 21385 score: 0.0
+NP5 had no class associated with it until the timestamp 63000
+====================================
+======== FM NP6 timestamp = 63000=========
+C: 5 - a: 0 b: 9116 c: 511 d: 21772 score: 0.0
+NP6 had no class associated with it until the timestamp 63000
+====================================
+======== FM NP7 timestamp = 63000=========
+C: 5 - a: 0 b: 9116 c: 1090 d: 21193 score: 0.0
+NP7 had no class associated with it until the timestamp 63000
+====================================
+======== FM NP13 timestamp = 63000=========
+C: 5 - a: 0 b: 9116 c: 226 d: 22057 score: 0.0
+NP13 had no class associated with it until the timestamp 63000
+====================================
+======== FM NP3 timestamp = 64800=========
+C: 5 - a: 0 b: 9872 c: 863 d: 22322 score: 0.0
+NP3 had no class associated with it until the timestamp 64800
+====================================
+======== FM NP5 timestamp = 64800=========
+C: 5 - a: 0 b: 9872 c: 955 d: 22230 score: 0.0
+NP5 had no class associated with it until the timestamp 64800
+====================================
+======== FM NP6 timestamp = 64800=========
+C: 5 - a: 0 b: 9872 c: 542 d: 22643 score: 0.0
+NP6 had no class associated with it until the timestamp 64800
+====================================
+======== FM NP7 timestamp = 64800=========
+C: 5 - a: 0 b: 9872 c: 1130 d: 22055 score: 0.0
+NP7 had no class associated with it until the timestamp 64800
+====================================
+======== FM NP13 timestamp = 64800=========
+C: 5 - a: 0 b: 9872 c: 231 d: 22954 score: 0.0
+NP13 had no class associated with it until the timestamp 64800
+====================================
+======== FM NP3 timestamp = 66600=========
+C: 5 - a: 0 b: 10653 c: 881 d: 23173 score: 0.0
+NP3 had no class associated with it until the timestamp 66600
+====================================
+======== FM NP5 timestamp = 66600=========
+C: 5 - a: 0 b: 10653 c: 1001 d: 23053 score: 0.0
+NP5 had no class associated with it until the timestamp 66600
+====================================
+======== FM NP6 timestamp = 66600=========
+C: 5 - a: 0 b: 10653 c: 576 d: 23478 score: 0.0
+NP6 had no class associated with it until the timestamp 66600
+====================================
+======== FM NP7 timestamp = 66600=========
+C: 5 - a: 0 b: 10653 c: 1160 d: 22894 score: 0.0
+NP7 had no class associated with it until the timestamp 66600
+====================================
+======== FM NP13 timestamp = 66600=========
+C: 5 - a: 0 b: 10653 c: 240 d: 23814 score: 0.0
+NP13 had no class associated with it until the timestamp 66600
+====================================
+======== FM NP3 timestamp = 68400=========
+C: 5 - a: 0 b: 11470 c: 890 d: 24005 score: 0.0
+NP3 had no class associated with it until the timestamp 68400
+====================================
+======== FM NP5 timestamp = 68400=========
+C: 5 - a: 0 b: 11470 c: 1043 d: 23852 score: 0.0
+NP5 had no class associated with it until the timestamp 68400
+====================================
+======== FM NP6 timestamp = 68400=========
+C: 5 - a: 0 b: 11470 c: 597 d: 24298 score: 0.0
+NP6 had no class associated with it until the timestamp 68400
+====================================
+======== FM NP7 timestamp = 68400=========
+C: 5 - a: 0 b: 11470 c: 1180 d: 23715 score: 0.0
+NP7 had no class associated with it until the timestamp 68400
+====================================
+======== FM NP13 timestamp = 68400=========
+C: 5 - a: 0 b: 11470 c: 243 d: 24652 score: 0.0
+NP13 had no class associated with it until the timestamp 68400
+====================================
+======== FM NP3 timestamp = 70200=========
+C: 5 - a: 0 b: 12253 c: 904 d: 24865 score: 0.0
+C: 6 - a: 0 b: 50 c: 14 d: 1593 score: 0.0
+NP3 had no class associated with it until the timestamp 70200
+====================================
+======== FM NP5 timestamp = 70200=========
+C: 5 - a: 0 b: 12253 c: 1097 d: 24672 score: 0.0
+C: 6 - a: 0 b: 50 c: 54 d: 1553 score: 0.0
+NP5 had no class associated with it until the timestamp 70200
+====================================
+======== FM NP6 timestamp = 70200=========
+C: 5 - a: 0 b: 12253 c: 624 d: 25145 score: 0.0
+C: 6 - a: 0 b: 50 c: 27 d: 1580 score: 0.0
+NP6 had no class associated with it until the timestamp 70200
+====================================
+======== FM NP7 timestamp = 70200=========
+C: 5 - a: 0 b: 12253 c: 1205 d: 24564 score: 0.0
+C: 6 - a: 0 b: 50 c: 25 d: 1582 score: 0.0
+NP7 had no class associated with it until the timestamp 70200
+====================================
+======== FM NP13 timestamp = 70200=========
+C: 5 - a: 0 b: 12253 c: 243 d: 25526 score: 0.0
+C: 6 - a: 0 b: 50 c: 0 d: 1607 score: 0.0
+NP13 had no class associated with it until the timestamp 70200
+====================================
+======== FM NP3 timestamp = 72000=========
+C: 5 - a: 0 b: 12910 c: 910 d: 25815 score: 0.0
+C: 6 - a: 0 b: 479 c: 20 d: 2771 score: 0.0
+NP3 had no class associated with it until the timestamp 72000
+====================================
+======== FM NP5 timestamp = 72000=========
+C: 5 - a: 0 b: 12910 c: 1133 d: 25592 score: 0.0
+C: 6 - a: 0 b: 479 c: 90 d: 2701 score: 0.0
+NP5 had no class associated with it until the timestamp 72000
+====================================
+======== FM NP6 timestamp = 72000=========
+C: 5 - a: 0 b: 12910 c: 643 d: 26082 score: 0.0
+C: 6 - a: 0 b: 479 c: 46 d: 2745 score: 0.0
+NP6 had no class associated with it until the timestamp 72000
+====================================
+======== FM NP7 timestamp = 72000=========
+C: 5 - a: 0 b: 12910 c: 1220 d: 25505 score: 0.0
+C: 6 - a: 0 b: 479 c: 40 d: 2751 score: 0.0
+NP7 had no class associated with it until the timestamp 72000
+====================================
+======== FM NP13 timestamp = 72000=========
+C: 5 - a: 0 b: 12910 c: 246 d: 26479 score: 0.0
+C: 6 - a: 0 b: 479 c: 3 d: 2788 score: 0.0
+NP13 had no class associated with it until the timestamp 72000
+====================================
+======== FM NP3 timestamp = 73800=========
+C: 5 - a: 0 b: 13595 c: 921 d: 26730 score: 0.0
+C: 6 - a: 0 b: 901 c: 31 d: 3949 score: 0.0
+NP3 had no class associated with it until the timestamp 73800
+====================================
+======== FM NP5 timestamp = 73800=========
+C: 5 - a: 0 b: 13595 c: 1176 d: 26475 score: 0.0
+C: 6 - a: 0 b: 901 c: 133 d: 3847 score: 0.0
+NP5 had no class associated with it until the timestamp 73800
+====================================
+======== FM NP6 timestamp = 73800=========
+C: 5 - a: 0 b: 13595 c: 666 d: 26985 score: 0.0
+C: 6 - a: 0 b: 901 c: 69 d: 3911 score: 0.0
+NP6 had no class associated with it until the timestamp 73800
+====================================
+======== FM NP7 timestamp = 73800=========
+C: 5 - a: 0 b: 13595 c: 1235 d: 26416 score: 0.0
+C: 6 - a: 0 b: 901 c: 55 d: 3925 score: 0.0
+NP7 had no class associated with it until the timestamp 73800
+====================================
+======== FM NP13 timestamp = 73800=========
+C: 5 - a: 0 b: 13595 c: 246 d: 27405 score: 0.0
+C: 6 - a: 0 b: 901 c: 3 d: 3977 score: 0.0
+NP13 had no class associated with it until the timestamp 73800
+====================================
+======== FM NP3 timestamp = 75600=========
+C: 5 - a: 0 b: 14325 c: 926 d: 27620 score: 0.0
+C: 6 - a: 0 b: 1336 c: 36 d: 5134 score: 0.0
+NP3 had no class associated with it until the timestamp 75600
+====================================
+======== FM NP5 timestamp = 75600=========
+C: 5 - a: 0 b: 14325 c: 1216 d: 27330 score: 0.0
+C: 6 - a: 0 b: 1336 c: 173 d: 4997 score: 0.0
+NP5 had no class associated with it until the timestamp 75600
+====================================
+======== FM NP6 timestamp = 75600=========
+C: 5 - a: 0 b: 14325 c: 686 d: 27860 score: 0.0
+C: 6 - a: 0 b: 1336 c: 89 d: 5081 score: 0.0
+NP6 had no class associated with it until the timestamp 75600
+====================================
+======== FM NP7 timestamp = 75600=========
+C: 5 - a: 0 b: 14325 c: 1240 d: 27306 score: 0.0
+C: 6 - a: 0 b: 1336 c: 60 d: 5110 score: 0.0
+NP7 had no class associated with it until the timestamp 75600
+====================================
+======== FM NP13 timestamp = 75600=========
+C: 5 - a: 0 b: 14325 c: 246 d: 28300 score: 0.0
+C: 6 - a: 0 b: 1336 c: 3 d: 5167 score: 0.0
+NP13 had no class associated with it until the timestamp 75600
+====================================
+======== FM NP3 timestamp = 77400=========
+C: 5 - a: 0 b: 15033 c: 929 d: 28468 score: 0.0
+C: 6 - a: 0 b: 1761 c: 39 d: 6265 score: 0.0
+NP3 had no class associated with it until the timestamp 77400
+====================================
+======== FM NP5 timestamp = 77400=========
+C: 5 - a: 0 b: 15033 c: 1236 d: 28161 score: 0.0
+C: 6 - a: 0 b: 1761 c: 193 d: 6111 score: 0.0
+NP5 had no class associated with it until the timestamp 77400
+====================================
+======== FM NP6 timestamp = 77400=========
+C: 5 - a: 0 b: 15033 c: 701 d: 28696 score: 0.0
+C: 6 - a: 0 b: 1761 c: 104 d: 6200 score: 0.0
+NP6 had no class associated with it until the timestamp 77400
+====================================
+======== FM NP7 timestamp = 77400=========
+C: 5 - a: 0 b: 15033 c: 1252 d: 28145 score: 0.0
+C: 6 - a: 0 b: 1761 c: 72 d: 6232 score: 0.0
+NP7 had no class associated with it until the timestamp 77400
+====================================
+======== FM NP13 timestamp = 77400=========
+C: 5 - a: 0 b: 15033 c: 246 d: 29151 score: 0.0
+C: 6 - a: 0 b: 1761 c: 3 d: 6301 score: 0.0
+NP13 had no class associated with it until the timestamp 77400
+====================================
+======== FM NP3 timestamp = 79200=========
+C: 5 - a: 0 b: 15743 c: 934 d: 29335 score: 0.0
+C: 6 - a: 0 b: 2212 c: 44 d: 7391 score: 0.0
+NP3 had no class associated with it until the timestamp 79200
+====================================
+======== FM NP5 timestamp = 79200=========
+C: 5 - a: 0 b: 15743 c: 1261 d: 29008 score: 0.0
+C: 6 - a: 0 b: 2212 c: 218 d: 7217 score: 0.0
+NP5 had no class associated with it until the timestamp 79200
+====================================
+======== FM NP6 timestamp = 79200=========
+C: 5 - a: 0 b: 15743 c: 719 d: 29550 score: 0.0
+C: 6 - a: 0 b: 2212 c: 122 d: 7313 score: 0.0
+NP6 had no class associated with it until the timestamp 79200
+====================================
+======== FM NP7 timestamp = 79200=========
+C: 5 - a: 0 b: 15743 c: 1257 d: 29012 score: 0.0
+C: 6 - a: 0 b: 2212 c: 77 d: 7358 score: 0.0
+NP7 had no class associated with it until the timestamp 79200
+====================================
+======== FM NP13 timestamp = 79200=========
+C: 5 - a: 0 b: 15743 c: 246 d: 30023 score: 0.0
+C: 6 - a: 0 b: 2212 c: 3 d: 7432 score: 0.0
+NP13 had no class associated with it until the timestamp 79200
+====================================
+======== FM NP3 timestamp = 81000=========
+C: 5 - a: 0 b: 16477 c: 938 d: 30143 score: 0.0
+C: 6 - a: 0 b: 2656 c: 48 d: 8489 score: 0.0
+NP3 had no class associated with it until the timestamp 81000
+====================================
+======== FM NP5 timestamp = 81000=========
+C: 5 - a: 0 b: 16477 c: 1287 d: 29794 score: 0.0
+C: 6 - a: 0 b: 2656 c: 244 d: 8293 score: 0.0
+NP5 had no class associated with it until the timestamp 81000
+====================================
+======== FM NP6 timestamp = 81000=========
+C: 5 - a: 0 b: 16477 c: 737 d: 30344 score: 0.0
+C: 6 - a: 0 b: 2656 c: 140 d: 8397 score: 0.0
+NP6 had no class associated with it until the timestamp 81000
+====================================
+======== FM NP7 timestamp = 81000=========
+C: 5 - a: 0 b: 16477 c: 1261 d: 29820 score: 0.0
+C: 6 - a: 0 b: 2656 c: 81 d: 8456 score: 0.0
+NP7 had no class associated with it until the timestamp 81000
+====================================
+======== FM NP13 timestamp = 81000=========
+C: 5 - a: 0 b: 16477 c: 246 d: 30835 score: 0.0
+C: 6 - a: 0 b: 2656 c: 3 d: 8534 score: 0.0
+NP13 had no class associated with it until the timestamp 81000
+====================================
+======== FM NP3 timestamp = 82800=========
+C: 5 - a: 0 b: 17211 c: 938 d: 30958 score: 0.0
+C: 6 - a: 0 b: 3118 c: 48 d: 9576 score: 0.0
+NP3 had no class associated with it until the timestamp 82800
+====================================
+======== FM NP5 timestamp = 82800=========
+C: 5 - a: 0 b: 17211 c: 1314 d: 30582 score: 0.0
+C: 6 - a: 0 b: 3118 c: 271 d: 9353 score: 0.0
+NP5 had no class associated with it until the timestamp 82800
+====================================
+======== FM NP6 timestamp = 82800=========
+C: 5 - a: 0 b: 17211 c: 748 d: 31148 score: 0.0
+C: 6 - a: 0 b: 3118 c: 151 d: 9473 score: 0.0
+NP6 had no class associated with it until the timestamp 82800
+====================================
+======== FM NP7 timestamp = 82800=========
+C: 5 - a: 1 b: 17210 c: 1261 d: 30635 score: 1.08266126E-4
+C: 6 - a: 0 b: 3118 c: 82 d: 9542 score: 0.0
+NP7 --> 5 - t: 82800 - score: 1.0826612560776994E-4
+====================================
+======== FM NP13 timestamp = 82800=========
+C: 5 - a: 0 b: 17211 c: 246 d: 31650 score: 0.0
+C: 6 - a: 0 b: 3118 c: 3 d: 9621 score: 0.0
+NP13 had no class associated with it until the timestamp 82800
+====================================
+======== FM NP3 timestamp = 84600=========
+C: 5 - a: 0 b: 17922 c: 940 d: 31773 score: 0.0
+C: 6 - a: 0 b: 3615 c: 50 d: 10605 score: 0.0
+NP3 had no class associated with it until the timestamp 84600
+====================================
+======== FM NP5 timestamp = 84600=========
+C: 5 - a: 0 b: 17922 c: 1338 d: 31375 score: 0.0
+C: 6 - a: 0 b: 3615 c: 295 d: 10360 score: 0.0
+NP5 had no class associated with it until the timestamp 84600
+====================================
+======== FM NP6 timestamp = 84600=========
+C: 5 - a: 0 b: 17922 c: 763 d: 31950 score: 0.0
+C: 6 - a: 0 b: 3615 c: 166 d: 10489 score: 0.0
+NP6 had no class associated with it until the timestamp 84600
+====================================
+======== FM NP13 timestamp = 84600=========
+C: 5 - a: 0 b: 17922 c: 246 d: 32467 score: 0.0
+C: 6 - a: 0 b: 3615 c: 3 d: 10652 score: 0.0
+NP13 had no class associated with it until the timestamp 84600
+====================================
+======== FM NP3 timestamp = 86400=========
+C: 5 - a: 0 b: 18658 c: 941 d: 32545 score: 0.0
+C: 6 - a: 0 b: 4134 c: 51 d: 11594 score: 0.0
+NP3 had no class associated with it until the timestamp 86400
+====================================
+======== FM NP5 timestamp = 86400=========
+C: 5 - a: 0 b: 18658 c: 1358 d: 32128 score: 0.0
+C: 6 - a: 0 b: 4134 c: 315 d: 11330 score: 0.0
+NP5 had no class associated with it until the timestamp 86400
+====================================
+======== FM NP6 timestamp = 86400=========
+C: 5 - a: 0 b: 18658 c: 775 d: 32711 score: 0.0
+C: 6 - a: 0 b: 4134 c: 178 d: 11467 score: 0.0
+NP6 had no class associated with it until the timestamp 86400
+====================================
+======== FM NP13 timestamp = 86400=========
+C: 5 - a: 0 b: 18658 c: 246 d: 33240 score: 0.0
+C: 6 - a: 0 b: 4134 c: 3 d: 11642 score: 0.0
+NP13 had no class associated with it until the timestamp 86400
+====================================
+======== FM NP3 timestamp = 88200=========
+C: 5 - a: 0 b: 19375 c: 942 d: 33316 score: 0.0
+C: 6 - a: 0 b: 4704 c: 52 d: 12512 score: 0.0
+NP3 had no class associated with it until the timestamp 88200
+====================================
+======== FM NP5 timestamp = 88200=========
+C: 5 - a: 0 b: 19375 c: 1382 d: 32876 score: 0.0
+C: 6 - a: 0 b: 4704 c: 339 d: 12225 score: 0.0
+NP5 had no class associated with it until the timestamp 88200
+====================================
+======== FM NP6 timestamp = 88200=========
+C: 5 - a: 0 b: 19375 c: 784 d: 33474 score: 0.0
+C: 6 - a: 0 b: 4704 c: 187 d: 12377 score: 0.0
+NP6 had no class associated with it until the timestamp 88200
+====================================
+======== FM NP13 timestamp = 88200=========
+C: 5 - a: 0 b: 19375 c: 246 d: 34012 score: 0.0
+C: 6 - a: 0 b: 4704 c: 3 d: 12561 score: 0.0
+NP13 had no class associated with it until the timestamp 88200
+====================================
+======== FM NP3 timestamp = 90000=========
+C: 5 - a: 0 b: 20116 c: 943 d: 34048 score: 0.0
+C: 6 - a: 0 b: 5262 c: 53 d: 13427 score: 0.0
+NP3 had no class associated with it until the timestamp 90000
+====================================
+======== FM NP5 timestamp = 90000=========
+C: 5 - a: 0 b: 20116 c: 1406 d: 33585 score: 0.0
+C: 6 - a: 0 b: 5262 c: 363 d: 13117 score: 0.0
+NP5 had no class associated with it until the timestamp 90000
+====================================
+======== FM NP6 timestamp = 90000=========
+C: 5 - a: 0 b: 20116 c: 793 d: 34198 score: 0.0
+C: 6 - a: 0 b: 5262 c: 196 d: 13284 score: 0.0
+NP6 had no class associated with it until the timestamp 90000
+====================================
+======== FM NP13 timestamp = 90000=========
+C: 5 - a: 0 b: 20116 c: 246 d: 34745 score: 0.0
+C: 6 - a: 0 b: 5262 c: 3 d: 13477 score: 0.0
+NP13 had no class associated with it until the timestamp 90000
+====================================
+Number of examples sent to short-time-memory = 7605
+Number of examples removed from short-time-memory = 6248
+Number of NPs = 13
