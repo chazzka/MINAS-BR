@@ -105,63 +105,27 @@ public class Main {
         //*****************************************
         
 //        //****************MOA1*********************
-        String dataSetName = "MOA1";
-        String dataSetPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D.arff";
-        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
-        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
+//        String dataSetName = "MOA1";
+//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
+//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
+//        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
+//        double k_ini = 0.01;
+//        String theta = "1000";
+//        String omega = "2000";
+//        int L = 7;
+//        //*****************************************
+
+////        //****************MOA2*********************
+        String dataSetName = "MOA2";
+        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-train.arff";
+        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-test.arff";
         String outputDirecotory = "results_jan2021/"+dataSetName+"/";
         double k_ini = 0.01;
         String theta = "1000";
         String omega = "2000";
-        int L = 7;
-//        finalExperiment(dataSetName, trainPath, testPath, L, 0.01, "1000", "2000", "1.1", "kmeans+leader", "FM");
+        int L = 4;
 //        //*****************************************
         
-        //***********4CRE-V2************************
-////        String dataSetPath = "D:\\datasets\\sinteticos\\vinicius\\4CRE-V2-CE-ML.arff";
-//        String dataSetName = "4CRE-V2_comCardinalidade_100_100";
-////        String dataSetPath = "D:\\datasets\\datasets_sinteticos\\4CRE-V2\\4CRE-V2.arff";
-//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-train.arff";
-//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-test.arff";
-//        int L = 4;
-//        finalExperiment(dataSetName, trainPath, testPath, L, 0.01, "100", "100", "1.1", "kmeans+leader", "FM");
-        //*****************************************
-        
-//        String dataSetPath = "D:\\datasets\\reais\\mediamill\\mediamill_FL_merged.arff";
-//        String trainPath = "D:\\datasets\\reais\\yeast\\yeast-V2_modified_train.arff";
-//        String testPath = "D:\\datasets\\reais\\yeast\\yeast-V2_modified_test.arff";
-//        String trainPath = "D:\\datasets\\reais\\scene\\scene-V2_train.arff";
-//        String testPath = "D:\\datasets\\reais\\scene\\scene-V2_test.arff";
-//        String trainPath = "D:\\datasets\\reais\\mediamill\\mediamill_modified_train.arff";
-//        String testPath = "D:\\datasets\\reais\\mediamill\\mediamill_modified_test.arff";
-//        
-//        String dataSetPath = "D:\\datasets\\reais\\mediamill\\mediamill_modified.arff";
-        
-        
-//        ArrayList<Instance> D = new ArrayList<Instance>();
-//        ArrayList<Instance> train = new ArrayList<Instance>();
-//        ArrayList<Instance> test = new ArrayList<Instance>();
-//        MultiTargetArffFileStream file = new MultiTargetArffFileStream(dataSetPath, String.valueOf(L));
-//        file.prepareForUse();
-//        while(file.hasMoreInstances()){
-//            D.add(file.nextInstance().getData());
-//        }
-//        int trainSize = (int) (D.size()*0.1);
-//        for (int i = 0; i < trainSize; i++) {
-//            train.add(D.get(i));
-//        }
-//        
-//        for (int i = trainSize; i < D.size(); i++) {
-//            test.add(D.get(i));
-//        }
-//        
-//        DataSetUtils.createFileBasedOnList(train, dataSetPath, "train", dataSetName);
-//        DataSetUtils.createFileBasedOnList(test, dataSetPath, "test", dataSetName);
-//        String outputDirectory = "results/"+dataSetName+"/";
-//        FilesOutput.createDirectory(outputDirectory);
-//        finalExperiment(dataSetName, trainPath, testPath, L, 0.01, "1000", "2000", "1.1", "kmeans+leader", "FM");
-      
-//            experimentsParameters(dataSetName, trainPath, testPath, L, "kmeans+leader", "FM");
         experimentsMethods(trainPath, 
                 testPath, 
                 outputDirecotory,
@@ -418,6 +382,7 @@ public class Main {
         av.writeConceptEvolutionNP(model, outputDirectory);
         fileOut.close();
         filePredictions.close();
+        file
         fileOff.close();
         System.out.println("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem());
         model.getPnInfo().write("Number of examples sent to short-time-memory = " + onlinePhase.getExShortTimeMem() + "\n");

@@ -114,6 +114,7 @@ public class Model {
                 file.write("timestamp,cardinality" +"\n");
         
         file.write(timestamp + "," + this.currentCardinality + "\n");
+        file.close();
     }
     
     public ArrayList<Voting> getClosestMicroClusters(Instance data, int k) {
