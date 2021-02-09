@@ -451,7 +451,7 @@ public class OnlinePhase {
                 //For each BR-model
                 for (Map.Entry<String, ArrayList<MicroClusterBR>> listaMicroClusters : model.getModel().entrySet()) {
                     //Silhouette validation
-                    if (currentEvaluatedMC.clusterValidationSilhouette(listaMicroClusters.getValue()) == true) {
+                    if (currentEvaluatedMC.clusterSilhouette(listaMicroClusters.getValue()) > 0) {
                         //********** The new micro-cluster is valid ****************
                         for (int indexForRemoving = 0; indexForRemoving < removeExamples.length; indexForRemoving++) {
                             // mark the examples to be removed with the label -2
@@ -504,6 +504,7 @@ public class OnlinePhase {
                         while ( i < extModels.size()) {
                             //We must update mtxFrequencies and cardinality for calculating 
                             Z.add(extModels.get(i).getMicroCluster().getLabelClass());
+                            
                             for (Instance inst: toClassify) {
                                 model.updateCurrentCardinality(Z.size());
                                 model.updateMtxFrequencies(Z);
@@ -545,7 +546,6 @@ public class OnlinePhase {
                                         " examples");
                             }
                             
-                            
                             i++;
                             this.getExtInfo().write(textoArq+"\n");
                         }
@@ -568,8 +568,7 @@ public class OnlinePhase {
                             model.removerUnknown(Z);
                         }
                         
-                        extModels.add(currentEvaluatedMC);
-                        model.createModel(extModels, this.timestamp, this.getExtInfo(), textoArq);
+                        model.createModel(currentEvaluatedMC,extModels, this.timestamp, this.getExtInfo(), textoArq);
                     }
                     model.updateMicroClusterThresholds();
                 }else

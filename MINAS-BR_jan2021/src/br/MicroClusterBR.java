@@ -21,6 +21,11 @@ public class MicroClusterBR {
     private double threshold;
     private double averOut;
     private MicroCluster microCluster;
+    private double silhouette;
+
+    public double getSilhouette() {
+        return silhouette;
+    }
 
     public MicroClusterBR(MicroCluster microCluster) {
         this.microCluster = microCluster;
@@ -54,7 +59,7 @@ public class MicroClusterBR {
      * @param modeloValidar model
      * @return
      */
-    public boolean clusterValidationSilhouette(ArrayList<MicroClusterBR> modeloValidar) {
+    public double clusterSilhouette(ArrayList<MicroClusterBR> modeloValidar) {
         double minDistance = Double.MAX_VALUE;
         // calculate the distance between the center of the new cluster to the existing clusters 
         for (int i = 1; i < modeloValidar.size(); i++) {
@@ -63,12 +68,9 @@ public class MicroClusterBR {
                 minDistance = distance;
             }
         }
-        double silhouette = (minDistance - this.microCluster.getRadius() / 2) / Math.max(minDistance, this.microCluster.getRadius() / 2);
-        if (silhouette > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        this.silhouette = (minDistance - this.microCluster.getRadius() / 2) / Math.max(minDistance, this.microCluster.getRadius() / 2);
+        
+        return this.silhouette;
     }
 
     public void calculateInitialAverOutput(ArrayList<double[]> X_b) {
@@ -76,7 +78,7 @@ public class MicroClusterBR {
         sum = X_b.stream()
                 .map(x_i -> Math.exp(-KMeansMOAModified.distance(this.getMicroCluster().getCenter(), x_i)))
                 .reduce(sum, (accumulator, _item) -> accumulator + _item);
-        this.averOut = sum / X_b.size();
+        this.setAverOut(sum / X_b.size());
     }
 
     public void calculateThreshold(HashMap<String, Integer> mtxLabelsFrequencies, double observedExamples) {
@@ -85,7 +87,9 @@ public class MicroClusterBR {
         try{
             yj = mtxLabelsFrequencies.get(j + "," + j);
         }catch(NullPointerException e){
+            System.err.println("[Error] calculateThreshold - mtxLabelsFrequencies doesn't have informed cordinate");
             e.printStackTrace();
+            System.exit(0);
         }
         double p_yj =  yj / observedExamples;
         double prod = 1;
@@ -98,7 +102,7 @@ public class MicroClusterBR {
 //                prod1 *= p_yk_yj * this.averOut;
             }
         }
-        this.threshold = p_yj * prod * this.averOut;
+        this.setThreshold(p_yj * prod * this.averOut);
         if (this.threshold > 1){
             System.err.println("Threshold > 1");
             System.exit(0);
@@ -107,12 +111,26 @@ public class MicroClusterBR {
     }
 
     public void updateAverOut(double exp_dist) {
-        this.averOut = ((double) this.getMicroCluster().getN() * this.averOut + exp_dist) / (double) (this.getMicroCluster().getN() + 1);
+        this.setAverOut(((double) this.getMicroCluster().getN() * this.averOut + exp_dist) / (double) (this.getMicroCluster().getN() + 1));
         if(this.averOut > 1){
             System.err.println("AverOut > 1");
             System.exit(0);
         }
 //        this.averOut += exp_dist;
+    }
+
+    /**
+     * @param threshold the threshold to set
+     */
+    public void setThreshold(double threshold) {
+        this.threshold = threshold;
+    }
+
+    /**
+     * @param averOut the averOut to set
+     */
+    public void setAverOut(double averOut) {
+        this.averOut = averOut;
     }
 
 }

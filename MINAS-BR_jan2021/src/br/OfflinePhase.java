@@ -28,7 +28,6 @@ import moa.cluster.CFCluster;
 import moa.cluster.Cluster;
 import moa.cluster.Clustering;
 import moa.clusterers.KMeans;
-import utils.OnlinePhaseUtils;
 
 /**
  * 

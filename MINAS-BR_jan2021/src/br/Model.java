@@ -31,6 +31,8 @@ import utils.Voting;
  * @author joel
  */
 public class Model {
+    private String outputDirectory;
+    private int evaluationWindowSize;
     private HashMap<String, ArrayList<MicroClusterBR>> model;
     private ArrayList<NoveltyPattern> NPs;
     private ArrayList<Class> Classes;
@@ -68,6 +70,14 @@ public class Model {
     
     public void incrementNumerOfObservedExamples() {
         this.numberOfObservedExamples++;
+    }
+    
+    public int getEvaluationWindowSize() {
+        return evaluationWindowSize;
+    }
+
+    public void setEvaluationWindowSize(int evaluationWindowSize) {
+        this.evaluationWindowSize = evaluationWindowSize;
     }
 
     public void updateMtxFrequencies(Set<String> Z) {
@@ -293,17 +303,31 @@ public class Model {
      * @param textoArq
      * @throws java.io.IOException
      */
-    public void createModel(ArrayList<MicroClusterBR> novelty, int timestamp, FileWriter fileOut, String textoArq) throws NumberFormatException, IOException {
-        for (MicroClusterBR mc : novelty) {
-            mc.getMicroCluster().setTime(timestamp);
-            mc.getMicroCluster().setCategory("nov");
-            mc.getMicroCluster().setLabelClass("NP" + Integer.toString(this.getNPs().size() + 1));
+    public void createModel(MicroClusterBR currentEvaluatedMC, ArrayList<MicroClusterBR> extension, int timestamp, FileWriter fileOut, String textoArq) throws NumberFormatException, IOException {
+        
+        currentEvaluatedMC.getMicroCluster().setTime(timestamp);
+        currentEvaluatedMC.getMicroCluster().setCategory("nov");
+        currentEvaluatedMC.getMicroCluster().setLabelClass("NP" + Integer.toString(this.getNPs().size() + 1));
+        
+        ArrayList<MicroClusterBR> novelties = new ArrayList<>();
+        novelties.add(currentEvaluatedMC);
+        
+        for (MicroClusterBR mc : extension) {
+            MicroClusterBR np = new MicroClusterBR((MicroCluster) mc.getMicroCluster().copy());
+            np.setThreshold(mc.getThreshold());
+            np.setAverOut(np.getAverOut());
+            np.getMicroCluster().setTime(timestamp);
+            np.getMicroCluster().setCategory("nov");
+            np.getMicroCluster().setLabelClass("NP" + Integer.toString(this.getNPs().size() + 1));
+            novelties.add(np);
         }
-        this.getModel().put("NP" + Integer.toString(this.getNPs().size() + 1), novelty);
+        
+        this.getModel().put("NP" + Integer.toString(this.getNPs().size() + 1), novelties);
+        this.writeCreateModelInfo(timestamp, novelties);
         this.addNPs(timestamp);
-        textoArq = textoArq.concat("ThinkingNov: " + "Novelty " + "NP" + Integer.toString(this.getNPs().size() + 1) + " - " + novelty.size() + " micro-clusters" + "\n");
+        textoArq = textoArq.concat("ThinkingNov: " + "Novelty " + "NP" + Integer.toString(this.getNPs().size() + 1) + " - " + novelties.size() + " micro-clusters" + "\n");
         fileOut.write(textoArq+"\n");
-        System.out.println("ThinkingNov: " + "Novelty " + "NP" + Integer.toString(this.getNPs().size() + 1) + " - " + novelty.size() + " micro-clusters");
+        System.out.println("ThinkingNov: " + "Novelty " + "NP" + Integer.toString(this.getNPs().size() + 1) + " - " + novelties.size() + " micro-clusters");
     }
     
     /**
@@ -329,6 +353,36 @@ public class Model {
                 mc.calculateThreshold(mtxLabelsFrequencies, this.numberOfObservedExamples);
             });
         });
+    }
+
+    private void writeCreateModelInfo(int timestamp, ArrayList<MicroClusterBR> novelties) {
+       try {
+            FileWriter file = null;
+            if(novelties.get(0).getMicroCluster().getLabelClass().equals("NP1")){
+                file = new FileWriter(new File(outputDirectory+"createModelInfo.csv"), false);
+                file.write("timestamp,evaluationWindow,nExamples,radius,silhouette,threshold,averOut,label" +"\n");
+            }else{
+               file = new FileWriter(new File(outputDirectory+"createModelInfo.csv"), true);
+            }
+            
+            int evaluationWindow = (int) Math.ceil(timestamp / this.evaluationWindowSize);
+            
+            for (MicroClusterBR np : novelties) {
+            file.write(timestamp + ","+
+                 evaluationWindow + ","+
+                 np.getMicroCluster().getN()+ ","+
+                 np.getMicroCluster().getRadius()+ ","+
+                 np.clusterSilhouette(novelties)+ ","+
+                 np.getThreshold()+ ","+
+                 np.getAverOut()+ ","+
+                 np.getMicroCluster().getLabelClass()+ "\n");
+             }
+            
+            file.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Falha no arquivo createModelInfo.csv");
+        }
     }
 
     /**
@@ -807,6 +861,7 @@ public class Model {
         this.Yall = new ArrayList<>();
         this.Zall = new ArrayList<>();
         this.setPnInfo(outputDir);
+        this.outputDirectory = outputDir;
     }
 
     public ArrayList<Set<String>> getYall(){

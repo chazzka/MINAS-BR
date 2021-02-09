@@ -94,14 +94,14 @@ public class Main {
         //**********************************************
           
         //****************MOA-3C*********************
-//        String dataSetName = "MOA-3C";
-//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-//        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
-//        double k_ini = 0.001;
-//        String theta = "1000";
-//        String omega = "2000";
-//        int L = 5;
+        String dataSetName = "MOA-3C";
+        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
+        double k_ini = 0.001;
+        String theta = "1000";
+        String omega = "2000";
+        int L = 5;
         //*****************************************
         
 //        //****************MOA1*********************
@@ -118,14 +118,14 @@ public class Main {
 //        //*****************************************
 
 ////        //****************MOA2*********************
-        String dataSetName = "MOA2";
-        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-train.arff";
-        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-test.arff";
-        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
-        double k_ini = 0.01;
-        String theta = "200";
-        String omega = "200";
-        int L = 4;
+//        String dataSetName = "MOA2";
+//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-train.arff";
+//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-test.arff";
+//        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
+//        double k_ini = 0.01;
+//        String theta = "200";
+//        String omega = "200";
+//        int L = 4;
 //        //*****************************************
         
         experimentsMethods(trainPath, 
@@ -341,6 +341,7 @@ public class Main {
         
         OfflinePhase treino = new OfflinePhase(train, k_ini, fileOff, outputDirectory);
         Model model = treino.getModel();
+        model.setEvaluationWindowSize(evaluationWindowSize);
         model.writeCurrentCardinality(1, outputDirectory);
         
         fileOff.write("Known Classes: " + model.getAllLabel().size() + "\n");
