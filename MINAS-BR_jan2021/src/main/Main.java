@@ -255,7 +255,7 @@ public class Main {
         double[] theta = {0.1,0.75};
         int[] omega = {2000};
         double[] f = {1.1};
-        double[] k_ini = {0.3};
+        double[] k_ini = {0.001};
 //        double[] theta = {0.1,0.25,0.5,0.75,1};
 //        int[] omega = {200, 500, 1000, 2000};
 //        double[] f = {0.5, 0.75, 1.1, 1.3};

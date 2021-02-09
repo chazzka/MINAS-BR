@@ -433,21 +433,21 @@ public class OnlinePhase {
         Arrays.fill(removeExamples, -1);
         
         //temporary new micro-cluster formed by unknown examples
-        ArrayList<MicroClusterBR> modelUnk = this.createModelKMeansLeader(model, 
+        MicroClusterBR[] modelUnk = this.createModelKMeansLeader(model, 
                 removeExamples,
                 this.getTimestamp()
         );
 
         
         //for each candidate micro-cluster
-        for (int index_inst = 0; index_inst < modelUnk.size(); index_inst++) {
-            MicroClusterBR currentEvaluatedMC = modelUnk.get(index_inst);
+        for (int index_inst = 0; index_inst < modelUnk.length; index_inst++) {
+            MicroClusterBR currentEvaluatedMC = modelUnk[index_inst];
             ArrayList<Instance> toClassify = new ArrayList<>(); //stores examples which will form the new micro-clusters to classify them afterwards
             ArrayList<MicroClusterBR> extModels = new ArrayList<>();
             ArrayList<MicroClusterBR> novModels = new ArrayList<>();
             
             //Representative validation
-            if ((!currentEvaluatedMC.getMicroCluster().isEmpty()) && (currentEvaluatedMC.getMicroCluster().getWeight() >= numMinExCluster)) {
+            if ((currentEvaluatedMC != null) && (currentEvaluatedMC.getMicroCluster().getWeight() >= numMinExCluster)) {
                 //For each BR-model
                 for (Map.Entry<String, ArrayList<MicroClusterBR>> listaMicroClusters : model.getModel().entrySet()) {
                     //Silhouette validation
@@ -542,7 +542,7 @@ public class OnlinePhase {
                                         "N " + 
                                         extModels.get(i).getMicroCluster().getLabelClass() + 
                                         " - " +
-                                        (int) modelUnk.get(index_inst).getMicroCluster().getWeight() +
+                                        (int) currentEvaluatedMC.getMicroCluster().getWeight() +
                                         " examples");
                             }
                             
@@ -567,7 +567,6 @@ public class OnlinePhase {
                             model.incrementNumerOfObservedExamples();
                             model.removerUnknown(Z);
                         }
-                        
                         model.createModel(currentEvaluatedMC,extModels, this.timestamp, this.getExtInfo(), textoArq);
                     }
                     model.updateMicroClusterThresholds();
@@ -989,7 +988,7 @@ public class OnlinePhase {
         return extInfo;
     }
     
-    private ArrayList<MicroClusterBR> createModelKMeansLeader(Model model, int[] exampleCluster, int timestamp) throws NumberFormatException, IOException {
+    private MicroClusterBR[] createModelKMeansLeader(Model model, int[] exampleCluster, int timestamp) throws NumberFormatException, IOException {
         List<ClustreamKernelMOAModified> examples = new LinkedList<>();
         //Adicionando os exemplos ao algoritmo
         for (int k = 0; k < model.getShortTimeMemory().getData().size(); k++) {
@@ -1076,12 +1075,12 @@ public class OnlinePhase {
             //Do not considering non-representative clusters
             if(modelAux[i].getMicroCluster().getN() > 3){
                 modelAux[i].calculateInitialAverOutput(mcInstances.get(i));
-                modelSet.add(modelAux[i]);
             }else{
                 exampleCluster[i] = -1;
+                modelAux[i] = null;
             }
         }
-        return modelSet;
+        return modelAux;
     }
     
     private ArrayList<Integer> leaderAlgorithm(ArrayList<Instance> dataSet, double maxRadius) {
@@ -1095,7 +1094,7 @@ public class OnlinePhase {
             for (int j = 0; j < centroids.size(); j++) {
                 double[] data1 = Arrays.copyOfRange(dataSet.get(i).toDoubleArray(),
                         dataSet.get(i).numOutputAttributes(), 
-                        dataSet.get(1).numAttributes()
+                        dataSet.get(i).numAttributes()
                 );
                 double[] data2 = Arrays.copyOfRange(dataSet.get(centroids.get(j)).toDoubleArray(), 
                         dataSet.get(i).numOutputAttributes(), 

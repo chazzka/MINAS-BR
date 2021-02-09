@@ -87,7 +87,7 @@ public class MicroClusterBR {
         try{
             yj = mtxLabelsFrequencies.get(j + "," + j);
         }catch(NullPointerException e){
-            System.err.println("[Error] calculateThreshold - mtxLabelsFrequencies doesn't have informed cordinate");
+            System.err.println("[Error] calculateThreshold - mtxLabelsFrequencies doesn't has cordinate keys");
             e.printStackTrace();
             System.exit(0);
         }
