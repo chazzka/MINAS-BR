@@ -308,6 +308,7 @@ public class Model {
         currentEvaluatedMC.getMicroCluster().setTime(timestamp);
         currentEvaluatedMC.getMicroCluster().setCategory("nov");
         currentEvaluatedMC.getMicroCluster().setLabelClass("NP" + Integer.toString(this.getNPs().size() + 1));
+        currentEvaluatedMC.calculateThreshold(mtxLabelsFrequencies, numberOfObservedExamples);
         
         ArrayList<MicroClusterBR> novelties = new ArrayList<>();
         novelties.add(currentEvaluatedMC);

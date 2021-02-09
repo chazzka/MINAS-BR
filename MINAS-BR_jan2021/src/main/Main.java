@@ -95,9 +95,9 @@ public class Main {
           
         //****************MOA-3C*********************
         String dataSetName = "MOA-3C";
-        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
+        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
         double k_ini = 0.001;
         String theta = "1000";
         String omega = "2000";
@@ -128,16 +128,22 @@ public class Main {
 //        int L = 4;
 //        //*****************************************
         
-        experimentsMethods(trainPath, 
-                testPath, 
-                outputDirecotory,
-                L, 
-                k_ini,
-                theta, 
-                omega,
-                "1.1",
-                "kmeans+leader",
-                "FM");
+//        experimentsMethods(trainPath, 
+//                testPath, 
+//                outputDirecotory,
+//                L, 
+//                k_ini,
+//                theta, 
+//                omega,
+//                "1.1",
+//                "kmeans+leader",
+//                "FM");
+        
+        experimentsParameters(dataSetName,
+                trainPath,
+                testPath,
+                L,
+                outputDirecotory);
     }
     
     public static void convertArffFile(String train, String test, String dataSetName) throws Exception{
@@ -222,7 +228,12 @@ public class Main {
         csvFile.close();
     }
     
-    private static void experimentsParameters(String dataSetName, String trainPath, String testPath, int L, String algClus, String evMeasure) throws IOException, Exception {
+    private static void experimentsParameters(String dataSetName,
+            String trainPath, 
+            String testPath,
+            int L,
+            String outputDirectory) throws IOException, Exception {
+        
         ArrayList<Instance> train = new ArrayList<Instance>();
         ArrayList<Instance> test = new ArrayList<Instance>();
         
@@ -241,42 +252,46 @@ public class Main {
         }
         file.restart();
         System.out.println(DataSetUtils.getLabelSet(test.get(0)));
-//        int[] theta = {20};
-//        int[] omega = {2000};
-//        double[] f = {1.1};
-//        double[] k_ini = {0.3};
-        int[] theta = {20, 50, 100, 1000, 2000};
-        int[] omega = {100, 500, 1000, 2000};
-        double[] f = {0.5, 0.7, 1.1, 1.3};
-//        double[] f = {0.7, 1.1};
-        double[] k_ini = {0.01, 0.1, 0.3};
+        double[] theta = {0.1,0.75};
+        int[] omega = {2000};
+        double[] f = {1.1};
+        double[] k_ini = {0.3};
+//        double[] theta = {0.1,0.25,0.5,0.75,1};
+//        int[] omega = {200, 500, 1000, 2000};
+//        double[] f = {0.5, 0.75, 1.1, 1.3};
+//        double[] k_ini = {0.01, 0.05, 0.1, 0.25};
 //        int[] theta = {30, 100, 500, 1000, 2000};
 //        int[] omega = {100, 500, 1000, 2000};
 //        double[] f = {1.0, 1.1, 1.3, 1.5};
 //        double[] k_ini = {0.01, 0.05, 0.1, 0.3};
 
-        String outputDirectory = "results/parameters_sensitivity/"+dataSetName+"/";
+        outputDirectory = outputDirectory + "/parameters_sensitivity/"+dataSetName+"/";
         FilesOutput.createDirectory(outputDirectory);
         
+        
         FileWriter F1M = new FileWriter(new File(outputDirectory + "/F1M.csv"), false);
-        FileWriter F1 = new FileWriter(new File(outputDirectory + "/F1.csv"), false);
+        FileWriter pr = new FileWriter(new File(outputDirectory + "/precision.csv"), false);
+        FileWriter re = new FileWriter(new File(outputDirectory + "/recall.csv"), false);
         FileWriter SA = new FileWriter(new File(outputDirectory + "/SA.csv"), false);
         
         F1M.write("theta-omega"+ ",");
-        F1.write("theta-omega"+ ",");
+        pr.write("theta-omega"+ ",");
+        re.write("theta-omega"+ ",");
         SA.write("theta-omega"+ ",");
         
         for (int i = 0; i < f.length; i++) {
             for (int j = 0; j< k_ini.length ; j++) {
                 F1M.write("f_"+f[i]+"_k_"+k_ini[j] + ",NPs,");
-                F1.write("f_"+f[i]+"_k_"+k_ini[j] + ",");
+                pr.write("f_"+f[i]+"_k_"+k_ini[j] + ",");
+                re.write("f_"+f[i]+"_k_"+k_ini[j] + ",");
                 SA.write("f_"+f[i]+"_k_"+k_ini[j] + ",");
             }
             
         }
         
         F1M.write("\n");
-        F1.write("\n");
+        pr.write("\n");
+        re.write("\n");
         SA.write("\n");
         String dir = outputDirectory;
         
@@ -284,27 +299,37 @@ public class Main {
             for (int j = 0; j < omega.length; j++) {
                 if(theta[i] <= omega[j]){
                     F1M.write(theta[i] + "-" + omega[j] + ",");
-                    F1.write(theta[i] + "-" + omega[j]+ ",");
+                    pr.write(theta[i] + "-" + omega[j]+ ",");
+                    re.write(theta[i] + "-" + omega[j]+ ",");
                     SA.write(theta[i] + "-" + omega[j]+ ",");
                     for (int k = 0; k < f.length; k++) {
                         for (int l = 0; l < k_ini.length; l++) {
                             outputDirectory = dir + theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l] +"/";
                             FilesOutput.createDirectory(outputDirectory);
-//                            EvaluatorBR avMINAS = MINAS_BR(train, test, L, k_ini[l],theta[i],omega[j], f[k], 
-//                                    algClus, evMeasure, outputDirectory);
-//                            F1M.write(avMINAS.getAvgF1M() + "," + avMINAS.getQtdeNP() + ",");
-//                            F1.write(avMINAS.getAvgF1() + ",");
-//                            SA.write(avMINAS.getAvgSA() + ",");
+                            EvaluatorBR avMINAS = MINAS_BR(train,
+                                    test,
+                                    L, 
+                                    k_ini[l],
+                                    (int) theta[i]*omega[j],
+                                    omega[j], 
+                                    f[k],
+                                    outputDirectory);
+                            F1M.write(avMINAS.getAvgF1M() + "," + avMINAS.getQtdeNP() + ",");
+                            pr.write(avMINAS.getAvgPr()+ ",");
+                            re.write(avMINAS.getAvgRe() + ",");
+                            SA.write(avMINAS.getAvgSA() + ",");
                         }
                     }
                     F1M.write("\n");
-                    F1.write("\n");
+                    pr.write("\n");
+                    re.write("\n");
                     SA.write("\n");
                 }
             }
         }
         F1M.close();
-        F1.close();
+        pr.close();
+        re.close();
         SA.close();
     }
     
@@ -315,7 +340,6 @@ public class Main {
             int theta, 
             int omega, 
             double f, 
-            int evaluationWindowSize,
             String outputDirectory) throws IOException, Exception {
         
 //        Instances D_ = DataSetUtils.dataFileToInstance(dataSetPath);
@@ -339,6 +363,8 @@ public class Main {
         FileWriter fileOff = new FileWriter(new File(outputDirectory + "/faseOfflineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/results.txt"), false); //Armazena informações da fase de treinamento
         
+        int evaluationWindowSize = (int) Math.ceil(test.size()/50);
+        
         OfflinePhase treino = new OfflinePhase(train, k_ini, fileOff, outputDirectory);
         Model model = treino.getModel();
         model.setEvaluationWindowSize(evaluationWindowSize);
@@ -352,7 +378,7 @@ public class Main {
         
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 
         OnlinePhase onlinePhase = new OnlinePhase(theta, f, outputDirectory, fileOut, "kmeans+leader");
-        String measure = "FM";
+        String measure = "JI";
         
         //Classification phase
         for (int i = 0; i < test.size(); i++) {
@@ -444,31 +470,19 @@ public class Main {
         }
         file.restart();
         
-        int[] dist = DataSetUtils.getLabelsDistribution(train);
-        int[] distTest = DataSetUtils.getLabelsDistribution(test);
-//        train.addAll(test);
-//        DataSetUtils.calculateUncondionalDependence(train);
-        Set<String> C_con = DataSetUtils.getClassesConhecidas(train);
-        int wEvaluation = (int) Math.ceil(test.size()/50);
         ArrayList<Instance> aux = new ArrayList<>();
         aux.addAll(train);
         aux.addAll(test);
-//        double[] mean = LabelSetMining.getMeanValues(aux);
-//        LabelSetMining.replaceMissingValues(train, mean);
-//        LabelSetMining.replaceMissingValues(test, mean);
         float cardinalityTrain = DataSetUtils.getCardinality(train, L);
         float labelCardinality = DataSetUtils.getCardinality(aux, L);
-        float[] windowsCardinalities = DataSetUtils.getWindowsCardinalities(test, wEvaluation, L);
         FileWriter DsInfos = new FileWriter(new File(outputDirectory + "/dataSetInfo.txt"), false);
         
 
         DsInfos.write("Train label cardinality: " + cardinalityTrain + "\n");
         DsInfos.write("General label cardinality: " + labelCardinality + "\n");
-        DsInfos.write("Windows label cardinality: " + Arrays.toString(windowsCardinalities) + "\n");
+//        DsInfos.write("Windows label cardinality: " + Arrays.toString(windowsCardinalities) + "\n");
         DsInfos.write("Number of examples: " + train.size()+test.size() + "\n");
         DsInfos.write("Number of attributes: " + train.get(0).numInputAttributes() +"\n");
-        DsInfos.write("Train distribution: " + Arrays.toString(dist) +"\n");
-        DsInfos.write("Test distribution: " + Arrays.toString(distTest) +"\n");
         DsInfos.close();
         
         ArrayList<Evaluator> av = new ArrayList<Evaluator>();
@@ -479,7 +493,6 @@ public class Main {
                 Integer.valueOf(theta), 
                 Integer.valueOf(omega), 
                 Double.valueOf(f),
-                wEvaluation,
                 outputDirectory)
         );
 
