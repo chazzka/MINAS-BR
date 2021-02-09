@@ -21,6 +21,7 @@ public class EvaluatorBR extends Evaluator{
     private int Lk;
     private int UNK = 0;
     private ArrayList<Integer> unk = new ArrayList<>();
+    private ArrayList<Integer> removedUnk = new ArrayList<>();
     private ArrayList<Float> unkRm = new ArrayList<>();
     private ArrayList<Float> unkRM = new ArrayList<>();
     private Set<String> knownClasses;
@@ -148,7 +149,8 @@ public class EvaluatorBR extends Evaluator{
         getRem().add(re);
 //        getUnkRm().add(unkRm);
         updateUnknownRatio(model);
-         
+        this.removedUnk.add(model.getShortTimeMemory().getQtdeExDeleted());
+        model.getShortTimeMemory().setQtdeExDeleted(0);
     }
     
     /**
@@ -212,19 +214,28 @@ public class EvaluatorBR extends Evaluator{
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/"+this.getClassifier()+"-Results.csv"), false);
         System.out.println("====================== Resultados por Janela ======================");
         System.out.println("Timestamp,F1,SA,HL,Pr,Re,F1m,F1M,Prm,PrM,Rem,ReM,unkR,unk");
-        fileOut.write("Timestamp,F1,SA,HL,Pr,Re,F1m,F1M,Prm,PrM,Rem,ReM,unkRM,unk\n");
+        fileOut.write("Timestamp,F1,SA,HL,Pr,Re,F1m,F1M,Prm,PrM,Rem,ReM,unkRM,unk,removedUnk\n");
 
         for (int i = 0; i < getF1m().size(); i++) {
             int t = i+1;
             fileOut.write(t + "," + getF1().get(i)+ "," + getSub_acc().get(i) + "," + getHl().get(i) + "," + getPr().get(i) + "," + getRe().get(i) + "," +
                     getF1m().get(i) + "," + getF1M().get(i) + ","+ getPrm().get(i) + ","+ getPrM().get(i) + ","+ getRem().get(i) + ","+ getReM().get(i) +
-                    ","+ getUnkRM().get(i)+ "," + getUnk().get(i) + "\n");
+                    ","+ getUnkRM().get(i)+ "," + getUnk().get(i) + "," +
+                    this.getRemovedUnk().get(i) + "\n");
             System.out.println(i+1 + "," + getF1().get(i)+ "," + getSub_acc().get(i) + "," + getHl().get(i) + "," + getPr().get(i) + "," + getRe().get(i) + "," +
                     getF1m().get(i) + "," + getF1M().get(i) + ","+ getPrm().get(i) + ","+ getPrM().get(i) + ","+ getRem().get(i) + ","+ getReM().get(i) +
                     ","+ getUnkRM().get(i)+ "," + getUnk().get(i));
         }
         
         fileOut.close();
+    }
+
+    public ArrayList<Integer> getRemovedUnk() {
+        return removedUnk;
+    }
+
+    public void setRemovedUnk(ArrayList<Integer> removedUnk) {
+        this.removedUnk = removedUnk;
     }
     
     /**

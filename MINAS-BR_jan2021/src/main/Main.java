@@ -60,48 +60,47 @@ public class Main {
      * @throws Exception 
      */
     public static void main(String[] args) throws Exception {
-//        String dataSetName = "MOA-3C-5C-2D_w50";
-//        String dataSetName = "MOA-5C-7C-2D";
-//        int L = 7;
-//        String dataSetName = "MOA-5C-7C-3D_w50";
-//        String dataSetName = "mediamill";
-        //****************MEDIAMILL*********************
-//        String dataSetName = "Mediamill";
-//        int L = 18;
-//        String trainPath = "/home/joel/datasets/reais/mediamill/mediamill_modified_train.arff";
-//        String testPath = "/home/joel/datasets/reais/mediamill/mediamill_modified_test.arff";
-        //**********************************************
-        
-        //****************NUS-WIDE*********************
-//        String dataSetName = "nus-wide";
-//        int L = 9;
-////        String dataSetPath = "/home/joel/datasets/reais/nus-wide-128D/nus-wide_modified.arff";
-//        String trainPath = "/home/joel/datasets/reais/nus-wide-128D/nus-wide_modified_train_new.arff";
-//        String testPath = "/home/joel/datasets/reais/nus-wide-128D/nus-wide_modified_test_new.arff";
-        //**********************************************
-
-        //****************REUTERS*********************
-//        String dataSetName = "Reuters";
-//        int L = 40;
-//        String trainPath = "D:\\datasets\\reais\\reuters\\reuters_modified_train.arff";
-//        String testPath = "D:\\datasets\\reais\\reuters\\reuters_modified_test.arff";
-//        String trainPath = "D:\\datasets\\reais\\reuters\\reuters_norm_modified_train.arff";
-//        String testPath = "D:\\datasets\\reais\\reuters\\reuters_norm_modified_test.arff";
-//        String trainPath = "/home/joel/datasets/reais/reuters/reuters_norm_modified_train.arff";
-//        String testPath = "/home/joel/datasets/reais/reuters/reuters_norm_modified_test.arff";
-//        String trainPath = "/home/joel/datasets/reais/reuters/reuters_norm_modified_train2.arff";
-//        String testPath = "/home/joel/datasets/reais/reuters/reuters_norm_modified_test2.arff";
-        //**********************************************
           
-        //****************MOA-3C*********************
-        String dataSetName = "MOA-3C";
-        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
-        double k_ini = 0.001;
-        String theta = "1000";
-        String omega = "2000";
-        int L = 5;
+        //****************General*********************
+        String dataSetName = args[1];
+        String trainPath = args[2];
+        String testPath = args[3];
+        int L = Integer.parseInt(args[4]);
+        String outputDirecotory = "";
+        if(args[0].equals("-p")){
+            outputDirecotory = args[5];
+            
+            experimentsParameters(dataSetName,
+                trainPath,
+                testPath,
+                L,
+                outputDirecotory);
+        }else{
+            double k_ini = Double.parseDouble(args[5]);
+            String theta = args[6];
+            String omega = args[7];
+            outputDirecotory = args[8] + "/" + dataSetName;
+            
+            experimentsMethods(trainPath, 
+                testPath, 
+                outputDirecotory,
+                L, 
+                k_ini,
+                theta, 
+                omega,
+                "1.1",
+                "kmeans+leader",
+                "JI");
+        }
+//        //****************MOA-3C*********************
+//        String dataSetName = "MOA-3C";
+//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+//        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
+//        double k_ini = 0.001;
+//        String theta = "1000";
+//        String omega = "2000";
+//        int L = 5;
         //*****************************************
         
 //        //****************MOA1*********************
@@ -139,11 +138,11 @@ public class Main {
 //                "kmeans+leader",
 //                "FM");
         
-        experimentsParameters(dataSetName,
-                trainPath,
-                testPath,
-                L,
-                outputDirecotory);
+//        experimentsParameters(dataSetName,
+//                trainPath,
+//                testPath,
+//                L,
+//                outputDirecotory);
     }
     
     public static void convertArffFile(String train, String test, String dataSetName) throws Exception{
@@ -251,19 +250,14 @@ public class Main {
             test.add(file.nextInstance().getData());
         }
         file.restart();
-        System.out.println(DataSetUtils.getLabelSet(test.get(0)));
-        double[] theta = {0.1,0.75};
-        int[] omega = {2000};
-        double[] f = {1.1};
-        double[] k_ini = {0.001};
-//        double[] theta = {0.1,0.25,0.5,0.75,1};
-//        int[] omega = {200, 500, 1000, 2000};
-//        double[] f = {0.5, 0.75, 1.1, 1.3};
-//        double[] k_ini = {0.01, 0.05, 0.1, 0.25};
-//        int[] theta = {30, 100, 500, 1000, 2000};
-//        int[] omega = {100, 500, 1000, 2000};
-//        double[] f = {1.0, 1.1, 1.3, 1.5};
-//        double[] k_ini = {0.01, 0.05, 0.1, 0.3};
+//        double[] theta = {0.1,0.75};
+//        int[] omega = {2000};
+//        double[] f = {1.1};
+//        double[] k_ini = {0.001};
+        double[] theta = {0.1,0.25,0.5,0.75,1};
+        int[] omega = {200, 500, 1000, 2000};
+        double[] f = {0.5, 0.75, 1.1, 1.3};
+        double[] k_ini = {0.01, 0.05, 0.1, 0.25};
 
         outputDirectory = outputDirectory + "/parameters_sensitivity/"+dataSetName+"/";
         FilesOutput.createDirectory(outputDirectory);
