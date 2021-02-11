@@ -399,11 +399,23 @@ public class Model {
         }
     }
 
-    public void resetMtxLabelFrequencies() {
-        for (Iterator<String> iterator = this.mtxLabelsFrequencies.keySet().iterator(); iterator.hasNext();) {
-            String cord = iterator.next();
-            this.mtxLabelsFrequencies.put(cord, 0);
+    public void resetMtxLabelFrequencies(int windowSize) {
+        for (String cord : this.mtxLabelsFrequencies.keySet()) {
+                this.mtxLabelsFrequencies.put(cord, 0);
+            }
+        for(int i = this.Zall.size() - windowSize; i < this.Zall.size(); i++){
+            if(!Zall.get(i).contains("unk"))
+                this.updateMtxFrequencies(Zall.get(i));
         }
+        
+        model.entrySet().forEach(entry -> {
+            entry.getValue().forEach(mc -> {
+                if((this.Zall.size() - windowSize) <= 0)
+                    mc.calculateThreshold(mtxLabelsFrequencies, windowSize);
+                else
+                    mc.calculateThreshold(mtxLabelsFrequencies, (this.Zall.size() - windowSize));
+            });
+        });
     }
 
     /**

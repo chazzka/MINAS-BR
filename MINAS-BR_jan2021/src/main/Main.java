@@ -53,54 +53,48 @@ import weka.core.Instances;
  */
 public class Main {
 
-    static Set<Integer> unkExamples = new HashSet<>();
-    /**
-     * 
-     * @param args 0 - BR or LP 1 - p or m 2 - dataset name 3 - dataset path 4 - examples number to new micro-clustering procedure 5 - window size
-     * @throws Exception 
-     */
     public static void main(String[] args) throws Exception {
           
         //****************General*********************
-        String dataSetName = args[1];
-        String trainPath = args[2];
-        String testPath = args[3];
-        int L = Integer.parseInt(args[4]);
-        String outputDirecotory = "";
-        if(args[0].equals("-p")){
-            outputDirecotory = args[5];
-            
-            experimentsParameters(dataSetName,
-                trainPath,
-                testPath,
-                L,
-                outputDirecotory);
-        }else{
-            double k_ini = Double.parseDouble(args[5]);
-            String theta = args[6];
-            String omega = args[7];
-            outputDirecotory = args[8] + "/" + dataSetName;
-            
-            experimentsMethods(trainPath, 
-                testPath, 
-                outputDirecotory,
-                L, 
-                k_ini,
-                theta, 
-                omega,
-                "1.1",
-                "kmeans+leader",
-                "JI");
-        }
+//        String dataSetName = args[1];
+//        String trainPath = args[2];
+//        String testPath = args[3];
+//        int L = Integer.parseInt(args[4]);
+//        String outputDirecotory = "";
+//        if(args[0].equals("-p")){
+//            outputDirecotory = args[5];
+//            
+//            experimentsParameters(dataSetName,
+//                trainPath,
+//                testPath,
+//                L,
+//                outputDirecotory);
+//        }else{
+//            double k_ini = Double.parseDouble(args[5]);
+//            String theta = args[6];
+//            String omega = args[7];
+//            outputDirecotory = args[8] + "/" + dataSetName;
+//            
+//            experimentsMethods(trainPath, 
+//                testPath, 
+//                outputDirecotory,
+//                L, 
+//                k_ini,
+//                theta, 
+//                omega,
+//                "1.1",
+//                "kmeans+leader",
+//                "JI");
+//        }
 //        //****************MOA-3C*********************
-//        String dataSetName = "MOA-3C";
-//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-//        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
-//        double k_ini = 0.25;
-//        String theta = "20";
-//        String omega = "200";
-//        int L = 5;
+        String dataSetName = "MOA-3C_resetingMtxT";
+        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
+        double k_ini = 0.01;
+        String theta = "1000";
+        String omega = "2000";
+        int L = 5;
         //*****************************************
         
 //        //****************MOA1*********************
@@ -127,16 +121,16 @@ public class Main {
 //        int L = 4;
 //        //*****************************************
         
-//        experimentsMethods(trainPath, 
-//                testPath, 
-//                outputDirecotory,
-//                L, 
-//                k_ini,
-//                theta, 
-//                omega,
-//                "0.5",
-//                "kmeans+leader",
-//                "JI");
+        experimentsMethods(trainPath, 
+                testPath, 
+                outputDirecotory,
+                L, 
+                k_ini,
+                theta, 
+                omega,
+                "1",
+                "kmeans+leader",
+                "JI");
         
 //        experimentsParameters(dataSetName,
 //                trainPath,
@@ -373,7 +367,6 @@ public class Main {
         
         EvaluatorBR av = new EvaluatorBR(L, model.getModel().keySet(), "MINAS-BR"); 
         OnlinePhase onlinePhase = new OnlinePhase(theta, f, outputDirectory, fileOut, "kmeans+leader");
-        String measure = "JI";
         
         //Classification phase
         for (int i = 0; i < test.size(); i++) {
@@ -383,20 +376,20 @@ public class Main {
             
             //for each model deletes the micro-clusters wich have not been used
             if((onlinePhase.getTimestamp()%omega) == 0){
-//                model.resetMtxLabelFrequencies();
+                model.resetMtxLabelFrequencies(omega);
                 model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(),fileOut, false);
                 onlinePhase.removeOldMicroClusters(omega, model, fileOut);
             }
             if((onlinePhase.getTimestamp()%evaluationWindowSize) == 0){
                 model.writeBayesRulesElements(onlinePhase.getTimestamp(), outputDirectory);
                 model.writeCurrentCardinality(onlinePhase.getTimestamp(), outputDirectory);
-                model.associatesNPs(evaluationWindowSize, onlinePhase.getTimestamp(), measure);
+                model.associatesNPs(evaluationWindowSize, onlinePhase.getTimestamp(), "JI");
 //                av.getDeletedExamples().add(model.getShortTimeMemory().getQtdeExDeleted());
                 av.updateExampleBasedMeasure(model, evaluationWindowSize);
                 av.updateLabelBasedMeasure(model, evaluationWindowSize);
             }
             if(i == test.size()-1 && (onlinePhase.getTimestamp()%evaluationWindowSize)>0){
-                model.associatesNPs(evaluationWindowSize, onlinePhase.getTimestamp(), measure);
+                model.associatesNPs(evaluationWindowSize, onlinePhase.getTimestamp(), "JI");
                 av.updateExampleBasedMeasure(model, evaluationWindowSize);
                 av.updateLabelBasedMeasure(model, evaluationWindowSize);
             }

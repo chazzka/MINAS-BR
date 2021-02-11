@@ -61,11 +61,6 @@ public class EvaluatorBR extends Evaluator{
 //            }
             Set<String> Y = model.getYall().get(i);
             if(!Z.contains("unk")){
-//                for (Iterator<String> iterator = model.getYall().get(i).iterator(); iterator.hasNext();) {
-//                    String next = iterator.next();
-//                    super.getConsufionMtx().get(next)[0][2] += 1;
-//                }
-//            }else{
                 model.noveltyPatternsToClassesPrediction(Z);
                 for (Map.Entry<String, int[][]> entry : getConsufionMtx().entrySet()) {
                     String key = entry.getKey();
