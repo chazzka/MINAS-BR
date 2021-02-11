@@ -62,45 +62,45 @@ public class Main {
     public static void main(String[] args) throws Exception {
           
         //****************General*********************
-        String dataSetName = args[1];
-        String trainPath = args[2];
-        String testPath = args[3];
-        int L = Integer.parseInt(args[4]);
-        String outputDirecotory = "";
-        if(args[0].equals("-p")){
-            outputDirecotory = args[5];
-            
-            experimentsParameters(dataSetName,
-                trainPath,
-                testPath,
-                L,
-                outputDirecotory);
-        }else{
-            double k_ini = Double.parseDouble(args[5]);
-            String theta = args[6];
-            String omega = args[7];
-            outputDirecotory = args[8] + "/" + dataSetName;
-            
-            experimentsMethods(trainPath, 
-                testPath, 
-                outputDirecotory,
-                L, 
-                k_ini,
-                theta, 
-                omega,
-                "1.1",
-                "kmeans+leader",
-                "JI");
-        }
+//        String dataSetName = args[1];
+//        String trainPath = args[2];
+//        String testPath = args[3];
+//        int L = Integer.parseInt(args[4]);
+//        String outputDirecotory = "";
+//        if(args[0].equals("-p")){
+//            outputDirecotory = args[5];
+//            
+//            experimentsParameters(dataSetName,
+//                trainPath,
+//                testPath,
+//                L,
+//                outputDirecotory);
+//        }else{
+//            double k_ini = Double.parseDouble(args[5]);
+//            String theta = args[6];
+//            String omega = args[7];
+//            outputDirecotory = args[8] + "/" + dataSetName;
+//            
+//            experimentsMethods(trainPath, 
+//                testPath, 
+//                outputDirecotory,
+//                L, 
+//                k_ini,
+//                theta, 
+//                omega,
+//                "1.1",
+//                "kmeans+leader",
+//                "JI");
+//        }
 //        //****************MOA-3C*********************
-//        String dataSetName = "MOA-3C";
-//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-//        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
-//        double k_ini = 0.001;
-//        String theta = "1000";
-//        String omega = "2000";
-//        int L = 5;
+        String dataSetName = "MOA-3C";
+        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
+        double k_ini = 0.25;
+        String theta = "20";
+        String omega = "200";
+        int L = 5;
         //*****************************************
         
 //        //****************MOA1*********************
@@ -127,16 +127,16 @@ public class Main {
 //        int L = 4;
 //        //*****************************************
         
-//        experimentsMethods(trainPath, 
-//                testPath, 
-//                outputDirecotory,
-//                L, 
-//                k_ini,
-//                theta, 
-//                omega,
-//                "1.1",
-//                "kmeans+leader",
-//                "FM");
+        experimentsMethods(trainPath, 
+                testPath, 
+                outputDirecotory,
+                L, 
+                k_ini,
+                theta, 
+                omega,
+                "0.5",
+                "kmeans+leader",
+                "JI");
         
 //        experimentsParameters(dataSetName,
 //                trainPath,
@@ -299,6 +299,7 @@ public class Main {
                     for (int k = 0; k < f.length; k++) {
                         for (int l = 0; l < k_ini.length; l++) {
                             outputDirectory = dir + theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l] +"/";
+                            System.out.println("***********"+theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l]+"******************");
                             FilesOutput.createDirectory(outputDirectory);
                             EvaluatorBR avMINAS = MINAS_BR(train,
                                     test,
@@ -382,6 +383,7 @@ public class Main {
             
             //for each model deletes the micro-clusters wich have not been used
             if((onlinePhase.getTimestamp()%omega) == 0){
+//                model.resetMtxLabelFrequencies();
                 model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(),fileOut, false);
                 onlinePhase.removeOldMicroClusters(omega, model, fileOut);
             }
@@ -452,9 +454,6 @@ public class Main {
             train.add(file.nextInstance().getData());
         }
         file.restart();
-//        for (int i = 0; i < train.size(); i++) {
-////            System.out.println(DataSetUtils.getLabelSet(train.get(i)));
-//        }
         
         file = new MultiTargetArffFileStream(testPath, String.valueOf(L));
         file.prepareForUse();

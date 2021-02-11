@@ -308,7 +308,7 @@ public class Model {
         currentEvaluatedMC.getMicroCluster().setTime(timestamp);
         currentEvaluatedMC.getMicroCluster().setCategory("nov");
         currentEvaluatedMC.getMicroCluster().setLabelClass("NP" + Integer.toString(this.getNPs().size() + 1));
-        currentEvaluatedMC.calculateThreshold(mtxLabelsFrequencies, numberOfObservedExamples);
+//        currentEvaluatedMC.calculateThreshold(mtxLabelsFrequencies, numberOfObservedExamples);
         
         ArrayList<MicroClusterBR> novelties = new ArrayList<>();
         novelties.add(currentEvaluatedMC);
@@ -347,6 +347,19 @@ public class Model {
         modelUnk.calculateThreshold(mtxLabelsFrequencies, numberOfObservedExamples);
         model.get(label).add(modelUnk);
     }
+    
+    public ArrayList<Instance> getInstancesUsedToBuildNewMC(int[] removeExamples, int indexMC) {
+        ArrayList<Instance> toClassify = new ArrayList<>();
+        for (int indexForRemoving = 0; indexForRemoving < removeExamples.length; indexForRemoving++) {
+            // mark the examples to be removed with the label -2
+            if (removeExamples[indexForRemoving] == indexMC) {
+                removeExamples[indexForRemoving] = -2;
+                Instance inst = this.getShortTimeMemory().getData().get(indexForRemoving);
+                toClassify.add(inst); //add to classify
+            }
+        }
+        return toClassify;
+    }
 
     public void updateMicroClusterThresholds() {
         model.entrySet().forEach(entry -> {
@@ -383,6 +396,13 @@ public class Model {
         } catch (IOException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Falha no arquivo createModelInfo.csv");
+        }
+    }
+
+    public void resetMtxLabelFrequencies() {
+        for (Iterator<String> iterator = this.mtxLabelsFrequencies.keySet().iterator(); iterator.hasNext();) {
+            String cord = iterator.next();
+            this.mtxLabelsFrequencies.put(cord, 0);
         }
     }
 

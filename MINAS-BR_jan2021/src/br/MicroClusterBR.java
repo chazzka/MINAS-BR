@@ -7,7 +7,9 @@ package br;
 
 import NoveltyDetection.KMeansMOAModified;
 import NoveltyDetection.MicroCluster;
+import com.yahoo.labs.samoa.instances.Instance;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -79,6 +81,19 @@ public class MicroClusterBR {
                 .map(x_i -> Math.exp(-KMeansMOAModified.distance(this.getMicroCluster().getCenter(), x_i)))
                 .reduce(sum, (accumulator, _item) -> accumulator + _item);
         this.setAverOut(sum / X_b.size());
+    }
+    
+    public void calculateAverOutputNovelty(ArrayList<Instance> toClassify){
+        ArrayList<double[]> toCalculateAvgOut = new ArrayList<>();
+        toClassify.stream().map(inst -> {
+            toClassify.add(inst); //add to classify
+            return inst;
+        }).forEachOrdered(inst -> {
+            toCalculateAvgOut.add(Arrays.copyOfRange(inst.toDoubleArray(),
+                    inst.numOutputAttributes(),
+                    inst.numAttributes()));
+        });
+        this.calculateInitialAverOutput(toCalculateAvgOut);
     }
 
     public void calculateThreshold(HashMap<String, Integer> mtxLabelsFrequencies, double observedExamples) {
