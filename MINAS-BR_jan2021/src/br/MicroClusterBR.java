@@ -85,10 +85,7 @@ public class MicroClusterBR {
     
     public void calculateAverOutputNovelty(ArrayList<Instance> toClassify){
         ArrayList<double[]> toCalculateAvgOut = new ArrayList<>();
-        toClassify.stream().map(inst -> {
-            toClassify.add(inst); //add to classify
-            return inst;
-        }).forEachOrdered(inst -> {
+        toClassify.forEach(inst -> {
             toCalculateAvgOut.add(Arrays.copyOfRange(inst.toDoubleArray(),
                     inst.numOutputAttributes(),
                     inst.numAttributes()));

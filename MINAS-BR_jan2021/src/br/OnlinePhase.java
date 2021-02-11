@@ -447,15 +447,14 @@ public class OnlinePhase {
             ArrayList<MicroClusterBR> novModels = new ArrayList<>();
             
             //For each BR-model
+            boolean removed = false;
             for (Map.Entry<String, ArrayList<MicroClusterBR>> listaMicroClusters : model.getModel().entrySet()) {
-                boolean removed = false;
                 //Silhouette validation
                 if (currentEvaluatedMC.clusterSilhouette(listaMicroClusters.getValue()) > 0){
                     //********** The new micro-cluster is valid ****************
                     if(!removed){
                         removed = true;
-                        ArrayList<double[]> toCalculteAvgOut = new ArrayList<>();
-                        model.getInstancesUsedToBuildNewMC(removeExamples, indexMC);
+                        toClassify = model.getInstancesUsedToBuildNewMC(removeExamples, indexMC);
                         currentEvaluatedMC.calculateAverOutputNovelty(toClassify);
                     }
 
@@ -1071,7 +1070,7 @@ public class OnlinePhase {
 //        
         HashMap<Integer, MicroClusterBR> modelSet = new HashMap<>();
         for (int w = 0; w < micros.size(); w++) {
-            if(micros.get(w) != null && ((ClustreamKernelMOAModified) micros.get(w)).getWeight() > 3){
+            if(micros.get(w) != null && ((ClustreamKernelMOAModified) micros.get(w)).getN() > 3){
                 MicroClusterBR model_tmp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), "", "", timestamp));
                 modelSet.put(w,model_tmp);
             }
