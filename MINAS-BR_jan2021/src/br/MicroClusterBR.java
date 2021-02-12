@@ -77,7 +77,7 @@ public class MicroClusterBR {
 
     public void calculateInitialAverOutput(ArrayList<double[]> X_b) {
         double sum = 0;
-        sum = X_b.stream()
+        sum = X_b.parallelStream()
                 .map(x_i -> Math.exp(-KMeansMOAModified.distance(this.getMicroCluster().getCenter(), x_i)))
                 .reduce(sum, (accumulator, _item) -> accumulator + _item);
         this.setAverOut(sum / X_b.size());

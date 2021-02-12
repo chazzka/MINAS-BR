@@ -5,52 +5,19 @@ import br.Model;
 import br.OfflinePhase;
 import br.OnlinePhase;
 import com.yahoo.labs.samoa.instances.Instance;
-import com.yahoo.labs.samoa.instances.Prediction;
 import dataSource.DataSetUtils;
-import static dataSource.DataSetUtils.slipTrainTest;
-import dataSource.LabelSetMining;
-import static dataSource.LabelSetMining.removeInfrequentLabels;
 import evaluate.Evaluator;
 import evaluate.EvaluatorBR;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import meka.classifiers.multilabel.incremental.BRUpdateable;
-import meka.classifiers.multilabel.incremental.CCUpdateable;
-import meka.classifiers.multilabel.incremental.PSUpdateable;
-import moa.classifiers.multilabel.MEKAClassifier;
-import moa.classifiers.multilabel.MultilabelHoeffdingTree;
-import moa.classifiers.multilabel.meta.OzaBagAdwinML;
-import moa.classifiers.multilabel.trees.ISOUPTree;
-import moa.classifiers.trees.HoeffdingTree;
-import moa.core.InstanceExample;
-import moa.options.WEKAClassOption;
+import java.util.Collections;
 import moa.streams.MultiTargetArffFileStream;
 import utils.FilesOutput;
-import weka.classifiers.Classifier;
-import weka.classifiers.bayes.NaiveBayes;
-import weka.classifiers.bayes.NaiveBayesMultinomialUpdateable;
-import weka.classifiers.bayes.NaiveBayesUpdateable;
 import weka.core.Instances;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Classe principal utilizada para comparação entre diferentes configurações de
- * parâmetros do MINAS-LP
- *
- * @author joel
- */
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -87,27 +54,27 @@ public class Main {
 //                "JI");
 //        }
 //        //****************MOA-3C*********************
-        String dataSetName = "MOA-3C_resetingMtxT";
-        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
-        double k_ini = 0.01;
-        String theta = "1000";
-        String omega = "2000";
-        int L = 5;
+//        String dataSetName = "MOA-3C_resetingMtxT";
+//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+//        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
+//        double k_ini = 0.01;
+//        String theta = "1000";
+//        String omega = "2000";
+//        int L = 5;
         //*****************************************
         
 //        //****************MOA1*********************
-//        String dataSetName = "MOA1";
-////        String dataSetName = "MOA1_kini=0.001";
-//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
-//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
-//        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
-//        double k_ini = 0.01;
-////        double k_ini = 0.001;
-//        String theta = "1000";
-//        String omega = "2000";
-//        int L = 7;
+        String dataSetName = "MOA1_normal";
+//        String dataSetName = "MOA1_kini=0.001";
+        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
+        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
+        String outputDirecotory = "~/resultsAsoc2021/"+dataSetName+"/";
+        double k_ini = 0.01;
+//        double k_ini = 0.001;
+        String theta = "1000";
+        String omega = "2000";
+        int L = 7;
 //        //*****************************************
 
 ////        //****************MOA2*********************
@@ -128,97 +95,15 @@ public class Main {
                 k_ini,
                 theta, 
                 omega,
-                "1",
+                "1.1",
                 "kmeans+leader",
                 "JI");
         
-//        experimentsParameters(dataSetName,
+//        experimentsParametersV2(dataSetName,
 //                trainPath,
 //                testPath,
 //                L,
 //                outputDirecotory);
-    }
-    
-    public static void convertArffFile(String train, String test, String dataSetName) throws Exception{
-        Instances D_train = DataSetUtils.dataFileToInstance(train);
-        Instances D_test = DataSetUtils.dataFileToInstance(test);
-        int L = D_test.classIndex();
-        int numAtt = (D_train.instance(0).numAttributes() - L);
-        String fileName = train.replace("-train.arff", ".arff");
-        FileWriter dataSetFile = new FileWriter(new File(fileName), false);
-        //write the file's header
-        dataSetFile.write("@relation '" + dataSetName + ": -C "+ L+ "'\n");
-        dataSetFile.write("\n");
-        
-        for (int i = 0; i < L; i++) {
-            dataSetFile.write("@attribute class"+i+" {0, 1}\n");
-        }
-        for (int i = 1; i < numAtt; i++) {
-            dataSetFile.write("@attribute att"+i+"\n");
-        }
-        dataSetFile.write("\n");
-        dataSetFile.write("@data\n");
-        
-        for (int j = 0; j < D_train.numInstances(); j++) {
-            for (int i = 0; i < L; i++) {
-                double value = D_train.instance(j).value(i);
-                dataSetFile.write((int)value+",");
-            }
-            for (int i = 1; i < numAtt; i++) {
-                double value = D_train.instance(j).value(L+i);
-                if(i == numAtt-1 ){
-                    dataSetFile.write(""+value);
-                }else{
-                    dataSetFile.write(value+",");
-                }
-            }
-            dataSetFile.write("\n");
-        }
-        
-        for (int j = 0; j < D_test.numInstances(); j++) {
-            for (int i = 0; i < L; i++) {
-                double value = D_test.instance(j).value(i);
-                dataSetFile.write((int)value+",");
-            }
-            for (int i = 1; i < numAtt; i++) {
-                double value = D_test.instance(j).value(L+i);
-                if(i == numAtt-1 ){
-                    dataSetFile.write(""+value);
-                }else{
-                    dataSetFile.write(value+",");
-                }
-            }
-            dataSetFile.write("\n");
-        }
-        dataSetFile.close();
-    }
-    
-    private static void arffToCsv(String dataSetPath) throws Exception{
-        Instances D_ = DataSetUtils.dataFileToInstance(dataSetPath);
-        int L = D_.classIndex();
-
-        MultiTargetArffFileStream stream = new MultiTargetArffFileStream(dataSetPath, String.valueOf(L));
-        stream.prepareForUse();
-        
-        String fileName = dataSetPath.replace("arff", "csv");
-        FileWriter csvFile = new FileWriter(new File(fileName), false);
-        csvFile.write("Class");
-        Instance begin = stream.nextInstance().instance;
-        for (int i = 0; i < begin.numInputAttributes(); i++) {
-            csvFile.write(";"+begin.inputAttribute(i).name());
-        }
-        csvFile.write("\n");
-        stream.restart();
-        while(stream.hasMoreInstances()) {
-            begin = stream.nextInstance().instance;
-            csvFile.write(DataSetUtils.getLabelSet(begin).toString());
-            for (int i = 0; i < begin.numInputAttributes(); i++) {
-                double y = begin.valueInputAttribute(i);
-                csvFile.write(";"+begin.valueInputAttribute(i));
-            }
-            csvFile.write("\n");
-        }
-        csvFile.close();
     }
     
     private static void experimentsParameters(String dataSetName,
@@ -321,6 +206,83 @@ public class Main {
         re.close();
         SA.close();
     }
+    private static void experimentsParametersV2(String dataSetName,
+            String trainPath, 
+            String testPath,
+            int L,
+            String outputDirectory) throws IOException, Exception {
+        
+        ArrayList<Instance> train = new ArrayList<Instance>();
+        ArrayList<Instance> test = new ArrayList<Instance>();
+        
+        MultiTargetArffFileStream file = new MultiTargetArffFileStream(trainPath, String.valueOf(L));
+        file.prepareForUse();
+        while(file.hasMoreInstances()){
+            train.add(file.nextInstance().getData());
+        }
+        file.restart();
+        
+        file = new MultiTargetArffFileStream(testPath, String.valueOf(L));
+        file.prepareForUse();
+        
+        while(file.hasMoreInstances()){
+            test.add(file.nextInstance().getData());
+        }
+        file.restart();
+        double[] theta = {1};
+        int[] omega = {2000};
+        double[] f = {1.1};
+        double[] k_ini = {0.01,0.001};
+//        double[] theta = {0.1,0.25,0.5,0.75,1};
+//        int[] omega = {200, 500, 1000, 2000};
+//        double[] f = {0.5, 0.75, 1.1, 1.3};
+//        double[] k_ini = {0.01, 0.05, 0.1, 0.25};
+
+        outputDirectory = outputDirectory + "/parameters_sensitivity/"+dataSetName+"/";
+        FilesOutput.createDirectory(outputDirectory);
+        
+        
+        FileWriter fileResults = new FileWriter(new File(outputDirectory + "/fullResults.csv"), false);
+        fileResults.write("shortTermMemoryLimit,windowsSize,threshold,k_ini,F1M,precision,recall,subsetAccuracy,NP,unk,unkRemoved\n");
+        fileResults.close();
+        
+        for (int i = 0; i < theta.length; i++) {
+            for (int j = 0; j < omega.length; j++) {
+                if(theta[i] <= omega[j]){
+                    for (int k = 0; k < f.length; k++) {
+                        for (int l = 0; l < k_ini.length; l++) {
+                            String dir = outputDirectory + theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l] +"/";
+                            System.out.println("***********"+theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l]+"******************");
+                            FilesOutput.createDirectory(dir);
+                            EvaluatorBR avMINAS = MINAS_BR(train,
+                                    test,
+                                    L, 
+                                    k_ini[l],
+                                    (int) theta[i]*omega[j],
+                                    omega[j], 
+                                    f[k],
+                                    dir);
+                            
+                            fileResults = new FileWriter(new File(outputDirectory + "/fullResults.csv"), true);
+                            
+                            fileResults.write(theta[i]+","+
+                                    omega[j]+","+
+                                    f[k] + ","+
+                                    k_ini[l]+","+
+                                    avMINAS.getAvgF1M() + ","+
+                                    avMINAS.getAvgPr()+ ","+
+                                    avMINAS.getAvgRe() + ","+
+                                    avMINAS.getAvgSA() + "," +
+                                    avMINAS.getQtdeNP() + "," +
+                                    avMINAS.getUnk().parallelStream().mapToInt(p -> p).sum() + ","+
+                                    avMINAS.getRemovedUnk().parallelStream().mapToInt(p -> p).sum() + "\n");
+                            fileResults.close();
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     public static EvaluatorBR MINAS_BR(ArrayList<Instance> train,
             ArrayList<Instance> test,
@@ -376,7 +338,7 @@ public class Main {
             
             //for each model deletes the micro-clusters wich have not been used
             if((onlinePhase.getTimestamp()%omega) == 0){
-                model.resetMtxLabelFrequencies(omega);
+//                model.resetMtxLabelFrequencies(omega);
                 model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(),fileOut, false);
                 onlinePhase.removeOldMicroClusters(omega, model, fileOut);
             }

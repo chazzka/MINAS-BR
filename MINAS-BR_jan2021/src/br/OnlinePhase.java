@@ -28,6 +28,7 @@ import java.util.Random;
 import java.util.Set;
 import moa.cluster.CFCluster;
 import moa.cluster.Clustering;
+import moa.clusterers.KMeans;
 import utils.Voting;
 
 public class OnlinePhase {
@@ -81,20 +82,19 @@ public class OnlinePhase {
         //generate initial centers aleatory
         ClustreamKernelMOAModified[] centrosIni = new ClustreamKernelMOAModified[numMClusters];
         int nroaleatorio;
-        List<Integer> numeros = new ArrayList<Integer>();
+        List<Integer> numeros = new ArrayList<>();
         for (int c = 0; c < examples.size(); c++) {
             numeros.add(c);
         }
         Collections.shuffle(numeros);
         for (int i = 0; i < numMClusters; i++) {
-            nroaleatorio = numeros.get(i).intValue();
+            nroaleatorio = numeros.get(i);
             centrosIni[i] = examples.get(nroaleatorio);
         }
 
         //execution of the KMeans  
         Clustering centers;
-        moa.clusterers.KMeans cm = new moa.clusterers.KMeans();
-        centers = cm.kMeans(centrosIni, examples);
+        centers = KMeans.kMeans(centrosIni, examples);
 
         //*********results     
         // transform the results of kmeans in a data structure used by MINAS
@@ -124,7 +124,7 @@ public class OnlinePhase {
         micros = new Clustering(res);
 
         //*********remove micro-cluster with few examples
-        ArrayList<ArrayList<Integer>> mapClustersExamples = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> mapClustersExamples = new ArrayList<>();
         for (int a = 0; a < centrosIni.length; a++) {
             mapClustersExamples.add(new ArrayList<Integer>());
         }
