@@ -68,95 +68,78 @@ public final class OfflinePhase{
         
         //************read dataset *************************
         //read examples from the file to the memory to execute Kmeans
-        for (int k = 0; k < dataSet.size(); k++) {
-//            System.out.println(Arrays.toString(dataSet.get(k).toDoubleArray()));
-            double[] data = Arrays.copyOfRange(dataSet.get(k).toDoubleArray(), dataSet.get(k).numOutputAttributes(), dataSet.get(k).numAttributes());
-            Instance inst = new DenseInstance(1, data);
-            examples.add(new ClustreamKernelMOAModified(inst, numAtt, 0));
-        }
+        
+        dataSet.stream().forEach(inst -> {
+            double[] data = Arrays.copyOfRange(inst.toDoubleArray(), inst.numOutputAttributes(), inst.numAttributes());
+            Instance inst2 = new DenseInstance(1, data);
+            examples.add(new ClustreamKernelMOAModified(inst2, numAtt, 0));
+        });
 
         //********* K-Means ***********************
         //generate initial centers aleatory
         ClustreamKernelMOAModified[] centrosIni = new ClustreamKernelMOAModified[numMClusters];
-        int nroaleatorio;
         List<Integer> numeros = new ArrayList<Integer>();
+        int cont = 0;
         for (int c = 0; c < examples.size(); c++) {
             numeros.add(c);
         }
         Collections.shuffle(numeros);
+        
         for (int i = 0; i < numMClusters; i++) {
-            nroaleatorio = numeros.get(i).intValue();
+            int nroaleatorio = numeros.get(i);
             centrosIni[i] = examples.get(i/* nroaleatorio*/);
         }
 
         //execution of the KMeans  
-        Clustering centers = KMeans.kMeans(centrosIni, examples);
-        
+        moa.clusterers.KMeans cm = new moa.clusterers.KMeans();
+       Clustering centers = cm.kMeans(centrosIni,examples);  
+
         //*********results     
         // transform the results of kmeans in a data structure used by MINAS
-        MicroClusterBR[] modelAux = new MicroClusterBR[centers.size()];
         HashMap<Integer, ArrayList<double[]>> mcInstances = new HashMap<>();
-        
-        for (int j = 0; j < examples.size(); j++) {
+        CFCluster[] res = new CFCluster[centers.size()];
+        examples.stream().forEach(example -> {
+//        for (int j = 0; j < examples.size(); j++) {
             // Find closest kMeans cluster
             double minDistance = Double.MAX_VALUE;
             int closestCluster = 0;
             for (int i = 0; i < centers.size(); i++) {
-                double distance = KMeansMOAModified.distance(centers.get(i).getCenter(), examples.get(j).getCenter());
+                double distance = KMeansMOAModified.distance(centers.get(i).getCenter(), example.getCenter());
                 if (distance < minDistance) {
                     closestCluster = i;
                     minDistance = distance;
                 }
             }
             
-            // add to the cluster
-            if (modelAux[closestCluster] == null)
-                modelAux[closestCluster] = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) examples.get(j).copy(), label, "normal", 0));
-            else
-                modelAux[closestCluster].getMicroCluster().add(examples.get(j));
+           // add to the cluster
+            if (res[closestCluster] == null) {
+                res[closestCluster] = (CFCluster) example.copy();
+            } else {
+                res[closestCluster].add(example);
+            }
 
             try{
-                mcInstances.get(closestCluster).add(examples.get(j).getCenter());
+                mcInstances.get(closestCluster).add(example.getCenter());
             }catch(NullPointerException e){
                 mcInstances.put(closestCluster, new ArrayList<>());
-                mcInstances.get(closestCluster).add(examples.get(j).getCenter());
+                mcInstances.get(closestCluster).add(example.getCenter());
             }
-        }
+        });
         
+        Clustering micros = new Clustering(res);
         ArrayList<MicroClusterBR> modelSet = new ArrayList<>();
-        for (int i = 0; i < modelAux.length; i++) {
+        for (int w = 0; w < micros.size(); w++) {
             //Do not considering non-representative clusters
-            if(modelAux[i].getMicroCluster().getN() > 3){
-                modelAux[i].calculateInitialAverOutput(mcInstances.get(i));
-                modelAux[i].calculateThreshold(model.getMtxLabelsFrequencies(), model.getNumberOfObservedExamples());
-                modelSet.add(modelAux[i]);
+            if(micros.get(w) != null && ((ClustreamKernelMOAModified) micros.get(w)).getN() > 3){
+                MicroClusterBR model_tmp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified)micros.get(w),label,"normal",0));   
+                model_tmp.calculateInitialAverOutput(mcInstances.get(w));
+                model_tmp.calculateThreshold(model.getMtxLabelsFrequencies(), model.getNumberOfObservedExamples());
+                modelSet.add(model_tmp);
             }
         }
         return modelSet;
     }
     
-    /**
-     * Cria modelo de decisão através do algoritmo CluStream
-     * @param examples of class
-     * @param label of class
-     * @param numMClusters
-     * @return a list of microclusters that represents a class
-     * @throws NumberFormatException
-     * @throws IOException 
-     */
-    public ArrayList<MicroClusterBR> criarmodeloCluStreamOffline(ArrayList<Instance> examples, String label, int numMClusters) throws NumberFormatException, IOException {
-        ArrayList<MicroClusterBR> conjModelos = new ArrayList<>();
-        ClustreamOfflineBR jc = new ClustreamOfflineBR();
-
-        Clustering micros = jc.CluStream(examples, examples.get(0).numOutputAttributes(), numMClusters, true, true /*executa kmeans*/);
-
-        for (int w = 0; w < micros.size(); w++) {
-            MicroClusterBR mdtemp = new MicroClusterBR(new MicroCluster((ClustreamKernelMOAModified) micros.get(w), label, "normal", 0));
-            // add the temporary model to the decision model 
-            conjModelos.add(mdtemp);
-        }
-        return conjModelos;
-    }
 
     /**
      * @return the trainingData
@@ -214,6 +197,7 @@ public final class OfflinePhase{
         
         
         //generate a set of micro-clusters for each class from the training set
+        
         for(Map.Entry<String, ArrayList<Instance>> entry : this.trainingData.entrySet()) {
             String key = entry.getKey();
             ArrayList<Instance> subconjunto = entry.getValue();

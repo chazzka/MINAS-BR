@@ -23,72 +23,26 @@ public class Main {
     public static void main(String[] args) throws Exception {
           
         //****************General*********************
-//        String dataSetName = args[1];
-//        String trainPath = args[2];
-//        String testPath = args[3];
-//        int L = Integer.parseInt(args[4]);
-//        String outputDirecotory = "";
-//        if(args[0].equals("-p")){
-//            outputDirecotory = args[5];
-//            
-//            experimentsParameters(dataSetName,
-//                trainPath,
-//                testPath,
-//                L,
-//                outputDirecotory);
-//        }else{
-//            double k_ini = Double.parseDouble(args[5]);
-//            String theta = args[6];
-//            String omega = args[7];
-//            outputDirecotory = args[8] + "/" + dataSetName;
-//            
-//            experimentsMethods(trainPath, 
-//                testPath, 
-//                outputDirecotory,
-//                L, 
-//                k_ini,
-//                theta, 
-//                omega,
-//                "1.1",
-//                "kmeans+leader",
-//                "JI");
-//        }
-//        //****************MOA-3C*********************
-//        String dataSetName = "MOA-3C_resetingMtxT";
-//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-//        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
-//        double k_ini = 0.01;
-//        String theta = "1000";
-//        String omega = "2000";
-//        int L = 5;
-        //*****************************************
-        
-//        //****************MOA1*********************
-        String dataSetName = "MOA1_normal";
-//        String dataSetName = "MOA1_kini=0.001";
-        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
-        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
-        String outputDirecotory = "~/resultsAsoc2021/"+dataSetName+"/";
-        double k_ini = 0.01;
-//        double k_ini = 0.001;
-        String theta = "1000";
-        String omega = "2000";
-        int L = 7;
-//        //*****************************************
-
-////        //****************MOA2*********************
-//        String dataSetName = "MOA2";
-//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-train.arff";
-//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-test.arff";
-//        String outputDirecotory = "results_jan2021/"+dataSetName+"/";
-//        double k_ini = 0.01;
-//        String theta = "200";
-//        String omega = "200";
-//        int L = 4;
-//        //*****************************************
-        
-        experimentsMethods(trainPath, 
+        String dataSetName = args[1];
+        String trainPath = args[2];
+        String testPath = args[3];
+        int L = Integer.parseInt(args[4]);
+        String outputDirecotory = "";
+        if(args[0].equals("-p")){
+            outputDirecotory = args[5];
+            
+            experimentsParameters(dataSetName,
+                trainPath,
+                testPath,
+                L,
+                outputDirecotory);
+        }else if (args[0].equals("-m")){
+            double k_ini = Double.parseDouble(args[5]);
+            String theta = args[6];
+            String omega = args[7];
+            outputDirecotory = args[8] + "/" + dataSetName;
+            
+            experimentsMethods(trainPath, 
                 testPath, 
                 outputDirecotory,
                 L, 
@@ -98,8 +52,94 @@ public class Main {
                 "1.1",
                 "kmeans+leader",
                 "JI");
+        }
         
-//        experimentsParametersV2(dataSetName,
+//        //****************MOA-3C*********************
+//        String dataSetName = "MOA-3C_teste_updating";
+//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
+//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
+//        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
+//        double k_ini = 0.1;
+//        String theta = "20";
+//        String omega = "200";
+//        int L = 5;
+        //*****************************************
+        
+//        //****************MOA1*********************
+//        String dataSetName = "MOA1_offlinePhaseFixed";
+////        String dataSetName = "MOA1_kini=0.001";
+//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
+//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        double k_ini = 0.01;
+////        double k_ini = 0.001;
+//        String theta = "1000";
+//        String omega = "2000";
+//        int L = 7;
+//        //*****************************************
+
+        //****************yeast*********************
+//        String dataSetName = "Yeast_updatingMC_k_ini=0.25";
+////        String dataSetName = "MOA1_kini=0.001";
+//        String trainPath = "/home/joel/datasets/datasets_reais/Yeast/yeast_original_train.arff";
+//        String testPath = "/home/joel/datasets/datasets_reais/Yeast/yeast_original_test.arff";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        double k_ini = 0.25;
+////        double k_ini = 0.001;
+//        String theta = "20";
+//        String omega = "200";
+//        int L = 14;
+//        //*****************************************
+        
+        //****************mediamill*********************
+//        String dataSetName = "Mediamill_resetingMtxFrequencies";
+////        String dataSetName = "MOA1_kini=0.001";
+//        String trainPath = "/home/joel/datasets/datasets_reais/mediamill/mediamill_original_train.arff";
+//        String testPath = "/home/joel/datasets/datasets_reais/mediamill/mediamill_original_test.arff";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        double k_ini = 0.1;
+////        double k_ini = 0.001;
+//        String theta = "200";
+//        String omega = "2000";
+//        int L = 101;
+//        //*****************************************
+
+        //****************scene*********************
+//        String dataSetName = "scene_updatingMC";
+////        String dataSetName = "MOA1_kini=0.001";
+//        String trainPath = "/home/joel/datasets/datasets_reais/Scene/scene_original_train.arff";
+//        String testPath = "/home/joel/datasets/datasets_reais/Scene/scene_original_test.arff";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        double k_ini = 0.1;
+////        double k_ini = 0.001;
+//        String theta = "20";
+//        String omega = "200";
+//        int L = 6;
+//        //*****************************************
+
+////        //****************MOA2*********************
+//        String dataSetName = "MOA2";
+//        String trainPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-train.arff";
+//        String testPath = "/home/joel/Documents/datasets/datasets_sinteticos/4CRE-V2/4CRE-V2-test.arff";
+//        String outputDirecotory = "/home/joel/results_jan2021/"+dataSetName+"/";
+//        double k_ini = 0.01;
+//        String theta = "200";
+//        String omega = "200";
+//        int L = 4;
+//        //*****************************************
+        
+//        experimentsMethods(trainPath, 
+//                testPath, 
+//                outputDirecotory,
+//                L, 
+//                k_ini,
+//                theta, 
+//                omega,
+//                "1.1",
+//                "kmeans+leader",
+//                "JI");
+//        
+//        experimentsParameters(dataSetName,
 //                trainPath,
 //                testPath,
 //                L,
@@ -129,114 +169,14 @@ public class Main {
             test.add(file.nextInstance().getData());
         }
         file.restart();
-//        double[] theta = {0.1,0.75};
+//        double[] theta = {1};
 //        int[] omega = {2000};
 //        double[] f = {1.1};
-//        double[] k_ini = {0.001};
+//        double[] k_ini = {0.01,0.001};
         double[] theta = {0.1,0.25,0.5,0.75,1};
         int[] omega = {200, 500, 1000, 2000};
-        double[] f = {0.5, 0.75, 1.1, 1.3};
-        double[] k_ini = {0.01, 0.05, 0.1, 0.25};
-
-        outputDirectory = outputDirectory + "/parameters_sensitivity/"+dataSetName+"/";
-        FilesOutput.createDirectory(outputDirectory);
-        
-        
-        FileWriter F1M = new FileWriter(new File(outputDirectory + "/F1M.csv"), false);
-        FileWriter pr = new FileWriter(new File(outputDirectory + "/precision.csv"), false);
-        FileWriter re = new FileWriter(new File(outputDirectory + "/recall.csv"), false);
-        FileWriter SA = new FileWriter(new File(outputDirectory + "/SA.csv"), false);
-        
-        F1M.write("theta-omega"+ ",");
-        pr.write("theta-omega"+ ",");
-        re.write("theta-omega"+ ",");
-        SA.write("theta-omega"+ ",");
-        
-        for (int i = 0; i < f.length; i++) {
-            for (int j = 0; j< k_ini.length ; j++) {
-                F1M.write("f_"+f[i]+"_k_"+k_ini[j] + ",NPs,");
-                pr.write("f_"+f[i]+"_k_"+k_ini[j] + ",");
-                re.write("f_"+f[i]+"_k_"+k_ini[j] + ",");
-                SA.write("f_"+f[i]+"_k_"+k_ini[j] + ",");
-            }
-            
-        }
-        
-        F1M.write("\n");
-        pr.write("\n");
-        re.write("\n");
-        SA.write("\n");
-        String dir = outputDirectory;
-        
-        for (int i = 0; i < theta.length; i++) {
-            for (int j = 0; j < omega.length; j++) {
-                if(theta[i] <= omega[j]){
-                    F1M.write(theta[i] + "-" + omega[j] + ",");
-                    pr.write(theta[i] + "-" + omega[j]+ ",");
-                    re.write(theta[i] + "-" + omega[j]+ ",");
-                    SA.write(theta[i] + "-" + omega[j]+ ",");
-                    for (int k = 0; k < f.length; k++) {
-                        for (int l = 0; l < k_ini.length; l++) {
-                            outputDirectory = dir + theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l] +"/";
-                            System.out.println("***********"+theta[i] + "_" + omega[j] + "_" + f[k]+ "_" + k_ini[l]+"******************");
-                            FilesOutput.createDirectory(outputDirectory);
-                            EvaluatorBR avMINAS = MINAS_BR(train,
-                                    test,
-                                    L, 
-                                    k_ini[l],
-                                    (int) theta[i]*omega[j],
-                                    omega[j], 
-                                    f[k],
-                                    outputDirectory);
-                            F1M.write(avMINAS.getAvgF1M() + "," + avMINAS.getQtdeNP() + ",");
-                            pr.write(avMINAS.getAvgPr()+ ",");
-                            re.write(avMINAS.getAvgRe() + ",");
-                            SA.write(avMINAS.getAvgSA() + ",");
-                        }
-                    }
-                    F1M.write("\n");
-                    pr.write("\n");
-                    re.write("\n");
-                    SA.write("\n");
-                }
-            }
-        }
-        F1M.close();
-        pr.close();
-        re.close();
-        SA.close();
-    }
-    private static void experimentsParametersV2(String dataSetName,
-            String trainPath, 
-            String testPath,
-            int L,
-            String outputDirectory) throws IOException, Exception {
-        
-        ArrayList<Instance> train = new ArrayList<Instance>();
-        ArrayList<Instance> test = new ArrayList<Instance>();
-        
-        MultiTargetArffFileStream file = new MultiTargetArffFileStream(trainPath, String.valueOf(L));
-        file.prepareForUse();
-        while(file.hasMoreInstances()){
-            train.add(file.nextInstance().getData());
-        }
-        file.restart();
-        
-        file = new MultiTargetArffFileStream(testPath, String.valueOf(L));
-        file.prepareForUse();
-        
-        while(file.hasMoreInstances()){
-            test.add(file.nextInstance().getData());
-        }
-        file.restart();
-        double[] theta = {1};
-        int[] omega = {2000};
         double[] f = {1.1};
-        double[] k_ini = {0.01,0.001};
-//        double[] theta = {0.1,0.25,0.5,0.75,1};
-//        int[] omega = {200, 500, 1000, 2000};
-//        double[] f = {0.5, 0.75, 1.1, 1.3};
-//        double[] k_ini = {0.01, 0.05, 0.1, 0.25};
+        double[] k_ini = {0.01, 0.05, 0.1, 0.25};
 
         outputDirectory = outputDirectory + "/parameters_sensitivity/"+dataSetName+"/";
         FilesOutput.createDirectory(outputDirectory);
@@ -274,8 +214,8 @@ public class Main {
                                     avMINAS.getAvgRe() + ","+
                                     avMINAS.getAvgSA() + "," +
                                     avMINAS.getQtdeNP() + "," +
-                                    avMINAS.getUnk().parallelStream().mapToInt(p -> p).sum() + ","+
-                                    avMINAS.getRemovedUnk().parallelStream().mapToInt(p -> p).sum() + "\n");
+                                    avMINAS.getUnk().stream().mapToInt(p -> p).sum() + ","+
+                                    avMINAS.getRemovedUnk().stream().mapToInt(p -> p).sum() + "\n");
                             fileResults.close();
                         }
                     }
@@ -338,7 +278,7 @@ public class Main {
             
             //for each model deletes the micro-clusters wich have not been used
             if((onlinePhase.getTimestamp()%omega) == 0){
-//                model.resetMtxLabelFrequencies(omega);
+                model.resetMtxLabelFrequencies(omega);
                 model.clearSortTimeMemory(omega, onlinePhase.getTimestamp(),fileOut, false);
                 onlinePhase.removeOldMicroClusters(omega, model, fileOut);
             }

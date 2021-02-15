@@ -80,16 +80,27 @@ public class Model {
     }
 
     public void updateMtxFrequencies(Set<String> Z) {
-        Z.parallelStream().forEach(j -> {
-            Z.parallelStream().forEach(n -> {
+        for (String j : Z) {
+            for (String n : Z) {
                 try{
                     int frequency = this.mtxLabelsFrequencies.get(j+","+n) + 1;
                     this.mtxLabelsFrequencies.put(j+","+n, frequency);
                 }catch(NullPointerException e){
                     this.mtxLabelsFrequencies.put(j+","+n, 1);
                 }
-            });
-        });
+            }
+        }
+        
+//        Z.parallelStream().forEach(j -> {
+//            Z.parallelStream().forEach(n -> {
+//                try{
+//                    int frequency = this.mtxLabelsFrequencies.get(j+","+n) + 1;
+//                    this.mtxLabelsFrequencies.put(j+","+n, frequency);
+//                }catch(NullPointerException e){
+//                    this.mtxLabelsFrequencies.put(j+","+n, 1);
+//                }
+//            });
+//        });
     }
 
     public void writeBayesRulesElements(int timestamp, String outputDirectory) {
@@ -235,6 +246,7 @@ public class Model {
             
             if(proba >= winMC.getThreshold()){
                 Y_pred.add(winMC.getMicroCluster().getLabelClass());
+//                winMC.getMicroCluster().insert(x_i_inputs, timestamp);
                 winMC.updateAverOut(p_xi_yc);
                 winMC.calculateThreshold(mtxLabelsFrequencies, this.numberOfObservedExamples);
                 winMC.getMicroCluster().setTime(timestamp);
@@ -362,7 +374,7 @@ public class Model {
 
     public void updateMicroClusterThresholds() {
         model.entrySet().forEach(entry -> {
-            entry.getValue().parallelStream().map(x -> x).forEach(mc -> {
+            entry.getValue().stream().map(x -> x).forEach(mc -> {
                 mc.calculateThreshold(mtxLabelsFrequencies, this.numberOfObservedExamples);
             });
         });
@@ -398,7 +410,7 @@ public class Model {
         }
     }
 
-    public void resetMtxLabelFrequencies(int windowSize) {
+    public void resetMtxLabelFrequencies(int windowSize) throws IOException {
         this.mtxLabelsFrequencies.keySet().forEach(cord -> {
             this.mtxLabelsFrequencies.put(cord, 0);
         });
@@ -409,13 +421,16 @@ public class Model {
                 contWindowsobservedExamples++;
             }
         }
-        
+        FileWriter file = new FileWriter(new File(this.outputDirectory+"/infoResetMtx.csv"), true);
         for (Map.Entry<String, ArrayList<MicroClusterBR>> entry : model.entrySet()) {
             ArrayList<MicroClusterBR> set = entry.getValue();
             for (MicroClusterBR mc : set) {
+                file.write(mc.getThreshold() + ",");
                 mc.calculateThreshold(mtxLabelsFrequencies, contWindowsobservedExamples);
+                file.write(mc.getThreshold() + "\n");
             }
         }
+        file.close();
     }
 
     /**
