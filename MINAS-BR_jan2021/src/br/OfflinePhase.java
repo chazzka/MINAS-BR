@@ -86,8 +86,7 @@ public final class OfflinePhase{
         Collections.shuffle(numeros);
         
         for (int i = 0; i < numMClusters; i++) {
-            int nroaleatorio = numeros.get(i);
-            centrosIni[i] = examples.get(i/* nroaleatorio*/);
+            centrosIni[i] = examples.get(numeros.get(i));
         }
 
         //execution of the KMeans  

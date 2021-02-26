@@ -362,17 +362,14 @@ public class OnlinePhase {
         filePredictions.write(this.getTimestamp() + ";" + labels.toString()+";");
         model.verifyConceptEvolution(labels, this.timestamp);
 
-        ArrayList<Voting> voting = model.getClosestMicroClusters(data, 10);
+        ArrayList<Voting> voting = model.getClosestMicroClusters(data, 1);
         //An example is consider unknown when it is outside all of micro-clusters' models
         if (!voting.isEmpty()) {
             //classifies
             System.out.println("Classify");
             Set<String> Z = model.bayesRuleToClassify(voting, data, this.timestamp);
             model.addPrediction(labels, Z);
-            model.updateMtxFrequencies(Z);
             model.incrementNumerOfObservedExamples();
-            model.updateCurrentCardinality(Z.size());
-            model.updateMicroClusterThresholds();
             filePredictions.write(Z.toString()+"\n");
         } else {
             //rejects
@@ -503,8 +500,8 @@ public class OnlinePhase {
                         Z.add(extModels.get(i).getMicroCluster().getLabelClass());
 
                         for (Instance inst: toClassify) {
-                            model.updateCurrentCardinality(Z.size());
-                            model.updateMtxFrequencies(Z);
+//                            model.updateCurrentCardinality(Z.size());
+//                            model.updateMtxFrequencies(Z);
                             model.addPrediction(DataSetUtils.getLabelSet(inst), Z);
                             model.incrementNumerOfObservedExamples();
                             model.removerUnknown(Z);
@@ -558,7 +555,7 @@ public class OnlinePhase {
                     Z.add("NP" + Integer.toString(model.getNPs().size() + 1));
                     
                     for (Instance inst: toClassify) {
-                        model.updateCurrentCardinality(Z.size());
+//                        model.updateCurrentCardinality(Z.size());
                         model.updateMtxFrequencies(Z);
                         model.addPrediction(DataSetUtils.getLabelSet(inst), Z);
                         model.incrementNumerOfObservedExamples();
@@ -1081,7 +1078,7 @@ public class OnlinePhase {
     private ArrayList<Integer> leaderAlgorithm(ArrayList<Instance> dataSet, double maxRadius) {
         ArrayList<Integer> centroids = new ArrayList<Integer>();
         Random random = new Random();
-        random.setSeed(42);
+//        random.setSeed(42);
         centroids.add(random.nextInt(dataSet.size()));
         
         for (int i = 0; i < dataSet.size(); i++) {

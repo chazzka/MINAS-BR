@@ -122,8 +122,8 @@ public class MicroClusterBR {
 //        this.threshold = p_yj * prod1;
     }
 
-    public void updateAverOut(double exp_dist) {
-        this.setAverOut(((double) this.getMicroCluster().getN() * this.averOut + exp_dist) / (double) (this.getMicroCluster().getN() + 1));
+    public void updateAverOut(double dist) {
+        this.setAverOut(((double) this.getMicroCluster().getN() * this.averOut + Math.exp(-dist)) / (double) (this.getMicroCluster().getN() + 1));
         if(this.averOut > 1){
             System.err.println("AverOut > 1");
             System.exit(0);

@@ -107,10 +107,10 @@ public class Model {
         try {
             FileWriter file = null;
             if(timestamp <= 0){
-                file = new FileWriter(new File(outputDirectory+"thresholdsInfo.csv"), false);
+                file = new FileWriter(new File(outputDirectory+"/thresholdsInfo.csv"), false);
                 file.write("timestamp,threshold,averOut,label" +"\n");
             }else{
-               file = new FileWriter(new File(outputDirectory+"thresholdsInfo.csv"), true);
+               file = new FileWriter(new File(outputDirectory+"/thresholdsInfo.csv"), true);
             }
             
             
@@ -130,11 +130,11 @@ public class Model {
     public void writeCurrentCardinality(int timestamp, String outputDirectory) throws IOException{
         FileWriter file = null;
         try {
-            if(timestamp <= 0){
-                file = new FileWriter(new File(outputDirectory + "cardinalitiesOverTime.csv"), false);
+            if(timestamp <= 1){
+                file = new FileWriter(new File(outputDirectory + "/cardinalitiesOverTime.csv"), false);
                 file.write("timestamp,cardinality" +"\n");
             }else{
-                file = new FileWriter(new File(outputDirectory + "cardinalitiesOverTime.csv"), true);
+                file = new FileWriter(new File(outputDirectory + "/cardinalitiesOverTime.csv"), true);
             }
                 
         } catch (IOException ex) {
@@ -247,7 +247,7 @@ public class Model {
             if(proba >= winMC.getThreshold()){
                 Y_pred.add(winMC.getMicroCluster().getLabelClass());
 //                winMC.getMicroCluster().insert(x_i_inputs, timestamp);
-                winMC.updateAverOut(p_xi_yc);
+                winMC.updateAverOut(Math.exp(-KMeansMOAModified.distance(x_i_inputs, winMC.getMicroCluster().getCenter())));
                 winMC.calculateThreshold(mtxLabelsFrequencies, this.numberOfObservedExamples);
                 winMC.getMicroCluster().setTime(timestamp);
             }
@@ -270,10 +270,10 @@ public class Model {
         }
     }
 
-    public void updateCurrentCardinality(int z_new) {
-        this.currentCardinality =  ((double) this.numberOfObservedExamples * this.currentCardinality + (double) z_new) /
-                ((double)this.numberOfObservedExamples + (double)z_new);
-    }
+//    public void updateCurrentCardinality(int z_new) {
+//        this.currentCardinality =  ((double) this.numberOfObservedExamples * this.currentCardinality + (double) z_new) /
+//                ((double)this.numberOfObservedExamples + (double)z_new);
+//    }
     
     /**
      * Get the greatest micro-cluster radius of the model
@@ -384,10 +384,10 @@ public class Model {
        try {
             FileWriter file = null;
             if(novelties.get(0).getMicroCluster().getLabelClass().equals("NP1")){
-                file = new FileWriter(new File(outputDirectory+"createModelInfo.csv"), false);
+                file = new FileWriter(new File(outputDirectory+"/createModelInfo.csv"), false);
                 file.write("timestamp,evaluationWindow,nExamples,radius,silhouette,threshold,averOut,label" +"\n");
             }else{
-               file = new FileWriter(new File(outputDirectory+"createModelInfo.csv"), true);
+               file = new FileWriter(new File(outputDirectory+"/createModelInfo.csv"), true);
             }
             
             int evaluationWindow = (int) Math.ceil(timestamp / this.evaluationWindowSize);
@@ -410,6 +410,18 @@ public class Model {
         }
     }
 
+    public void updateCardinality(int windowSize) throws IOException {
+        double contWindowObservedExamples = 0;
+        double sum = 0;
+        for(int i = this.Zall.size() - windowSize; i < this.Zall.size(); i++){
+            if(!Zall.get(i).contains("unk")){
+                sum += Zall.get(i).size();
+                contWindowObservedExamples += 1;
+            }
+        }
+        this.currentCardinality = sum / contWindowObservedExamples;
+    }
+    
     public void resetMtxLabelFrequencies(int windowSize) throws IOException {
         this.mtxLabelsFrequencies.keySet().forEach(cord -> {
             this.mtxLabelsFrequencies.put(cord, 0);
