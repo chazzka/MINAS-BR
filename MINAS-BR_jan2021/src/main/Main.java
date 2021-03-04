@@ -23,36 +23,36 @@ public class Main {
     public static void main(String[] args) throws Exception {
           
         //****************General*********************
-//        String dataSetName = args[1];
-//        String trainPath = args[2];
-//        String testPath = args[3];
-//        int L = Integer.parseInt(args[4]);
-//        String outputDirecotory = "";
-//        if(args[0].equals("-p")){
-//            outputDirecotory = args[5];
-//            
-//            experimentsParameters(dataSetName,
-//                trainPath,
-//                testPath,
-//                L,
-//                outputDirecotory);
-//        }else if (args[0].equals("-m")){
-//            double k_ini = Double.parseDouble(args[5]);
-//            String theta = args[6];
-//            String omega = args[7];
-//            outputDirecotory = args[8] + "/" + dataSetName;
-//            
-//            experimentsMethods(trainPath, 
-//                testPath, 
-//                outputDirecotory,
-//                L, 
-//                k_ini,
-//                theta, 
-//                omega,
-//                "1.1",
-//                "kmeans+leader",
-//                "JI");
-//        }
+        String dataSetName = args[1];
+        String trainPath = args[2];
+        String testPath = args[3];
+        int L = Integer.parseInt(args[4]);
+        String outputDirecotory = "";
+        if(args[0].equals("-p")){
+            outputDirecotory = args[5];
+            
+            experimentsParameters(dataSetName,
+                trainPath,
+                testPath,
+                L,
+                outputDirecotory);
+        }else if (args[0].equals("-m")){
+            double k_ini = Double.parseDouble(args[5]);
+            String theta = args[6];
+            String omega = args[7];
+            outputDirecotory = args[8] + "/" + dataSetName;
+            
+            experimentsMethods(trainPath, 
+                testPath, 
+                outputDirecotory,
+                L, 
+                k_ini,
+                theta, 
+                omega,
+                "1.1",
+                "kmeans+leader",
+                "JI");
+        }
         
 //        //****************MOA-3C*********************
 //        String dataSetName = "MOA-3C_teste_updating";
@@ -66,16 +66,16 @@ public class Main {
         //*****************************************
         
 //        //****************MOA1*********************
-        String dataSetName = "MOA1_noUpdateMtxMatrizByClassification";
-//        String dataSetName = "MOA1_kini=0.001";
-        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
-        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
-        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
-        double k_ini = 0.01;
-//        double k_ini = 0.001;
-        String theta = "1000";
-        String omega = "2000";
-        int L = 7;
+//        String dataSetName = "MOA1_noUpdateMtxMatrizByClassification_2";
+////        String dataSetName = "MOA1_kini=0.001";
+//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
+//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        double k_ini = 0.01;
+////        double k_ini = 0.001;
+//        String theta = "1000";
+//        String omega = "2000";
+//        int L = 7;
 //        //*****************************************
 
         //****************yeast*********************
@@ -127,16 +127,16 @@ public class Main {
 //        int L = 4;
 //        //*****************************************
         
-        experimentsMethods(trainPath, 
-                testPath, 
-                outputDirecotory,
-                L, 
-                k_ini,
-                theta, 
-                omega,
-                "1",
-                "kmeans+leader",
-                "JI");
+//        experimentsMethods(trainPath, 
+//                testPath, 
+//                outputDirecotory,
+//                L, 
+//                k_ini,
+//                theta, 
+//                omega,
+//                "1",
+//                "kmeans+leader",
+//                "JI");
 //        
 //        experimentsParameters(dataSetName,
 //                trainPath,
