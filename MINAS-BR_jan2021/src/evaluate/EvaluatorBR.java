@@ -191,12 +191,30 @@ public class EvaluatorBR extends Evaluator{
             }
         }
         this.getUnk().add(contUnk);
-        super.getF1().add((float)getSumF1()/super.getContEval());
-        super.getSub_acc().add((float)getSumSubAcc()/super.getContEval());
-        super.getHl().add((float) super.getSumHL() / super.getContEval());
-        this.getPr().add((float) this.getSumPr() / super.getContEval());
-        this.getRe().add((float) this.getSumRe() / super.getContEval());
+        float f1 = (float)getSumF1()/super.getContEval();
+        if(Float.isNaN(f1))
+            f1 = 0;
+        super.getF1().add(f1);
         
+        float subAcc = (float)getSumSubAcc()/(float)super.getContEval();
+        if(Float.isNaN(subAcc))
+            subAcc = 0;
+        super.getSub_acc().add(subAcc);
+        
+        float hl = (float) super.getSumHL()/(float)super.getContEval();
+        if(Float.isNaN(hl))
+            hl = 0;
+        super.getHl().add(hl);
+        
+        float pr = (float) this.getSumPr()/(float)super.getContEval();
+        if(Float.isNaN(pr))
+            pr = 0;
+        super.getPr().add(pr);
+        
+        float re = (float) this.getSumRe()/(float)super.getContEval();
+        if(Float.isNaN(re))
+            re = 0;
+        super.getRe().add(re);
     }
     
     /**
@@ -390,7 +408,6 @@ public class EvaluatorBR extends Evaluator{
                     unkRM = 0;
                 }
                 sumUnkRM += unkRM;
-//                entry.getValue()[0][2] = 0; 
             }
         float auxUnkRM = (float)(sumUnkRM / (float)this.getConsufionMtx().size());
         if(Float.isNaN(auxUnkRM))

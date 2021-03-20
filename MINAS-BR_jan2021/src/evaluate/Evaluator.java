@@ -611,6 +611,69 @@ public class Evaluator {
         }
         this.calculateWindowMeasures();
     }
+    
+    public void writesAvgResults(String outputDirectory) throws IOException {
+        FileWriter avgResult = new FileWriter(new File(outputDirectory + "/avgResults.csv"), true);
+        avgResult.write("Classifiers,F1,SA,HL,Pr,Re,F1m,F1M,Prm,PrM,Rem,ReM,unkRm,unkRM,unk\n");
+
+        avgResult.write(this.getClassifier() + "," + this.getAvgF1() + "," + this.getAvgSA() + "," + this.getAvgHL() + "," + this.getAvgPr() +
+            "," + this.getAvgRe() + "," + ","+ this.getAvgF1m() + "," + this.getAvgF1M() + ","+ 
+            this.getAvgPrm() + ","+ this.getAvgPrM() + ","+ this.getAvgRem() + ","+this.getAvgReM() + ","+ this.getAvgUnkRm() + ","+ 
+            this.getAvgUnkRM() + "," + this.getTotalUnk() + "\n");
+        
+        avgResult.close();
+    }
+    
+    public void updateMeasuresThresholding(ArrayList<Prediction> pred, ArrayList<Set<String>> trueLabels,double[] cardinalities){
+        ArrayList<double[]> predictions = new ArrayList<double[]>();
+        for (int i = 0; i < pred.size(); i++) {
+            double[] aux = new double[pred.get(i).numOutputAttributes()];
+            for (int j = 0; j < pred.get(i).numOutputAttributes(); j++) {
+                aux[j] = pred.get(i).getVote(j, 1);
+            }
+            predictions.add(aux);
+        }
+
+        //thresholding
+        double[] thresholds = null;
+        try{
+            thresholds = ThresholdUtils.calibrateThresholds(predictions, cardinalities);
+        }catch(Exception e){
+//            e.printStackTrace();
+            System.out.println("[WARNING]: Yeast");
+            for (int i = 0; i < pred.size(); i++) {
+                HashSet<String> Z = new HashSet<>();
+                for (int j = 0; j < pred.get(i).numOutputAttributes(); j++) {
+                    if(pred.get(i).getVote(j,1) > pred.get(i).getVote(j,0))
+                        Z.add(""+j);
+                }
+                System.out.println("True Labels: " + trueLabels.get(i).toString() + "\t Predicted: " + Z.toString());
+                this.updateExampleBasedMeasures(Z, trueLabels.get(i));
+                this.updateLabelBasedMeasures(Z, trueLabels.get(i));
+            }
+            this.calculateWindowMeasures();
+            return;
+        }
+        
+        for (int i = 0; i < pred.size(); i++) {
+            HashSet<String> Z = new HashSet<>();
+            for (int j = 0; j < pred.get(i).numOutputAttributes(); j++) {
+                if(pred.get(i).getVote(j,1) >= thresholds[j])
+                    Z.add(""+j);
+                
+            }
+            if(Z.isEmpty()){
+                for (int j = 0; j < pred.get(i).numOutputAttributes(); j++) {
+                    if(pred.get(i).getVote(j,1) > pred.get(i).getVote(j,0))
+                        Z.add(""+j);
+                }
+            }
+            System.out.println("True Labels: " + trueLabels.get(i).toString() + "\t Predicted: " + Z.toString());
+            this.updateExampleBasedMeasures(Z, trueLabels.get(i));
+            this.updateLabelBasedMeasures(Z, trueLabels.get(i));
+        }
+        this.calculateWindowMeasures();
+    }
 
     /**
      * @return the classifier

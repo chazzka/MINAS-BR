@@ -33,6 +33,7 @@ import moa.streams.MultiTargetArffFileStream;
 import weka.core.AbstractInstance;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils;
+import weka.core.converters.ConverterUtils.DataSource;
 
 /**
  *
@@ -40,8 +41,92 @@ import weka.core.converters.ConverterUtils;
  */
 public class DataSetUtils {
 
+    /**
+     * loadDataset
+     *
+     * @param filename
+     * @return	the dataset
+     * @throws java.lang.Exception
+     */
+    public static Instances loadDataset(String filename) throws Exception {
+
+        Instances D = null;
+
+        // Check for filename
+        if (filename == null || filename.isEmpty()) {
+            throw new Exception("[Error] You did not specify a dataset!");
+        }
+
+        // Check for existence of file
+        File file = new File(filename);
+        if (!file.exists()) {
+            throw new Exception("[Error] File does not exist: " + filename);
+        }
+        if (file.isDirectory()) {
+            throw new Exception("[Error] " + filename + " points to a directory!");
+        }
+
+        try {
+            DataSource source = new DataSource(filename);
+            D = source.getDataSet();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("[Error] Failed to load Instances from file '" + filename + "'.");
+        }
+
+        return D;
+    }
     
-            
+      public static Set<String> getClassesConhecidas(Instances train, int L) {
+        int[] dist = DataSetUtils.getLabelsDistribution(train, L);
+        Set<String> classesConhecidas = new HashSet<>();
+        for (int j = 0; j < train.size(); j++) {
+            for (int k = 0; k < L; k++) {
+                if(train.get(j).value(k) == 1 && dist[k] > 10){
+                    classesConhecidas.add(String.valueOf(k));
+                }
+            }
+        }
+        return classesConhecidas;
+    }      
+      
+      public static int[] getLabelsDistribution(Instances D, int L){
+        int[] dist = new int[L];
+        for (int i = 0; i < D.size(); i++) {
+            for (int j = 0; j < L; j++) {
+                if(D.get(i).value(j) == 1){
+                    dist[j]++;
+                }
+            }
+        }
+        return dist;
+    }
+      
+      /**
+     * Convert a prediction matrix (meka prediction) to prediction set 
+     * @param trueLabels
+     * @return 
+     */
+    public static ArrayList<Set<String>> predictionMatrixToSet(int[][] trueLabels) {
+        ArrayList<Set<String>> pred = new ArrayList<Set<String>>();
+        for (int i = 0; i < trueLabels.length; i++) {
+            HashSet<String> set = new HashSet<String>();
+            for (int j = 0; j < trueLabels[i].length; j++) {
+                if(trueLabels[i][j] > 0)
+                    set.add(""+j);
+            }
+            pred.add(set);
+        }
+        return pred;
+    }
+    
+    public static int getNumLabels(String filePath) throws Exception{
+        Instances dataSetAux = DataSetUtils.loadDataset(filePath);
+        MLUtils.prepareData(dataSetAux);
+        return dataSetAux.classIndex();
+    }
+    
+    
     
     public static String mergeArffFiles(ArrayList<String> filePaths, ArrayList<Integer> Ls, int numAtt) throws IOException{
         int Lall = 0;
@@ -285,11 +370,11 @@ public class DataSetUtils {
         return dist;
     }
     
-    public static int[] getLabelsDistribution(ArrayList<weka.core.Instance> D, int L){
+    public static int[] getLabelsDistribution(List<InstanceExample> D, int L){
         int[] dist = new int[L];
         for (int i = 0; i < D.size(); i++) {
             for (int j = 0; j < L; j++) {
-                if(D.get(i).value(j) == 1){
+                if(D.get(i).getData().value(j) == 1){
                     dist[j]++;
                 }
             }
@@ -415,18 +500,53 @@ public class DataSetUtils {
      * @param classIndex qtde de classes do problema
      * @return retorna uma lista contendo as classes conhecidas (C_con) do problema.
      */
-    public static Set<String> getClassesConhecidas(List<Instance> train){
-        int[] dist = DataSetUtils.getLabelsDistribution(train);
+    public static Set<String> getClassesConhecidas(List<InstanceExample> train, int L){
+        int[] dist = DataSetUtils.getLabelsDistribution(train, L);
         Set<String> classesConhecidas = new HashSet<>();
         for (int j = 0; j < train.size(); j++) {
-            for (int k = 0; k < train.get(j).numOutputAttributes(); k++) {
-                if(train.get(j).valueOutputAttribute(k) == 1 && dist[k] > 10){
+            for (int k = 0; k < train.get(j).getData().numOutputAttributes(); k++) {
+                if(train.get(j).getData().valueOutputAttribute(k) == 1 && dist[k] > 10){
                     classesConhecidas.add(String.valueOf(k));
                 }
             }
         }
         return classesConhecidas;
     }
+    
+    public static ArrayList<double[]> getWindowsCardinalities(ArrayList<InstanceExample> dataSet, int windowsSize, int numWindows, int numLabels){
+        ArrayList<double[]> cardinalities = new ArrayList<>() ;
+        for (int i = 0; i < numWindows; i++) {
+            try{
+                if(i == numWindows-1)
+                    cardinalities.add(getLabelFrequencies(dataSet.subList(i*windowsSize, dataSet.size())));
+                else
+                    cardinalities.add(getLabelFrequencies(dataSet.subList(i*windowsSize, (i*windowsSize)+windowsSize)));
+            }catch(Exception e){
+                e.printStackTrace();
+                System.out.println("");
+                System.exit(0);
+            }
+        }
+        return cardinalities;
+    }
+    
+    /**
+     * returns label frequencies given a dataset
+     * @param D - dataset
+     * @return 
+     */
+    public static final double[] getLabelFrequencies(List<InstanceExample> D) {
+		int L = D.get(0).getData().numOutputAttributes();
+		double lc[] = new double[L];
+		for(int j = 0; j < L; j++) {
+			for(int i = 0; i < D.size(); i++) {
+				lc[j] += D.get(i).getData().valueOutputAttribute(j);
+			}
+			lc[j] /= D.size();
+		}
+		return lc;
+	}
+    
     public static Set<String> getClassesConhecidas(ArrayList<weka.core.Instance> train, int L){
         Set<String> classesConhecidas = new HashSet<>();
         

@@ -1,6 +1,8 @@
 package main;
 
 
+import baselines.batch.ExperimentBatch;
+import baselines.upperbound.ExperimentUpperBound;
 import br.Model;
 import br.OfflinePhase;
 import br.OnlinePhase;
@@ -38,7 +40,7 @@ public class Main {
                 outputDirecotory);
         }else if (args[0].equals("-m")){
             double k_ini = Double.parseDouble(args[5]);
-            String theta = args[6];
+            String theta = "" + (int) Math.ceil(Double.parseDouble(args[6]) * Double.parseDouble(args[7]));
             String omega = args[7];
             outputDirecotory = args[8] + "/" + dataSetName;
             
@@ -52,6 +54,12 @@ public class Main {
                 "1.1",
                 "kmeans+leader",
                 "JI");
+        }else if (args[0].equals("-b")){
+            outputDirecotory = args[5] + "/batch/"+dataSetName+"/";
+            ExperimentBatch.execute(trainPath, testPath, outputDirecotory, "50");
+        }else if(args[0].equals("-o")){
+            outputDirecotory = args[5] + "/upperBound/"+dataSetName+"/";
+            ExperimentUpperBound.execute(trainPath, testPath, outputDirecotory, 50);
         }
         
 //        //****************MOA-3C*********************
@@ -66,36 +74,37 @@ public class Main {
         //*****************************************
         
 //        //****************MOA1*********************
-//        String dataSetName = "MOA1_noUpdateMtxMatrizByClassification_2";
+//        String dataSetName = "minas-br_MOA1";
 ////        String dataSetName = "MOA1_kini=0.001";
 //        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-train.arff";
 //        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-5C-7C-2D/MOA-5C-7C-2D-test.arff";
-//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/results_to_plot/MOA1/"+dataSetName+"/";
 //        double k_ini = 0.01;
 ////        double k_ini = 0.001;
-//        String theta = "1000";
+//        double theta = 0.75;
 //        String omega = "2000";
+//        String theta_param = "" + (int)Math.ceil(Double.parseDouble(omega) * theta);
 //        int L = 7;
 //        //*****************************************
 
-        //****************yeast*********************
-//        String dataSetName = "Yeast_k=10";
+//        //****************yeast*********************
+//        String dataSetName = "batch_yeast_original";
 //        String trainPath = "/home/joel/datasets/datasets_reais/Yeast/yeast_original_train.arff";
 //        String testPath = "/home/joel/datasets/datasets_reais/Yeast/yeast_original_test.arff";
-//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        String outputDirectory = "/home/joel/resultsAsoc2021/baseline_methods/batchMethods/"+dataSetName+"/";
 //        double k_ini = 0.25;
 ////        double k_ini = 0.001;
 //        String theta = "20";
 //        String omega = "200";
 //        int L = 14;
-//        //*****************************************
+////        //*****************************************
         
         //****************mediamill*********************
-//        String dataSetName = "Mediamill_resetingMtxFrequencies";
+//        String dataSetName = "mediamill_original_validation";
 ////        String dataSetName = "MOA1_kini=0.001";
 //        String trainPath = "/home/joel/datasets/datasets_reais/mediamill/mediamill_original_train.arff";
 //        String testPath = "/home/joel/datasets/datasets_reais/mediamill/mediamill_original_test.arff";
-//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/validation/"+dataSetName+"/";
 //        double k_ini = 0.1;
 ////        double k_ini = 0.001;
 //        String theta = "200";
@@ -104,11 +113,23 @@ public class Main {
 //        //*****************************************
 
         //****************scene*********************
-//        String dataSetName = "scene_updatingMC";
+//        String dataSetName = "batch_scene_modified";
+////        String dataSetName = "MOA1_kini=0.001";
+//        String trainPath = "/home/joel/datasets/datasets_modified/scene/scene-V2_train.arff";
+//        String testPath = "/home/joel/datasets/datasets_modified/scene/scene-V2_test.arff";
+//        String outputDirectory = "/home/joel/resultsAsoc2021/baseline_methods/batchMethods/"+dataSetName+"/";
+//        double k_ini = 0.1;
+////        double k_ini = 0.001;
+//        String theta = "20";
+//        String omega = "200";
+//        int L = 6;
+//        //*****************************************
+        //****************scene modified*********************
+//        String dataSetName = "upper_scene_original";
 ////        String dataSetName = "MOA1_kini=0.001";
 //        String trainPath = "/home/joel/datasets/datasets_reais/Scene/scene_original_train.arff";
 //        String testPath = "/home/joel/datasets/datasets_reais/Scene/scene_original_test.arff";
-//        String outputDirecotory = "/home/joel/resultsAsoc2021/"+dataSetName+"/";
+//        String outputDirectory = "/home/joel/resultsAsoc2021/baseline_methods/upperBoundMethods/"+dataSetName+"/";
 //        double k_ini = 0.1;
 ////        double k_ini = 0.001;
 //        String theta = "20";
@@ -132,7 +153,7 @@ public class Main {
 //                outputDirecotory,
 //                L, 
 //                k_ini,
-//                theta, 
+//                theta_param, 
 //                omega,
 //                "1",
 //                "kmeans+leader",
@@ -143,6 +164,13 @@ public class Main {
 //                testPath,
 //                L,
 //                outputDirecotory);
+//        ExperimentBatch.execute(trainPath, testPath, outputDirectory, "50");
+//        String dataSetName = "upper_nus-wide_original";
+//        String trainPath = "/home/joel/datasets/datasets_reais/Nuswide_cVLADplus/nus-wide_original_train.arff";
+//        String testPath = "/home/joel/datasets/datasets_reais/Nuswide_cVLADplus/nus-wide_original_test.arff";
+//        String outputDirecotory = "/home/joel/resultsAsoc2021/baseline_methods/upperBoundMethods/"+dataSetName+"/";
+//        int L = 81; 
+//        ExperimentUpperBound.execute(trainPath, testPath, outputDirecotory, 50);
     }
     
     private static void experimentsParameters(String dataSetName,
@@ -385,208 +413,6 @@ public class Main {
                 Double.valueOf(f),
                 outputDirectory)
         );
-
-        //EaHTps
-//        OzaBagAdwinML EaHTps = new OzaBagAdwinML();
-//        MultilabelHoeffdingTree ht = new MultilabelHoeffdingTree();
-//         ht.setModelContext(file.getHeader());
-//         ht.prepareForUse();
-//         ht.resetLearningImpl();
-//        MEKAClassifier ps = new MEKAClassifier();
-//        PSUpdateable pse = new PSUpdateable();
-////        pse.setClassifier(new weka.classifiers.trees.HoeffdingTree());
-//        ps.baseLearnerOption.setCurrentObject(pse);
-//        ps.setModelContext(file.getHeader());
-//        ps.prepareForUse();
-//        ps.resetLearningImpl();
-////        ht.learnerOption.setCurrentObject(ps);
-//        EaHTps.baseLearnerOption.setCurrentObject(ht);
-////        ps.setModelContext(file.getHeader());
-//        EaHTps.setModelContext(file.getHeader());
-//        EaHTps.prepareForUse();
-//        EaHTps.resetLearningImpl();
-//        Evaluator avEaHTps = new Evaluator(m, C_con, "EaMLHT");
-        
-//        OzaBagAdwinML EaHTps = new OzaBagAdwinML();
-//        MultilabelHoeffdingTree ht = new MultilabelHoeffdingTree();
-//        MEKAClassifier ps = new MEKAClassifier();
-//        PSUpdateable pse = new PSUpdateable();
-////        pse.setClassifier(new NaiveBayesUpdateable());
-//        ps.baseLearnerOption.setCurrentObject(pse); 
-//        ht.learnerOption.setCurrentObject(ps);
-//        EaHTps.baseLearnerOption.setCurrentObject(ht);
-//        EaHTps.setModelContext(file.getHeader());
-//        EaHTps.prepareForUse();
-//        EaHTps.resetLearningImpl();
-//        Evaluator avEaHTps = new Evaluator(m, C_con, "EaMLHT");
-//        
-//        //EaBR
-//        OzaBagAdwinML EaBR = new OzaBagAdwinML();
-//        MEKAClassifier BRe = new MEKAClassifier();
-//        BRUpdateable brUpdateable = new BRUpdateable();
-////        brUpdateable.setClassifier(new NaiveBayesUpdateable());
-//        BRe.baseLearnerOption.setCurrentObject(brUpdateable);
-//        BRe.setModelContext(file.getHeader());
-//        BRe.prepareForUse();
-//        BRe.resetLearningImpl();
-//        EaBR.baseLearnerOption.setCurrentObject(BRe);
-//        EaBR.setModelContext(file.getHeader());
-//        EaBR.prepareForUse();
-//        EaBR.resetLearningImpl();
-//        Evaluator avEaBR = new Evaluator(m, C_con, "EaBR");
-//        
-//        //EaCC
-//        OzaBagAdwinML EaCC = new OzaBagAdwinML();
-//        MEKAClassifier CCe = new MEKAClassifier();
-//        CCUpdateable ccUpdateable = new CCUpdateable();
-////        ccUpdateable.setClassifier(new NaiveBayesUpdateable());
-//        CCe.baseLearnerOption.setCurrentObject(ccUpdateable);
-//        CCe.setModelContext(file.getHeader());
-//        CCe.prepareForUse();
-//        CCe.resetLearningImpl();
-//        EaCC.baseLearnerOption.setCurrentObject(CCe);
-//        EaCC.setModelContext(file.getHeader());
-//        EaCC.prepareForUse();
-//        EaCC.resetLearningImpl();
-//        Evaluator avEaCC = new Evaluator(m, C_con, "EaCC");
-//        
-//        //CC do moa sem feedback
-//        MEKAClassifier CC = new MEKAClassifier();
-//        CCUpdateable ccU = new CCUpdateable();
-////        ccU.setClassifier(new NaiveBayesUpdateable());
-//        CC.baseLearnerOption.setCurrentObject(ccU);
-//        CC.setModelContext(file.getHeader());
-//        CC.prepareForUse();
-//        CC.resetLearningImpl();
-//        Evaluator avCC = new Evaluator(m, C_con, "CC");
-//        
-//        //PS do moa sem feedback
-//        MEKAClassifier PS = new MEKAClassifier();
-//        PSUpdateable psUpdateable = new PSUpdateable();
-////        psUpdateable.setClassifier(new NaiveBayesUpdateable());
-//        PS.baseLearnerOption.setCurrentObject(psUpdateable);
-//        PS.setModelContext(file.getHeader());
-//        PS.prepareForUse();
-//        PS.resetLearningImpl();
-//        Evaluator avPS = new Evaluator(m, C_con, "PS");
-//        
-//        //MLHT without feedback
-//        MultilabelHoeffdingTree MLHT = new MultilabelHoeffdingTree();
-//        MEKAClassifier PSHT = new MEKAClassifier();
-//        PSUpdateable psHT = new PSUpdateable();
-////        psHT.setClassifier(new NaiveBayesUpdateable());
-//        PSHT.baseLearnerOption.setCurrentObject(psHT);
-//        MLHT.learnerOption.setCurrentObject(PSHT);
-//        MLHT.setModelContext(file.getHeader());
-//        MLHT.prepareForUse();
-//        MLHT.resetLearningImpl();
-//        Evaluator avMLHT = new Evaluator(m, C_con, "MLHT");
-//        
-//        //ISOUTree without feedback
-//        ISOUPTree iTree = new ISOUPTree();
-//        iTree.setModelContext(file.getHeader());
-//        iTree.prepareForUse();
-//        iTree.resetLearningImpl();
-//        Evaluator avITree = new Evaluator(m, C_con, "ISOUPTree");
-//        
-//        //train only
-//        for (int i = 0; i < train.size(); i++) {
-//            InstanceExample inst = file.nextInstance();
-//            EaHTps.trainOnInstance(inst);
-//            EaBR.trainOnInstance(inst);
-//            EaCC.trainOnInstance(inst);
-//            PS.trainOnInstance(inst);
-//            CC.trainOnInstance(inst);
-//            MLHT.trainOnInstance(inst);
-//            iTree.trainOnInstance(inst);
-//        }
-//
-//        //Classificação
-//        ArrayList<Prediction> predListEaHTps = new ArrayList<>();
-//        ArrayList<Prediction> predListEaBR = new ArrayList<>();
-//        ArrayList<Prediction> predListEaCC = new ArrayList<>();
-//        ArrayList<Prediction> predListCC = new ArrayList<>();
-//        ArrayList<Prediction> predListPS = new ArrayList<>();
-//        ArrayList<Prediction> predListMLHT= new ArrayList<>();
-//        ArrayList<Prediction> predListiTree= new ArrayList<>();
-//        ArrayList<Set<String>> trueLabelsList = new ArrayList<>();
-//        
-//        for (int i = 1; i <= test.size(); i++) {
-//            InstanceExample inst = file.nextInstance();
-//            trueLabelsList.add(DataSetUtils.getLabelSet(inst.getData()));
-//
-//                //Test, evaluation and train EaHTps
-//                predListEaHTps.add(EaHTps.getPredictionForInstance(inst));
-//                EaHTps.trainOnInstance(inst);
-//    
-//                //Test, evaluation and train EaBR
-//                predListEaBR.add(EaBR.getPredictionForInstance(inst));
-//                EaBR.trainOnInstance(inst);
-//
-////                Test, evaluation and train EaCC
-//                predListEaCC.add(EaCC.getPredictionForInstance(inst));
-//                EaCC.trainOnInstance(inst);
-//                
-//               //Test, evaluation and train CC sem feedback
-//                predListCC.add(CC.getPredictionForInstance(inst));
-//
-//    //            //Test, evaluation and train PS sem feedback
-//                predListPS.add(PS.getPredictionForInstance(inst));
-//                
-//                predListMLHT.add(MLHT.getPredictionForInstance(inst));
-//                
-//                predListiTree.add(iTree.getPredictionForInstance(inst));
-//
-//                if (i % wEvaluation == 0){
-//                    //If it have not label latency get the last window label cardinality
-//                    avEaHTps.updateMeasures(predListEaHTps, windowsCardinalities[i/wEvaluation-1], trueLabelsList);
-//                    avEaBR.updateMeasures(predListEaBR, windowsCardinalities[i/wEvaluation-1], trueLabelsList);
-//                    avEaCC.updateMeasures(predListEaCC, windowsCardinalities[i/wEvaluation-1], trueLabelsList);
-//
-//                    //else get the train label cardinality
-//                    avCC.updateMeasures(predListCC, cardinalityTrain, trueLabelsList);
-//                    avPS.updateMeasures(predListPS, cardinalityTrain, trueLabelsList);
-//                    avMLHT.updateMeasures(predListMLHT, cardinalityTrain, trueLabelsList);
-//                    avITree.updateMeasures(predListiTree, cardinalityTrain, trueLabelsList);
-//
-//                    predListEaHTps.clear();
-//                    predListEaBR.clear();
-//                    predListEaCC.clear();
-//                    predListCC.clear();
-//                    predListPS.clear();
-//                    predListMLHT.clear();
-//                    predListiTree.clear();
-//                    trueLabelsList.clear();
-//                }
-//                if(i == test.size() && (i % wEvaluation) > 0){
-//                    avEaHTps.updateMeasures(predListEaHTps, windowsCardinalities[i/wEvaluation-1], trueLabelsList);
-//                    avEaBR.updateMeasures(predListEaBR, windowsCardinalities[i/wEvaluation-1], trueLabelsList);
-//                    avEaCC.updateMeasures(predListEaCC, windowsCardinalities[i/wEvaluation-1], trueLabelsList);
-//
-//                    //else get the train label cardinality
-//                    avCC.updateMeasures(predListCC, cardinalityTrain, trueLabelsList);
-//                    avPS.updateMeasures(predListPS, cardinalityTrain, trueLabelsList);
-//                    avMLHT.updateMeasures(predListMLHT, cardinalityTrain, trueLabelsList);
-//                    avITree.updateMeasures(predListiTree, cardinalityTrain, trueLabelsList);
-//
-//                    predListEaHTps.clear();
-//                    predListEaBR.clear();
-//                    predListEaCC.clear();
-//                    predListCC.clear();
-//                    predListPS.clear();
-//                    predListMLHT.clear();
-//                    predListiTree.clear();
-//                    trueLabelsList.clear();
-//                }
-//        }
-//        
-//        av.add(avEaCC);
-//        av.add(avEaHTps);
-//        av.add(avEaBR);
-//        av.add(avCC);
-//        av.add(avPS);
-//        av.add(avMLHT);
-//        av.add(avITree);
 
         EvaluatorBR.writesAvgResults(av,outputDirectory);
         Evaluator.writeMeasuresOverTime(av, outputDirectory);
