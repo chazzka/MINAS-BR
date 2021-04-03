@@ -13,16 +13,16 @@ def concat_datasets_for_ploting(batch_patch, upper_patch, bracis_patch, minasbr_
     df_bracis_unkrm = df_bracis.query("Classifier == 'UnkRM'").copy()
     df_bracis_classifier["Classifier"] = "MINAS-BR_v1"
     df_bracis_unkrm["Classifier"] = "UnkRM_v1"
-    # df_bracis = pd.concat([df_bracis_classifier, df_bracis_unkrm])
-    df_bracis = pd.concat([df_bracis_classifier.iloc[:-1], df_bracis_unkrm.iloc[:-1]])
+    df_bracis = pd.concat([df_bracis_classifier, df_bracis_unkrm])
+    # df_bracis = pd.concat([df_bracis_classifier.iloc[:-1], df_bracis_unkrm.iloc[:-1]])
 
     df_minasbr = pd.read_csv(minasbr_patch)
     df_minasbr_classifier = df_minasbr.query("Classifier == 'MINAS-BR'")
     df_minasbr_unkrm = df_minasbr.query("Classifier == 'UnkRM'")
     df_minasbr_classifier["Classifier"] = "MINAS-BR_v2"
     df_minasbr_unkrm["Classifier"] = "UnkRM_v2"
-    # df_minasbr = pd.concat([df_minasbr_classifier,df_minasbr_unkrm])
-    df_minasbr = pd.concat([df_minasbr_classifier.iloc[:-1], df_minasbr_unkrm.iloc[:-1]])
+    df_minasbr = pd.concat([df_minasbr_classifier,df_minasbr_unkrm])
+    # df_minasbr = pd.concat([df_minasbr_classifier.iloc[:-1], df_minasbr_unkrm.iloc[:-1]])
 
     df_final = pd.concat([df_minasbr, df_bracis, df_upper, df_batch])
     return df_final
@@ -163,3 +163,23 @@ def plot_measures_over_time_sinais(data,
     if savefig:
         plt.savefig(name_fig, dpi=300, format='pdf', bbox_inches='tight')
     plt.show()
+
+
+def boxplot_avg_results(datasets, metric, savefig=False, name_fig="boxplots.pdf"):
+
+    fig = plt.figure(figsize=(20, 10))
+    j = 0
+    for k,v in datasets.items():
+        plt.subplot(5, 2, j + 1)
+        j += 1
+        ax = sns.boxplot(data=v, x="Classifier", y=metric)
+        ax.set_ylim((0, 1))
+        ax.set_xlabel(k, fontsize=14)
+        ax.figure.set_size_inches((11,16))
+    fig.tight_layout()
+    fig.subplots_adjust(top=0.95)
+
+    if savefig:
+        plt.savefig(name_fig, dpi=300, format='pdf', bbox_inches='tight')
+    plt.show()
+
