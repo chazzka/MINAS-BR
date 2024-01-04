@@ -170,7 +170,7 @@ public class Main {
 //        String testPath = "/home/joel/datasets/datasets_reais/Nuswide_cVLADplus/nus-wide_original_test.arff";
 //        String outputDirecotory = "/home/joel/resultsAsoc2021/baseline_methods/upperBoundMethods/"+dataSetName+"/";
 //        int L = 81;
-        ExperimentUpperBound.execute(trainPath, testPath, outputDirectory, 50);
+        //ExperimentUpperBound.execute(trainPath, testPath, outputDirectory, 50);
 
         System.out.println("koniec");
     }

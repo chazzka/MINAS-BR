@@ -52,8 +52,14 @@ NP1 had no class associated with it until the timestamp 56
 ======== JI NP1 timestamp = 58=========
 NP1 had no class associated with it until the timestamp 58
 ====================================
+======== JI NP2 timestamp = 58=========
+NP2 had no class associated with it until the timestamp 58
+====================================
 ======== JI NP1 timestamp = 60=========
 NP1 had no class associated with it until the timestamp 60
+====================================
+======== JI NP2 timestamp = 60=========
+NP2 had no class associated with it until the timestamp 60
 ====================================
 ======== JI NP1 timestamp = 62=========
 NP1 had no class associated with it until the timestamp 62
@@ -67,11 +73,17 @@ NP1 had no class associated with it until the timestamp 64
 ======== JI NP2 timestamp = 64=========
 NP2 had no class associated with it until the timestamp 64
 ====================================
+======== JI NP3 timestamp = 64=========
+NP3 had no class associated with it until the timestamp 64
+====================================
 ======== JI NP1 timestamp = 66=========
 NP1 had no class associated with it until the timestamp 66
 ====================================
 ======== JI NP2 timestamp = 66=========
 NP2 had no class associated with it until the timestamp 66
+====================================
+======== JI NP3 timestamp = 66=========
+NP3 had no class associated with it until the timestamp 66
 ====================================
 ======== JI NP1 timestamp = 68=========
 NP1 had no class associated with it until the timestamp 68
@@ -79,11 +91,17 @@ NP1 had no class associated with it until the timestamp 68
 ======== JI NP2 timestamp = 68=========
 NP2 had no class associated with it until the timestamp 68
 ====================================
+======== JI NP3 timestamp = 68=========
+NP3 had no class associated with it until the timestamp 68
+====================================
 ======== JI NP1 timestamp = 70=========
 NP1 had no class associated with it until the timestamp 70
 ====================================
 ======== JI NP2 timestamp = 70=========
 NP2 had no class associated with it until the timestamp 70
+====================================
+======== JI NP3 timestamp = 70=========
+NP3 had no class associated with it until the timestamp 70
 ====================================
 ======== JI NP1 timestamp = 72=========
 NP1 had no class associated with it until the timestamp 72
@@ -91,11 +109,20 @@ NP1 had no class associated with it until the timestamp 72
 ======== JI NP2 timestamp = 72=========
 NP2 had no class associated with it until the timestamp 72
 ====================================
+======== JI NP3 timestamp = 72=========
+NP3 had no class associated with it until the timestamp 72
+====================================
 ======== JI NP1 timestamp = 74=========
 NP1 had no class associated with it until the timestamp 74
 ====================================
 ======== JI NP2 timestamp = 74=========
 NP2 had no class associated with it until the timestamp 74
+====================================
+======== JI NP3 timestamp = 74=========
+NP3 had no class associated with it until the timestamp 74
+====================================
+======== JI NP4 timestamp = 74=========
+NP4 had no class associated with it until the timestamp 74
 ====================================
 ======== JI NP1 timestamp = 76=========
 NP1 had no class associated with it until the timestamp 76
@@ -103,11 +130,23 @@ NP1 had no class associated with it until the timestamp 76
 ======== JI NP2 timestamp = 76=========
 NP2 had no class associated with it until the timestamp 76
 ====================================
+======== JI NP3 timestamp = 76=========
+NP3 had no class associated with it until the timestamp 76
+====================================
+======== JI NP4 timestamp = 76=========
+NP4 had no class associated with it until the timestamp 76
+====================================
 ======== JI NP1 timestamp = 78=========
 NP1 had no class associated with it until the timestamp 78
 ====================================
 ======== JI NP2 timestamp = 78=========
 NP2 had no class associated with it until the timestamp 78
+====================================
+======== JI NP3 timestamp = 78=========
+NP3 had no class associated with it until the timestamp 78
+====================================
+======== JI NP4 timestamp = 78=========
+NP4 had no class associated with it until the timestamp 78
 ====================================
 ======== JI NP1 timestamp = 80=========
 NP1 had no class associated with it until the timestamp 80
@@ -115,11 +154,23 @@ NP1 had no class associated with it until the timestamp 80
 ======== JI NP2 timestamp = 80=========
 NP2 had no class associated with it until the timestamp 80
 ====================================
+======== JI NP3 timestamp = 80=========
+NP3 had no class associated with it until the timestamp 80
+====================================
+======== JI NP4 timestamp = 80=========
+NP4 had no class associated with it until the timestamp 80
+====================================
 ======== JI NP1 timestamp = 82=========
 NP1 had no class associated with it until the timestamp 82
 ====================================
 ======== JI NP2 timestamp = 82=========
 NP2 had no class associated with it until the timestamp 82
+====================================
+======== JI NP3 timestamp = 82=========
+NP3 had no class associated with it until the timestamp 82
+====================================
+======== JI NP4 timestamp = 82=========
+NP4 had no class associated with it until the timestamp 82
 ====================================
 ======== JI NP1 timestamp = 84=========
 NP1 had no class associated with it until the timestamp 84
@@ -127,11 +178,23 @@ NP1 had no class associated with it until the timestamp 84
 ======== JI NP2 timestamp = 84=========
 NP2 had no class associated with it until the timestamp 84
 ====================================
+======== JI NP3 timestamp = 84=========
+NP3 had no class associated with it until the timestamp 84
+====================================
+======== JI NP4 timestamp = 84=========
+NP4 had no class associated with it until the timestamp 84
+====================================
 ======== JI NP1 timestamp = 86=========
 NP1 had no class associated with it until the timestamp 86
 ====================================
 ======== JI NP2 timestamp = 86=========
 NP2 had no class associated with it until the timestamp 86
+====================================
+======== JI NP3 timestamp = 86=========
+NP3 had no class associated with it until the timestamp 86
+====================================
+======== JI NP4 timestamp = 86=========
+NP4 had no class associated with it until the timestamp 86
 ====================================
 ======== JI NP1 timestamp = 88=========
 NP1 had no class associated with it until the timestamp 88
@@ -139,11 +202,23 @@ NP1 had no class associated with it until the timestamp 88
 ======== JI NP2 timestamp = 88=========
 NP2 had no class associated with it until the timestamp 88
 ====================================
+======== JI NP3 timestamp = 88=========
+NP3 had no class associated with it until the timestamp 88
+====================================
+======== JI NP4 timestamp = 88=========
+NP4 had no class associated with it until the timestamp 88
+====================================
 ======== JI NP1 timestamp = 90=========
 NP1 had no class associated with it until the timestamp 90
 ====================================
 ======== JI NP2 timestamp = 90=========
 NP2 had no class associated with it until the timestamp 90
+====================================
+======== JI NP3 timestamp = 90=========
+NP3 had no class associated with it until the timestamp 90
+====================================
+======== JI NP4 timestamp = 90=========
+NP4 had no class associated with it until the timestamp 90
 ====================================
 ======== JI NP1 timestamp = 91=========
 NP1 had no class associated with it until the timestamp 91
@@ -151,6 +226,12 @@ NP1 had no class associated with it until the timestamp 91
 ======== JI NP2 timestamp = 91=========
 NP2 had no class associated with it until the timestamp 91
 ====================================
-Number of examples sent to short-time-memory = 15
+======== JI NP3 timestamp = 91=========
+NP3 had no class associated with it until the timestamp 91
+====================================
+======== JI NP4 timestamp = 91=========
+NP4 had no class associated with it until the timestamp 91
+====================================
+Number of examples sent to short-time-memory = 25
 Number of examples removed from short-time-memory = 0
-Number of NPs = 2
+Number of NPs = 4

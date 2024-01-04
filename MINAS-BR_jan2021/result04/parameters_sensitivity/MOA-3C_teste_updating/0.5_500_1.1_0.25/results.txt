@@ -1,7 +1,13 @@
 
 
 
-Thinking np: N 0 - 4 examples
+
+
+
+
+
+
+Thinking np: N 0 - 5 examples
 
 
 
@@ -11,15 +17,6 @@ Thinking np: N 0 - 4 examples
 
 
 
-Thinking np: N NP1 - 4 examples
-
-
-
-
-
-
-
-Thinking np: N NP1 - 4 examples
-
-
+Thinking np: N NP1 - 5 examples
+Thinking np: N NP1 - 6 examples
 

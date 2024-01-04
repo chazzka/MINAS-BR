@@ -3,10 +3,10 @@ Timestamp23
 Thinking np: N 0 - 4 examplesThinkingNov: Novelty NP2 - 1 micro-clusters
 
 *********Novelty Pattern**********
-Timestamp42
+Timestamp46
 Thinking np: N NP1 - 4 examplesThinkingNov: Novelty NP3 - 1 micro-clusters
 
 *********Novelty Pattern**********
-Timestamp78
+Timestamp85
 Thinking np: N NP1 - 4 examplesThinkingNov: Novelty NP4 - 1 micro-clusters
 

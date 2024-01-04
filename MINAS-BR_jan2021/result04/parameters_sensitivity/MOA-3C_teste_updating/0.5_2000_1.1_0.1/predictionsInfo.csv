@@ -1,6 +1,6 @@
 timestamp;actual;predicted
 1;[0];[0]
-2;[0];[0]
+2;[0];unknwon
 3;[0];[0]
 4;[0];[0]
 5;[0];[0]
@@ -21,8 +21,8 @@ timestamp;actual;predicted
 20;[];unknwon
 21;[];unknwon
 22;[];unknwon
-23;[];unknwon
-24;[];unknwon
+23;[];[NP1]
+24;[];[NP1]
 25;[];[NP1]
 26;[];[NP1]
 27;[0];[0]

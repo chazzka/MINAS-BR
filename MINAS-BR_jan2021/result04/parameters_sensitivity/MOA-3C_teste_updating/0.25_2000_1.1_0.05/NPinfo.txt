@@ -1,6 +1,3 @@
-======== JI NP1 timestamp = 22=========
-NP1 had no class associated with it until the timestamp 22
-====================================
 ======== JI NP1 timestamp = 24=========
 NP1 had no class associated with it until the timestamp 24
 ====================================

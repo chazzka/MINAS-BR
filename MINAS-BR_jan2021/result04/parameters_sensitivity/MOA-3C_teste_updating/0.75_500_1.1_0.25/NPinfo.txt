@@ -85,24 +85,45 @@ NP1 had no class associated with it until the timestamp 78
 ======== JI NP1 timestamp = 80=========
 NP1 had no class associated with it until the timestamp 80
 ====================================
+======== JI NP2 timestamp = 80=========
+NP2 had no class associated with it until the timestamp 80
+====================================
 ======== JI NP1 timestamp = 82=========
 NP1 had no class associated with it until the timestamp 82
+====================================
+======== JI NP2 timestamp = 82=========
+NP2 had no class associated with it until the timestamp 82
 ====================================
 ======== JI NP1 timestamp = 84=========
 NP1 had no class associated with it until the timestamp 84
 ====================================
+======== JI NP2 timestamp = 84=========
+NP2 had no class associated with it until the timestamp 84
+====================================
 ======== JI NP1 timestamp = 86=========
 NP1 had no class associated with it until the timestamp 86
+====================================
+======== JI NP2 timestamp = 86=========
+NP2 had no class associated with it until the timestamp 86
 ====================================
 ======== JI NP1 timestamp = 88=========
 NP1 had no class associated with it until the timestamp 88
 ====================================
+======== JI NP2 timestamp = 88=========
+NP2 had no class associated with it until the timestamp 88
+====================================
 ======== JI NP1 timestamp = 90=========
 NP1 had no class associated with it until the timestamp 90
+====================================
+======== JI NP2 timestamp = 90=========
+NP2 had no class associated with it until the timestamp 90
 ====================================
 ======== JI NP1 timestamp = 91=========
 NP1 had no class associated with it until the timestamp 91
 ====================================
-Number of examples sent to short-time-memory = 13
+======== JI NP2 timestamp = 91=========
+NP2 had no class associated with it until the timestamp 91
+====================================
+Number of examples sent to short-time-memory = 14
 Number of examples removed from short-time-memory = 0
-Number of NPs = 1
+Number of NPs = 2

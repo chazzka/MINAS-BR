@@ -1,3 +1,6 @@
+======== JI NP1 timestamp = 24=========
+NP1 had no class associated with it until the timestamp 24
+====================================
 ======== JI NP1 timestamp = 26=========
 NP1 had no class associated with it until the timestamp 26
 ====================================
@@ -16,20 +19,11 @@ NP1 had no class associated with it until the timestamp 34
 ======== JI NP1 timestamp = 36=========
 NP1 had no class associated with it until the timestamp 36
 ====================================
-======== JI NP2 timestamp = 36=========
-NP2 had no class associated with it until the timestamp 36
-====================================
 ======== JI NP1 timestamp = 38=========
 NP1 had no class associated with it until the timestamp 38
 ====================================
-======== JI NP2 timestamp = 38=========
-NP2 had no class associated with it until the timestamp 38
-====================================
 ======== JI NP1 timestamp = 40=========
 NP1 had no class associated with it until the timestamp 40
-====================================
-======== JI NP2 timestamp = 40=========
-NP2 had no class associated with it until the timestamp 40
 ====================================
 ======== JI NP1 timestamp = 42=========
 NP1 had no class associated with it until the timestamp 42
@@ -121,17 +115,11 @@ NP1 had no class associated with it until the timestamp 70
 ======== JI NP2 timestamp = 70=========
 NP2 had no class associated with it until the timestamp 70
 ====================================
-======== JI NP3 timestamp = 70=========
-NP3 had no class associated with it until the timestamp 70
-====================================
 ======== JI NP1 timestamp = 72=========
 NP1 had no class associated with it until the timestamp 72
 ====================================
 ======== JI NP2 timestamp = 72=========
 NP2 had no class associated with it until the timestamp 72
-====================================
-======== JI NP3 timestamp = 72=========
-NP3 had no class associated with it until the timestamp 72
 ====================================
 ======== JI NP1 timestamp = 74=========
 NP1 had no class associated with it until the timestamp 74
@@ -196,6 +184,9 @@ NP2 had no class associated with it until the timestamp 86
 ======== JI NP3 timestamp = 86=========
 NP3 had no class associated with it until the timestamp 86
 ====================================
+======== JI NP4 timestamp = 86=========
+NP4 had no class associated with it until the timestamp 86
+====================================
 ======== JI NP1 timestamp = 88=========
 NP1 had no class associated with it until the timestamp 88
 ====================================
@@ -204,6 +195,9 @@ NP2 had no class associated with it until the timestamp 88
 ====================================
 ======== JI NP3 timestamp = 88=========
 NP3 had no class associated with it until the timestamp 88
+====================================
+======== JI NP4 timestamp = 88=========
+NP4 had no class associated with it until the timestamp 88
 ====================================
 ======== JI NP1 timestamp = 90=========
 NP1 had no class associated with it until the timestamp 90
@@ -214,6 +208,9 @@ NP2 had no class associated with it until the timestamp 90
 ======== JI NP3 timestamp = 90=========
 NP3 had no class associated with it until the timestamp 90
 ====================================
+======== JI NP4 timestamp = 90=========
+NP4 had no class associated with it until the timestamp 90
+====================================
 ======== JI NP1 timestamp = 91=========
 NP1 had no class associated with it until the timestamp 91
 ====================================
@@ -223,6 +220,9 @@ NP2 had no class associated with it until the timestamp 91
 ======== JI NP3 timestamp = 91=========
 NP3 had no class associated with it until the timestamp 91
 ====================================
-Number of examples sent to short-time-memory = 18
+======== JI NP4 timestamp = 91=========
+NP4 had no class associated with it until the timestamp 91
+====================================
+Number of examples sent to short-time-memory = 23
 Number of examples removed from short-time-memory = 0
-Number of NPs = 3
+Number of NPs = 4

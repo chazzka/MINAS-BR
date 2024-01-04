@@ -1,6 +1,6 @@
 Classes for the training phase (offline): [0]
 Quantidade de classes: 1
-Class: 0 size: 66 n:700
+Class: 0 size: 68 n:700
 Label Cardinality: 1.0
 Known Classes: 1
 Train label cardinality: 1.0

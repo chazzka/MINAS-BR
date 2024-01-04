@@ -1,2 +1,2 @@
 timestamp,evaluationWindow,nExamples,radius,silhouette,threshold,averOut,label
-22,11,4.0,66.68731769103016,1.0,0.0,1.0258354974925375E-6,NP1
+23,11,5.0,61.9036637989275,1.0,0.0,4.81584111867158E-7,NP1
