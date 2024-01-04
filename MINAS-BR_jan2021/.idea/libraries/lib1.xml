@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/meka-1.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/mulan-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/moa.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/meka-1.9.4-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/moa-2016.04.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/moa-2016.04-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/Jama-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/moa-2014.11-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/meka-1.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/MINAS.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/weka-dev-3.9.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

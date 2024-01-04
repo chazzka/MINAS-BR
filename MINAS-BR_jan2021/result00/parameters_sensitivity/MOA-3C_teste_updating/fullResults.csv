@@ -1,0 +1,3 @@
+shortTermMemoryLimit,windowsSize,threshold,k_ini,F1M,precision,recall,subsetAccuracy,NP,unk,unkRemoved
+0.1,200,1.1,0.01,0.5503392,0.44685656,0.5215807,0.03896258,35,219,83
+0.1,200,1.1,0.05,0.46256444,0.33971125,0.39326978,0.026107768,29,165,44

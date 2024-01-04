@@ -1,0 +1,24 @@
+======== JI NP1 timestamp = 2745=========
+NP1 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP1 timestamp = 2806=========
+NP1 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP1 timestamp = 2867=========
+NP1 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP1 timestamp = 2928=========
+NP1 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP1 timestamp = 2989=========
+NP1 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP1 timestamp = 3050=========
+NP1 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP1 timestamp = 3060=========
+NP1 had no class associated with it until the timestamp 3060
+====================================
+Number of examples sent to short-time-memory = 12
+Number of examples removed from short-time-memory = 0
+Number of NPs = 1

@@ -1,0 +1,129 @@
+======== JI NP1 timestamp = 3050=========
+NP1 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP2 timestamp = 3050=========
+NP2 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP3 timestamp = 3050=========
+NP3 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP4 timestamp = 3050=========
+NP4 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP5 timestamp = 3050=========
+NP5 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP6 timestamp = 3050=========
+NP6 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP7 timestamp = 3050=========
+NP7 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP8 timestamp = 3050=========
+NP8 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP9 timestamp = 3050=========
+NP9 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP10 timestamp = 3050=========
+NP10 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP11 timestamp = 3050=========
+NP11 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP12 timestamp = 3050=========
+NP12 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP13 timestamp = 3050=========
+NP13 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP14 timestamp = 3050=========
+NP14 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP15 timestamp = 3050=========
+NP15 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP16 timestamp = 3050=========
+NP16 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP17 timestamp = 3050=========
+NP17 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP18 timestamp = 3050=========
+NP18 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP19 timestamp = 3050=========
+NP19 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP20 timestamp = 3050=========
+NP20 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP21 timestamp = 3050=========
+NP21 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP1 timestamp = 3060=========
+NP1 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP2 timestamp = 3060=========
+NP2 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP3 timestamp = 3060=========
+NP3 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP4 timestamp = 3060=========
+NP4 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP5 timestamp = 3060=========
+NP5 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP6 timestamp = 3060=========
+NP6 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP7 timestamp = 3060=========
+NP7 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP8 timestamp = 3060=========
+NP8 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP9 timestamp = 3060=========
+NP9 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP10 timestamp = 3060=========
+NP10 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP11 timestamp = 3060=========
+NP11 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP12 timestamp = 3060=========
+NP12 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP13 timestamp = 3060=========
+NP13 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP14 timestamp = 3060=========
+NP14 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP15 timestamp = 3060=========
+NP15 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP16 timestamp = 3060=========
+NP16 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP17 timestamp = 3060=========
+NP17 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP18 timestamp = 3060=========
+NP18 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP19 timestamp = 3060=========
+NP19 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP20 timestamp = 3060=========
+NP20 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP21 timestamp = 3060=========
+NP21 had no class associated with it until the timestamp 3060
+====================================
+Number of examples sent to short-time-memory = 927
+Number of examples removed from short-time-memory = 0
+Number of NPs = 21

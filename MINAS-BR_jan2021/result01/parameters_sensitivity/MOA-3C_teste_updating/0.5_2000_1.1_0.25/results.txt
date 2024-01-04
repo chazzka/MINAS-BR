@@ -1,0 +1,126 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thinking np: N 4 - 4 examples
+
+
+
+
+
+
+
+
+Thinking np: N NP1 - 4 examples
+Thinking np: N NP1 - 4 examples
+
+Thinking np: N NP1 - 4 examples
+Thinking np: N NP1 - 4 examples
+
+
+
+
+
+Thinking np: N NP1 - 4 examples
+
+Thinking np: N NP1 - 5 examples
+Thinking np: N NP8 - 4 examples
+
+Thinking np: N NP8 - 4 examples
+
+
+
+Thinking extension: C NP8 - 4 examples
+Thinking np: N NP8 - 4 examples
+
+Thinking np: N NP8 - 4 examples
+
+
+Thinking np: N NP8 - 4 examples
+
+Thinking np: N NP8 - 4 examples
+
+
+Thinking np: N NP8 - 4 examples
+
+
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP13]:2
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP14]:1
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP15]:2
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP16]:1
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP10]:1
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP11]:1
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP12]:2
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP17]:1
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [NP1]:1
+Removed micro-clusters: 45 label: 0 category: normal
+Removed micro-clusters: 80 label: 0 category: normal
+Timestamp: 2000 - removed micro-clusters: 2 - model's size [0]:134
+Timestamp: 2000 - removed micro-clusters: 2 - model's size [NP3]:2
+Removed micro-clusters: 20 label: 1 category: normal
+Timestamp: 2000 - removed micro-clusters: 3 - model's size [1]:239
+Timestamp: 2000 - removed micro-clusters: 3 - model's size [NP2]:1
+Removed micro-clusters: 133 label: 2 category: normal
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [2]:151
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [NP5]:1
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [3]:242
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [NP4]:1
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [4]:234
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [NP7]:1
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [NP6]:1
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [NP9]:1
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [NP8]:2
+
+
+Thinking extension: C NP8 - 4 examples
+
+
+
+
+Thinking np: N NP8 - 4 examples
+Thinking np: N NP8 - 4 examples
+
+Thinking np: N NP8 - 4 examples
+
+
+Thinking np: N NP8 - 4 examples
+
+
+

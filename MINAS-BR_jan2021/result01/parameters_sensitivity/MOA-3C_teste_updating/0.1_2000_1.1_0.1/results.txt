@@ -1,0 +1,13 @@
+
+
+
+
+
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [0]:102
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [1]:174
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [2]:108
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [3]:169
+Timestamp: 2000 - removed micro-clusters: 0 - model's size [4]:176
+
+
+

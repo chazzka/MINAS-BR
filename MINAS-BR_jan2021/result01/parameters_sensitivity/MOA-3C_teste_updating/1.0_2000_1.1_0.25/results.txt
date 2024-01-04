@@ -1,0 +1,16 @@
+Removed micro-clusters: 66 label: 0 category: normal
+Removed micro-clusters: 89 label: 0 category: normal
+Removed micro-clusters: 107 label: 0 category: normal
+Timestamp: 2000 - removed micro-clusters: 3 - model's size [0]:137
+Timestamp: 2000 - removed micro-clusters: 3 - model's size [1]:250
+Removed micro-clusters: 99 label: 2 category: normal
+Removed micro-clusters: 127 label: 2 category: normal
+Removed micro-clusters: 134 label: 2 category: normal
+Timestamp: 2000 - removed micro-clusters: 6 - model's size [2]:148
+Removed micro-clusters: 23 label: 3 category: normal
+Removed micro-clusters: 33 label: 3 category: normal
+Removed micro-clusters: 146 label: 3 category: normal
+Timestamp: 2000 - removed micro-clusters: 9 - model's size [3]:241
+Removed micro-clusters: 182 label: 4 category: normal
+Removed micro-clusters: 188 label: 4 category: normal
+Timestamp: 2000 - removed micro-clusters: 11 - model's size [4]:237

@@ -1,0 +1,127 @@
+*********Novelty Pattern**********
+Timestamp287
+Thinking extension: C 0 - 5 examplesThinkingNov: Novelty NP2 - 2 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp289
+Thinking np: N NP1 - 4 examplesThinkingNov: Novelty NP3 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp322
+Thinking np: N NP1 - 4 examplesThinkingNov: Novelty NP4 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp373
+Thinking np: N NP1 - 5 examplesThinkingNov: Novelty NP5 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp379
+Thinking np: N NP1 - 4 examplesThinkingNov: Novelty NP6 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp379
+Thinking np: N NP1 - 4 examplesThinkingNov: Novelty NP7 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp386
+Thinking np: N NP1 - 5 examplesThinkingNov: Novelty NP8 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp413
+Thinking np: N NP1 - 4 examplesThinkingNov: Novelty NP9 - 2 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp426
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP10 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp430
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP11 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp459
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP12 - 3 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp476
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP13 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp476
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP14 - 2 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp587
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP15 - 1 micro-clusters
+
+*********Extension**********
+Timestamp612
+Thinking np: N NP8 - 4 examplesThinking Extension: C 0 - 4 examples
+
+Thinking np: N NP8 - 4 examplesThinking Extension: C 0 - 4 examples
+Thinking Extension: C 1 - 4 examples
+
+Thinking np: N NP8 - 4 examplesThinking Extension: C 0 - 4 examples
+Thinking Extension: C 1 - 4 examples
+Thinking Extension: C 4 - 4 examples
+
+*********Novelty Pattern**********
+Timestamp651
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP16 - 2 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp729
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP17 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp891
+Thinking np: N NP8 - 5 examplesThinkingNov: Novelty NP18 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp911
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP19 - 2 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp972
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP20 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1089
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP21 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1089
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP22 - 2 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1143
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP23 - 3 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1181
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP24 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1353
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP25 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1458
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP26 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1534
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP27 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp1794
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP28 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp2123
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP29 - 1 micro-clusters
+
+*********Novelty Pattern**********
+Timestamp2859
+Thinking np: N NP8 - 4 examplesThinkingNov: Novelty NP30 - 1 micro-clusters
+

@@ -1,0 +1,2163 @@
+======== JI NP1 timestamp = 976=========
+NP1 had no class associated with it until the timestamp 976
+====================================
+======== JI NP2 timestamp = 976=========
+NP2 had no class associated with it until the timestamp 976
+====================================
+======== JI NP3 timestamp = 976=========
+NP3 had no class associated with it until the timestamp 976
+====================================
+======== JI NP4 timestamp = 976=========
+NP4 had no class associated with it until the timestamp 976
+====================================
+======== JI NP5 timestamp = 976=========
+NP5 had no class associated with it until the timestamp 976
+====================================
+======== JI NP6 timestamp = 976=========
+NP6 had no class associated with it until the timestamp 976
+====================================
+======== JI NP7 timestamp = 976=========
+NP7 had no class associated with it until the timestamp 976
+====================================
+======== JI NP8 timestamp = 976=========
+NP8 had no class associated with it until the timestamp 976
+====================================
+======== JI NP9 timestamp = 976=========
+NP9 had no class associated with it until the timestamp 976
+====================================
+======== JI NP10 timestamp = 976=========
+NP10 had no class associated with it until the timestamp 976
+====================================
+======== JI NP11 timestamp = 976=========
+NP11 had no class associated with it until the timestamp 976
+====================================
+======== JI NP12 timestamp = 976=========
+NP12 had no class associated with it until the timestamp 976
+====================================
+======== JI NP13 timestamp = 976=========
+NP13 had no class associated with it until the timestamp 976
+====================================
+======== JI NP14 timestamp = 976=========
+NP14 had no class associated with it until the timestamp 976
+====================================
+======== JI NP15 timestamp = 976=========
+NP15 had no class associated with it until the timestamp 976
+====================================
+======== JI NP16 timestamp = 976=========
+NP16 had no class associated with it until the timestamp 976
+====================================
+======== JI NP17 timestamp = 976=========
+NP17 had no class associated with it until the timestamp 976
+====================================
+======== JI NP18 timestamp = 976=========
+NP18 had no class associated with it until the timestamp 976
+====================================
+======== JI NP19 timestamp = 976=========
+NP19 had no class associated with it until the timestamp 976
+====================================
+======== JI NP20 timestamp = 976=========
+NP20 had no class associated with it until the timestamp 976
+====================================
+======== JI NP1 timestamp = 1037=========
+NP1 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP2 timestamp = 1037=========
+NP2 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP3 timestamp = 1037=========
+NP3 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP4 timestamp = 1037=========
+NP4 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP5 timestamp = 1037=========
+NP5 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP6 timestamp = 1037=========
+NP6 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP7 timestamp = 1037=========
+NP7 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP8 timestamp = 1037=========
+NP8 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP9 timestamp = 1037=========
+NP9 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP10 timestamp = 1037=========
+NP10 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP11 timestamp = 1037=========
+NP11 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP12 timestamp = 1037=========
+NP12 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP13 timestamp = 1037=========
+NP13 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP14 timestamp = 1037=========
+NP14 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP15 timestamp = 1037=========
+NP15 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP16 timestamp = 1037=========
+NP16 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP17 timestamp = 1037=========
+NP17 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP18 timestamp = 1037=========
+NP18 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP19 timestamp = 1037=========
+NP19 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP20 timestamp = 1037=========
+NP20 had no class associated with it until the timestamp 1037
+====================================
+======== JI NP1 timestamp = 1098=========
+NP1 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP2 timestamp = 1098=========
+NP2 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP3 timestamp = 1098=========
+NP3 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP4 timestamp = 1098=========
+NP4 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP5 timestamp = 1098=========
+NP5 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP6 timestamp = 1098=========
+NP6 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP7 timestamp = 1098=========
+NP7 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP8 timestamp = 1098=========
+NP8 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP9 timestamp = 1098=========
+NP9 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP10 timestamp = 1098=========
+NP10 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP11 timestamp = 1098=========
+NP11 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP12 timestamp = 1098=========
+NP12 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP13 timestamp = 1098=========
+NP13 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP14 timestamp = 1098=========
+NP14 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP15 timestamp = 1098=========
+NP15 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP16 timestamp = 1098=========
+NP16 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP17 timestamp = 1098=========
+NP17 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP18 timestamp = 1098=========
+NP18 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP19 timestamp = 1098=========
+NP19 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP20 timestamp = 1098=========
+NP20 had no class associated with it until the timestamp 1098
+====================================
+======== JI NP1 timestamp = 1159=========
+NP1 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP2 timestamp = 1159=========
+NP2 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP3 timestamp = 1159=========
+NP3 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP4 timestamp = 1159=========
+NP4 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP5 timestamp = 1159=========
+NP5 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP6 timestamp = 1159=========
+NP6 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP7 timestamp = 1159=========
+NP7 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP8 timestamp = 1159=========
+NP8 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP9 timestamp = 1159=========
+NP9 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP10 timestamp = 1159=========
+NP10 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP11 timestamp = 1159=========
+NP11 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP12 timestamp = 1159=========
+NP12 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP13 timestamp = 1159=========
+NP13 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP14 timestamp = 1159=========
+NP14 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP15 timestamp = 1159=========
+NP15 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP16 timestamp = 1159=========
+NP16 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP17 timestamp = 1159=========
+NP17 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP18 timestamp = 1159=========
+NP18 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP19 timestamp = 1159=========
+NP19 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP20 timestamp = 1159=========
+NP20 had no class associated with it until the timestamp 1159
+====================================
+======== JI NP1 timestamp = 1220=========
+NP1 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP2 timestamp = 1220=========
+NP2 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP3 timestamp = 1220=========
+NP3 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP4 timestamp = 1220=========
+NP4 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP5 timestamp = 1220=========
+NP5 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP6 timestamp = 1220=========
+NP6 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP7 timestamp = 1220=========
+NP7 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP8 timestamp = 1220=========
+NP8 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP9 timestamp = 1220=========
+NP9 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP10 timestamp = 1220=========
+NP10 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP11 timestamp = 1220=========
+NP11 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP12 timestamp = 1220=========
+NP12 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP13 timestamp = 1220=========
+NP13 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP14 timestamp = 1220=========
+NP14 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP15 timestamp = 1220=========
+NP15 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP16 timestamp = 1220=========
+NP16 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP17 timestamp = 1220=========
+NP17 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP18 timestamp = 1220=========
+NP18 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP19 timestamp = 1220=========
+NP19 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP20 timestamp = 1220=========
+NP20 had no class associated with it until the timestamp 1220
+====================================
+======== JI NP1 timestamp = 1281=========
+NP1 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP2 timestamp = 1281=========
+NP2 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP3 timestamp = 1281=========
+NP3 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP4 timestamp = 1281=========
+NP4 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP5 timestamp = 1281=========
+NP5 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP6 timestamp = 1281=========
+NP6 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP7 timestamp = 1281=========
+NP7 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP8 timestamp = 1281=========
+NP8 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP9 timestamp = 1281=========
+NP9 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP10 timestamp = 1281=========
+NP10 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP11 timestamp = 1281=========
+NP11 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP12 timestamp = 1281=========
+NP12 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP13 timestamp = 1281=========
+NP13 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP14 timestamp = 1281=========
+NP14 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP15 timestamp = 1281=========
+NP15 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP16 timestamp = 1281=========
+NP16 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP17 timestamp = 1281=========
+NP17 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP18 timestamp = 1281=========
+NP18 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP19 timestamp = 1281=========
+NP19 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP20 timestamp = 1281=========
+NP20 had no class associated with it until the timestamp 1281
+====================================
+======== JI NP1 timestamp = 1342=========
+NP1 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP2 timestamp = 1342=========
+NP2 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP3 timestamp = 1342=========
+NP3 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP4 timestamp = 1342=========
+NP4 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP5 timestamp = 1342=========
+NP5 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP6 timestamp = 1342=========
+NP6 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP7 timestamp = 1342=========
+NP7 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP8 timestamp = 1342=========
+NP8 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP9 timestamp = 1342=========
+NP9 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP10 timestamp = 1342=========
+NP10 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP11 timestamp = 1342=========
+NP11 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP12 timestamp = 1342=========
+NP12 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP13 timestamp = 1342=========
+NP13 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP14 timestamp = 1342=========
+NP14 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP15 timestamp = 1342=========
+NP15 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP16 timestamp = 1342=========
+NP16 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP17 timestamp = 1342=========
+NP17 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP18 timestamp = 1342=========
+NP18 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP19 timestamp = 1342=========
+NP19 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP20 timestamp = 1342=========
+NP20 had no class associated with it until the timestamp 1342
+====================================
+======== JI NP1 timestamp = 1403=========
+NP1 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP2 timestamp = 1403=========
+NP2 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP3 timestamp = 1403=========
+NP3 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP4 timestamp = 1403=========
+NP4 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP5 timestamp = 1403=========
+NP5 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP6 timestamp = 1403=========
+NP6 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP7 timestamp = 1403=========
+NP7 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP8 timestamp = 1403=========
+NP8 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP9 timestamp = 1403=========
+NP9 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP10 timestamp = 1403=========
+NP10 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP11 timestamp = 1403=========
+NP11 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP12 timestamp = 1403=========
+NP12 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP13 timestamp = 1403=========
+NP13 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP14 timestamp = 1403=========
+NP14 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP15 timestamp = 1403=========
+NP15 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP16 timestamp = 1403=========
+NP16 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP17 timestamp = 1403=========
+NP17 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP18 timestamp = 1403=========
+NP18 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP19 timestamp = 1403=========
+NP19 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP20 timestamp = 1403=========
+NP20 had no class associated with it until the timestamp 1403
+====================================
+======== JI NP1 timestamp = 1464=========
+NP1 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP2 timestamp = 1464=========
+NP2 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP3 timestamp = 1464=========
+NP3 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP4 timestamp = 1464=========
+NP4 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP5 timestamp = 1464=========
+NP5 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP6 timestamp = 1464=========
+NP6 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP7 timestamp = 1464=========
+NP7 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP8 timestamp = 1464=========
+NP8 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP9 timestamp = 1464=========
+NP9 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP10 timestamp = 1464=========
+NP10 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP11 timestamp = 1464=========
+NP11 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP12 timestamp = 1464=========
+NP12 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP13 timestamp = 1464=========
+NP13 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP14 timestamp = 1464=========
+NP14 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP15 timestamp = 1464=========
+NP15 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP16 timestamp = 1464=========
+NP16 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP17 timestamp = 1464=========
+NP17 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP18 timestamp = 1464=========
+NP18 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP19 timestamp = 1464=========
+NP19 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP20 timestamp = 1464=========
+NP20 had no class associated with it until the timestamp 1464
+====================================
+======== JI NP1 timestamp = 1525=========
+NP1 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP2 timestamp = 1525=========
+NP2 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP3 timestamp = 1525=========
+NP3 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP4 timestamp = 1525=========
+NP4 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP5 timestamp = 1525=========
+NP5 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP6 timestamp = 1525=========
+NP6 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP7 timestamp = 1525=========
+NP7 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP8 timestamp = 1525=========
+NP8 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP9 timestamp = 1525=========
+NP9 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP10 timestamp = 1525=========
+NP10 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP11 timestamp = 1525=========
+NP11 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP12 timestamp = 1525=========
+NP12 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP13 timestamp = 1525=========
+NP13 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP14 timestamp = 1525=========
+NP14 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP15 timestamp = 1525=========
+NP15 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP16 timestamp = 1525=========
+NP16 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP17 timestamp = 1525=========
+NP17 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP18 timestamp = 1525=========
+NP18 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP19 timestamp = 1525=========
+NP19 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP20 timestamp = 1525=========
+NP20 had no class associated with it until the timestamp 1525
+====================================
+======== JI NP1 timestamp = 1586=========
+NP1 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP2 timestamp = 1586=========
+NP2 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP3 timestamp = 1586=========
+NP3 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP4 timestamp = 1586=========
+NP4 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP5 timestamp = 1586=========
+NP5 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP6 timestamp = 1586=========
+NP6 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP7 timestamp = 1586=========
+NP7 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP8 timestamp = 1586=========
+NP8 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP9 timestamp = 1586=========
+NP9 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP10 timestamp = 1586=========
+NP10 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP11 timestamp = 1586=========
+NP11 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP12 timestamp = 1586=========
+NP12 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP13 timestamp = 1586=========
+NP13 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP14 timestamp = 1586=========
+NP14 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP15 timestamp = 1586=========
+NP15 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP16 timestamp = 1586=========
+NP16 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP17 timestamp = 1586=========
+NP17 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP18 timestamp = 1586=========
+NP18 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP19 timestamp = 1586=========
+NP19 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP20 timestamp = 1586=========
+NP20 had no class associated with it until the timestamp 1586
+====================================
+======== JI NP1 timestamp = 1647=========
+NP1 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP2 timestamp = 1647=========
+NP2 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP3 timestamp = 1647=========
+NP3 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP4 timestamp = 1647=========
+NP4 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP5 timestamp = 1647=========
+NP5 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP6 timestamp = 1647=========
+NP6 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP7 timestamp = 1647=========
+NP7 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP8 timestamp = 1647=========
+NP8 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP9 timestamp = 1647=========
+NP9 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP10 timestamp = 1647=========
+NP10 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP11 timestamp = 1647=========
+NP11 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP12 timestamp = 1647=========
+NP12 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP13 timestamp = 1647=========
+NP13 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP14 timestamp = 1647=========
+NP14 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP15 timestamp = 1647=========
+NP15 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP16 timestamp = 1647=========
+NP16 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP17 timestamp = 1647=========
+NP17 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP18 timestamp = 1647=========
+NP18 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP19 timestamp = 1647=========
+NP19 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP20 timestamp = 1647=========
+NP20 had no class associated with it until the timestamp 1647
+====================================
+======== JI NP1 timestamp = 1708=========
+NP1 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP2 timestamp = 1708=========
+NP2 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP3 timestamp = 1708=========
+NP3 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP4 timestamp = 1708=========
+NP4 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP5 timestamp = 1708=========
+NP5 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP6 timestamp = 1708=========
+NP6 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP7 timestamp = 1708=========
+NP7 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP8 timestamp = 1708=========
+NP8 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP9 timestamp = 1708=========
+NP9 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP10 timestamp = 1708=========
+NP10 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP11 timestamp = 1708=========
+NP11 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP12 timestamp = 1708=========
+NP12 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP13 timestamp = 1708=========
+NP13 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP14 timestamp = 1708=========
+NP14 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP15 timestamp = 1708=========
+NP15 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP16 timestamp = 1708=========
+NP16 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP17 timestamp = 1708=========
+NP17 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP18 timestamp = 1708=========
+NP18 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP19 timestamp = 1708=========
+NP19 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP20 timestamp = 1708=========
+NP20 had no class associated with it until the timestamp 1708
+====================================
+======== JI NP1 timestamp = 1769=========
+NP1 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP2 timestamp = 1769=========
+NP2 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP3 timestamp = 1769=========
+NP3 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP4 timestamp = 1769=========
+NP4 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP5 timestamp = 1769=========
+NP5 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP6 timestamp = 1769=========
+NP6 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP7 timestamp = 1769=========
+NP7 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP8 timestamp = 1769=========
+NP8 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP9 timestamp = 1769=========
+NP9 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP10 timestamp = 1769=========
+NP10 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP11 timestamp = 1769=========
+NP11 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP12 timestamp = 1769=========
+NP12 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP13 timestamp = 1769=========
+NP13 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP14 timestamp = 1769=========
+NP14 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP15 timestamp = 1769=========
+NP15 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP16 timestamp = 1769=========
+NP16 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP17 timestamp = 1769=========
+NP17 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP18 timestamp = 1769=========
+NP18 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP19 timestamp = 1769=========
+NP19 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP20 timestamp = 1769=========
+NP20 had no class associated with it until the timestamp 1769
+====================================
+======== JI NP1 timestamp = 1830=========
+NP1 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP2 timestamp = 1830=========
+NP2 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP3 timestamp = 1830=========
+NP3 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP4 timestamp = 1830=========
+NP4 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP5 timestamp = 1830=========
+NP5 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP6 timestamp = 1830=========
+NP6 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP7 timestamp = 1830=========
+NP7 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP8 timestamp = 1830=========
+NP8 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP9 timestamp = 1830=========
+NP9 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP10 timestamp = 1830=========
+NP10 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP11 timestamp = 1830=========
+NP11 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP12 timestamp = 1830=========
+NP12 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP13 timestamp = 1830=========
+NP13 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP14 timestamp = 1830=========
+NP14 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP15 timestamp = 1830=========
+NP15 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP16 timestamp = 1830=========
+NP16 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP17 timestamp = 1830=========
+NP17 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP18 timestamp = 1830=========
+NP18 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP19 timestamp = 1830=========
+NP19 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP20 timestamp = 1830=========
+NP20 had no class associated with it until the timestamp 1830
+====================================
+======== JI NP1 timestamp = 1891=========
+NP1 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP2 timestamp = 1891=========
+NP2 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP3 timestamp = 1891=========
+NP3 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP4 timestamp = 1891=========
+NP4 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP5 timestamp = 1891=========
+NP5 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP6 timestamp = 1891=========
+NP6 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP7 timestamp = 1891=========
+NP7 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP8 timestamp = 1891=========
+NP8 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP9 timestamp = 1891=========
+NP9 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP10 timestamp = 1891=========
+NP10 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP11 timestamp = 1891=========
+NP11 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP12 timestamp = 1891=========
+NP12 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP13 timestamp = 1891=========
+NP13 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP14 timestamp = 1891=========
+NP14 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP15 timestamp = 1891=========
+NP15 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP16 timestamp = 1891=========
+NP16 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP17 timestamp = 1891=========
+NP17 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP18 timestamp = 1891=========
+NP18 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP19 timestamp = 1891=========
+NP19 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP20 timestamp = 1891=========
+NP20 had no class associated with it until the timestamp 1891
+====================================
+======== JI NP1 timestamp = 1952=========
+NP1 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP2 timestamp = 1952=========
+NP2 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP3 timestamp = 1952=========
+NP3 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP4 timestamp = 1952=========
+NP4 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP5 timestamp = 1952=========
+NP5 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP6 timestamp = 1952=========
+NP6 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP7 timestamp = 1952=========
+NP7 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP8 timestamp = 1952=========
+NP8 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP9 timestamp = 1952=========
+NP9 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP10 timestamp = 1952=========
+NP10 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP11 timestamp = 1952=========
+NP11 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP12 timestamp = 1952=========
+NP12 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP13 timestamp = 1952=========
+NP13 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP14 timestamp = 1952=========
+NP14 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP15 timestamp = 1952=========
+NP15 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP16 timestamp = 1952=========
+NP16 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP17 timestamp = 1952=========
+NP17 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP18 timestamp = 1952=========
+NP18 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP19 timestamp = 1952=========
+NP19 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP20 timestamp = 1952=========
+NP20 had no class associated with it until the timestamp 1952
+====================================
+======== JI NP1 timestamp = 2013=========
+NP1 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP2 timestamp = 2013=========
+NP2 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP3 timestamp = 2013=========
+NP3 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP4 timestamp = 2013=========
+NP4 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP5 timestamp = 2013=========
+NP5 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP6 timestamp = 2013=========
+NP6 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP7 timestamp = 2013=========
+NP7 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP8 timestamp = 2013=========
+NP8 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP9 timestamp = 2013=========
+NP9 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP10 timestamp = 2013=========
+NP10 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP11 timestamp = 2013=========
+NP11 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP12 timestamp = 2013=========
+NP12 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP13 timestamp = 2013=========
+NP13 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP14 timestamp = 2013=========
+NP14 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP15 timestamp = 2013=========
+NP15 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP16 timestamp = 2013=========
+NP16 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP17 timestamp = 2013=========
+NP17 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP18 timestamp = 2013=========
+NP18 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP19 timestamp = 2013=========
+NP19 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP20 timestamp = 2013=========
+NP20 had no class associated with it until the timestamp 2013
+====================================
+======== JI NP1 timestamp = 2074=========
+NP1 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP2 timestamp = 2074=========
+NP2 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP3 timestamp = 2074=========
+NP3 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP4 timestamp = 2074=========
+NP4 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP5 timestamp = 2074=========
+NP5 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP6 timestamp = 2074=========
+NP6 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP7 timestamp = 2074=========
+NP7 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP8 timestamp = 2074=========
+NP8 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP9 timestamp = 2074=========
+NP9 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP10 timestamp = 2074=========
+NP10 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP11 timestamp = 2074=========
+NP11 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP12 timestamp = 2074=========
+NP12 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP13 timestamp = 2074=========
+NP13 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP14 timestamp = 2074=========
+NP14 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP15 timestamp = 2074=========
+NP15 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP16 timestamp = 2074=========
+NP16 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP17 timestamp = 2074=========
+NP17 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP18 timestamp = 2074=========
+NP18 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP19 timestamp = 2074=========
+NP19 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP20 timestamp = 2074=========
+NP20 had no class associated with it until the timestamp 2074
+====================================
+======== JI NP1 timestamp = 2135=========
+NP1 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP2 timestamp = 2135=========
+NP2 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP3 timestamp = 2135=========
+NP3 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP4 timestamp = 2135=========
+NP4 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP5 timestamp = 2135=========
+NP5 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP6 timestamp = 2135=========
+NP6 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP7 timestamp = 2135=========
+NP7 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP8 timestamp = 2135=========
+NP8 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP9 timestamp = 2135=========
+NP9 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP10 timestamp = 2135=========
+NP10 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP11 timestamp = 2135=========
+NP11 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP12 timestamp = 2135=========
+NP12 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP13 timestamp = 2135=========
+NP13 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP14 timestamp = 2135=========
+NP14 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP15 timestamp = 2135=========
+NP15 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP16 timestamp = 2135=========
+NP16 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP17 timestamp = 2135=========
+NP17 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP18 timestamp = 2135=========
+NP18 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP19 timestamp = 2135=========
+NP19 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP20 timestamp = 2135=========
+NP20 had no class associated with it until the timestamp 2135
+====================================
+======== JI NP1 timestamp = 2196=========
+NP1 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP2 timestamp = 2196=========
+NP2 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP3 timestamp = 2196=========
+NP3 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP4 timestamp = 2196=========
+NP4 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP5 timestamp = 2196=========
+NP5 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP6 timestamp = 2196=========
+NP6 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP7 timestamp = 2196=========
+NP7 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP8 timestamp = 2196=========
+NP8 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP9 timestamp = 2196=========
+NP9 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP10 timestamp = 2196=========
+NP10 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP11 timestamp = 2196=========
+NP11 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP12 timestamp = 2196=========
+NP12 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP13 timestamp = 2196=========
+NP13 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP14 timestamp = 2196=========
+NP14 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP15 timestamp = 2196=========
+NP15 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP16 timestamp = 2196=========
+NP16 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP17 timestamp = 2196=========
+NP17 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP18 timestamp = 2196=========
+NP18 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP19 timestamp = 2196=========
+NP19 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP20 timestamp = 2196=========
+NP20 had no class associated with it until the timestamp 2196
+====================================
+======== JI NP1 timestamp = 2257=========
+NP1 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP2 timestamp = 2257=========
+NP2 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP3 timestamp = 2257=========
+NP3 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP4 timestamp = 2257=========
+NP4 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP5 timestamp = 2257=========
+NP5 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP6 timestamp = 2257=========
+NP6 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP7 timestamp = 2257=========
+NP7 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP8 timestamp = 2257=========
+NP8 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP9 timestamp = 2257=========
+NP9 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP10 timestamp = 2257=========
+NP10 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP11 timestamp = 2257=========
+NP11 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP12 timestamp = 2257=========
+NP12 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP13 timestamp = 2257=========
+NP13 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP14 timestamp = 2257=========
+NP14 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP15 timestamp = 2257=========
+NP15 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP16 timestamp = 2257=========
+NP16 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP17 timestamp = 2257=========
+NP17 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP18 timestamp = 2257=========
+NP18 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP19 timestamp = 2257=========
+NP19 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP20 timestamp = 2257=========
+NP20 had no class associated with it until the timestamp 2257
+====================================
+======== JI NP1 timestamp = 2318=========
+NP1 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP2 timestamp = 2318=========
+NP2 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP3 timestamp = 2318=========
+NP3 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP4 timestamp = 2318=========
+NP4 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP5 timestamp = 2318=========
+NP5 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP6 timestamp = 2318=========
+NP6 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP7 timestamp = 2318=========
+NP7 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP8 timestamp = 2318=========
+NP8 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP9 timestamp = 2318=========
+NP9 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP10 timestamp = 2318=========
+NP10 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP11 timestamp = 2318=========
+NP11 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP12 timestamp = 2318=========
+NP12 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP13 timestamp = 2318=========
+NP13 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP14 timestamp = 2318=========
+NP14 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP15 timestamp = 2318=========
+NP15 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP16 timestamp = 2318=========
+NP16 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP17 timestamp = 2318=========
+NP17 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP18 timestamp = 2318=========
+NP18 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP19 timestamp = 2318=========
+NP19 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP20 timestamp = 2318=========
+NP20 had no class associated with it until the timestamp 2318
+====================================
+======== JI NP1 timestamp = 2379=========
+NP1 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP2 timestamp = 2379=========
+NP2 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP3 timestamp = 2379=========
+NP3 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP4 timestamp = 2379=========
+NP4 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP5 timestamp = 2379=========
+NP5 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP6 timestamp = 2379=========
+NP6 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP7 timestamp = 2379=========
+NP7 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP8 timestamp = 2379=========
+NP8 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP9 timestamp = 2379=========
+NP9 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP10 timestamp = 2379=========
+NP10 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP11 timestamp = 2379=========
+NP11 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP12 timestamp = 2379=========
+NP12 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP13 timestamp = 2379=========
+NP13 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP14 timestamp = 2379=========
+NP14 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP15 timestamp = 2379=========
+NP15 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP16 timestamp = 2379=========
+NP16 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP17 timestamp = 2379=========
+NP17 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP18 timestamp = 2379=========
+NP18 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP19 timestamp = 2379=========
+NP19 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP20 timestamp = 2379=========
+NP20 had no class associated with it until the timestamp 2379
+====================================
+======== JI NP1 timestamp = 2440=========
+NP1 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP2 timestamp = 2440=========
+NP2 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP3 timestamp = 2440=========
+NP3 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP4 timestamp = 2440=========
+NP4 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP5 timestamp = 2440=========
+NP5 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP6 timestamp = 2440=========
+NP6 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP7 timestamp = 2440=========
+NP7 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP8 timestamp = 2440=========
+NP8 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP9 timestamp = 2440=========
+NP9 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP10 timestamp = 2440=========
+NP10 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP11 timestamp = 2440=========
+NP11 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP12 timestamp = 2440=========
+NP12 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP13 timestamp = 2440=========
+NP13 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP14 timestamp = 2440=========
+NP14 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP15 timestamp = 2440=========
+NP15 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP16 timestamp = 2440=========
+NP16 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP17 timestamp = 2440=========
+NP17 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP18 timestamp = 2440=========
+NP18 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP19 timestamp = 2440=========
+NP19 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP20 timestamp = 2440=========
+NP20 had no class associated with it until the timestamp 2440
+====================================
+======== JI NP1 timestamp = 2501=========
+NP1 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP2 timestamp = 2501=========
+NP2 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP3 timestamp = 2501=========
+NP3 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP4 timestamp = 2501=========
+NP4 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP5 timestamp = 2501=========
+NP5 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP6 timestamp = 2501=========
+NP6 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP7 timestamp = 2501=========
+NP7 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP8 timestamp = 2501=========
+NP8 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP9 timestamp = 2501=========
+NP9 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP10 timestamp = 2501=========
+NP10 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP11 timestamp = 2501=========
+NP11 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP12 timestamp = 2501=========
+NP12 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP13 timestamp = 2501=========
+NP13 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP14 timestamp = 2501=========
+NP14 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP15 timestamp = 2501=========
+NP15 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP16 timestamp = 2501=========
+NP16 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP17 timestamp = 2501=========
+NP17 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP18 timestamp = 2501=========
+NP18 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP19 timestamp = 2501=========
+NP19 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP20 timestamp = 2501=========
+NP20 had no class associated with it until the timestamp 2501
+====================================
+======== JI NP1 timestamp = 2562=========
+NP1 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP2 timestamp = 2562=========
+NP2 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP3 timestamp = 2562=========
+NP3 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP4 timestamp = 2562=========
+NP4 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP5 timestamp = 2562=========
+NP5 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP6 timestamp = 2562=========
+NP6 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP7 timestamp = 2562=========
+NP7 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP8 timestamp = 2562=========
+NP8 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP9 timestamp = 2562=========
+NP9 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP10 timestamp = 2562=========
+NP10 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP11 timestamp = 2562=========
+NP11 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP12 timestamp = 2562=========
+NP12 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP13 timestamp = 2562=========
+NP13 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP14 timestamp = 2562=========
+NP14 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP15 timestamp = 2562=========
+NP15 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP16 timestamp = 2562=========
+NP16 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP17 timestamp = 2562=========
+NP17 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP18 timestamp = 2562=========
+NP18 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP19 timestamp = 2562=========
+NP19 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP20 timestamp = 2562=========
+NP20 had no class associated with it until the timestamp 2562
+====================================
+======== JI NP1 timestamp = 2623=========
+NP1 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP2 timestamp = 2623=========
+NP2 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP3 timestamp = 2623=========
+NP3 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP4 timestamp = 2623=========
+NP4 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP5 timestamp = 2623=========
+NP5 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP6 timestamp = 2623=========
+NP6 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP7 timestamp = 2623=========
+NP7 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP8 timestamp = 2623=========
+NP8 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP9 timestamp = 2623=========
+NP9 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP10 timestamp = 2623=========
+NP10 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP11 timestamp = 2623=========
+NP11 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP12 timestamp = 2623=========
+NP12 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP13 timestamp = 2623=========
+NP13 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP14 timestamp = 2623=========
+NP14 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP15 timestamp = 2623=========
+NP15 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP16 timestamp = 2623=========
+NP16 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP17 timestamp = 2623=========
+NP17 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP18 timestamp = 2623=========
+NP18 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP19 timestamp = 2623=========
+NP19 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP20 timestamp = 2623=========
+NP20 had no class associated with it until the timestamp 2623
+====================================
+======== JI NP1 timestamp = 2684=========
+NP1 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP2 timestamp = 2684=========
+NP2 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP3 timestamp = 2684=========
+NP3 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP4 timestamp = 2684=========
+NP4 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP5 timestamp = 2684=========
+NP5 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP6 timestamp = 2684=========
+NP6 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP7 timestamp = 2684=========
+NP7 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP8 timestamp = 2684=========
+NP8 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP9 timestamp = 2684=========
+NP9 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP10 timestamp = 2684=========
+NP10 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP11 timestamp = 2684=========
+NP11 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP12 timestamp = 2684=========
+NP12 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP13 timestamp = 2684=========
+NP13 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP14 timestamp = 2684=========
+NP14 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP15 timestamp = 2684=========
+NP15 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP16 timestamp = 2684=========
+NP16 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP17 timestamp = 2684=========
+NP17 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP18 timestamp = 2684=========
+NP18 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP19 timestamp = 2684=========
+NP19 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP20 timestamp = 2684=========
+NP20 had no class associated with it until the timestamp 2684
+====================================
+======== JI NP1 timestamp = 2745=========
+NP1 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP2 timestamp = 2745=========
+NP2 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP3 timestamp = 2745=========
+NP3 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP4 timestamp = 2745=========
+NP4 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP5 timestamp = 2745=========
+NP5 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP6 timestamp = 2745=========
+NP6 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP7 timestamp = 2745=========
+NP7 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP8 timestamp = 2745=========
+NP8 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP9 timestamp = 2745=========
+NP9 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP10 timestamp = 2745=========
+NP10 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP11 timestamp = 2745=========
+NP11 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP12 timestamp = 2745=========
+NP12 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP13 timestamp = 2745=========
+NP13 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP14 timestamp = 2745=========
+NP14 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP15 timestamp = 2745=========
+NP15 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP16 timestamp = 2745=========
+NP16 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP17 timestamp = 2745=========
+NP17 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP18 timestamp = 2745=========
+NP18 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP19 timestamp = 2745=========
+NP19 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP20 timestamp = 2745=========
+NP20 had no class associated with it until the timestamp 2745
+====================================
+======== JI NP1 timestamp = 2806=========
+NP1 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP2 timestamp = 2806=========
+NP2 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP3 timestamp = 2806=========
+NP3 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP4 timestamp = 2806=========
+NP4 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP5 timestamp = 2806=========
+NP5 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP6 timestamp = 2806=========
+NP6 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP7 timestamp = 2806=========
+NP7 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP8 timestamp = 2806=========
+NP8 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP9 timestamp = 2806=========
+NP9 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP10 timestamp = 2806=========
+NP10 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP11 timestamp = 2806=========
+NP11 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP12 timestamp = 2806=========
+NP12 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP13 timestamp = 2806=========
+NP13 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP14 timestamp = 2806=========
+NP14 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP15 timestamp = 2806=========
+NP15 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP16 timestamp = 2806=========
+NP16 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP17 timestamp = 2806=========
+NP17 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP18 timestamp = 2806=========
+NP18 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP19 timestamp = 2806=========
+NP19 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP20 timestamp = 2806=========
+NP20 had no class associated with it until the timestamp 2806
+====================================
+======== JI NP1 timestamp = 2867=========
+NP1 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP2 timestamp = 2867=========
+NP2 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP3 timestamp = 2867=========
+NP3 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP4 timestamp = 2867=========
+NP4 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP5 timestamp = 2867=========
+NP5 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP6 timestamp = 2867=========
+NP6 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP7 timestamp = 2867=========
+NP7 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP8 timestamp = 2867=========
+NP8 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP9 timestamp = 2867=========
+NP9 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP10 timestamp = 2867=========
+NP10 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP11 timestamp = 2867=========
+NP11 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP12 timestamp = 2867=========
+NP12 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP13 timestamp = 2867=========
+NP13 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP14 timestamp = 2867=========
+NP14 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP15 timestamp = 2867=========
+NP15 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP16 timestamp = 2867=========
+NP16 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP17 timestamp = 2867=========
+NP17 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP18 timestamp = 2867=========
+NP18 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP19 timestamp = 2867=========
+NP19 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP20 timestamp = 2867=========
+NP20 had no class associated with it until the timestamp 2867
+====================================
+======== JI NP1 timestamp = 2928=========
+NP1 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP2 timestamp = 2928=========
+NP2 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP3 timestamp = 2928=========
+NP3 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP4 timestamp = 2928=========
+NP4 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP5 timestamp = 2928=========
+NP5 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP6 timestamp = 2928=========
+NP6 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP7 timestamp = 2928=========
+NP7 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP8 timestamp = 2928=========
+NP8 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP9 timestamp = 2928=========
+NP9 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP10 timestamp = 2928=========
+NP10 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP11 timestamp = 2928=========
+NP11 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP12 timestamp = 2928=========
+NP12 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP13 timestamp = 2928=========
+NP13 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP14 timestamp = 2928=========
+NP14 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP15 timestamp = 2928=========
+NP15 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP16 timestamp = 2928=========
+NP16 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP17 timestamp = 2928=========
+NP17 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP18 timestamp = 2928=========
+NP18 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP19 timestamp = 2928=========
+NP19 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP20 timestamp = 2928=========
+NP20 had no class associated with it until the timestamp 2928
+====================================
+======== JI NP1 timestamp = 2989=========
+NP1 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP2 timestamp = 2989=========
+NP2 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP3 timestamp = 2989=========
+NP3 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP4 timestamp = 2989=========
+NP4 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP5 timestamp = 2989=========
+NP5 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP6 timestamp = 2989=========
+NP6 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP7 timestamp = 2989=========
+NP7 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP8 timestamp = 2989=========
+NP8 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP9 timestamp = 2989=========
+NP9 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP10 timestamp = 2989=========
+NP10 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP11 timestamp = 2989=========
+NP11 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP12 timestamp = 2989=========
+NP12 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP13 timestamp = 2989=========
+NP13 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP14 timestamp = 2989=========
+NP14 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP15 timestamp = 2989=========
+NP15 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP16 timestamp = 2989=========
+NP16 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP17 timestamp = 2989=========
+NP17 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP18 timestamp = 2989=========
+NP18 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP19 timestamp = 2989=========
+NP19 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP20 timestamp = 2989=========
+NP20 had no class associated with it until the timestamp 2989
+====================================
+======== JI NP1 timestamp = 3050=========
+NP1 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP2 timestamp = 3050=========
+NP2 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP3 timestamp = 3050=========
+NP3 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP4 timestamp = 3050=========
+NP4 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP5 timestamp = 3050=========
+NP5 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP6 timestamp = 3050=========
+NP6 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP7 timestamp = 3050=========
+NP7 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP8 timestamp = 3050=========
+NP8 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP9 timestamp = 3050=========
+NP9 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP10 timestamp = 3050=========
+NP10 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP11 timestamp = 3050=========
+NP11 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP12 timestamp = 3050=========
+NP12 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP13 timestamp = 3050=========
+NP13 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP14 timestamp = 3050=========
+NP14 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP15 timestamp = 3050=========
+NP15 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP16 timestamp = 3050=========
+NP16 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP17 timestamp = 3050=========
+NP17 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP18 timestamp = 3050=========
+NP18 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP19 timestamp = 3050=========
+NP19 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP20 timestamp = 3050=========
+NP20 had no class associated with it until the timestamp 3050
+====================================
+======== JI NP1 timestamp = 3060=========
+NP1 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP2 timestamp = 3060=========
+NP2 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP3 timestamp = 3060=========
+NP3 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP4 timestamp = 3060=========
+NP4 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP5 timestamp = 3060=========
+NP5 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP6 timestamp = 3060=========
+NP6 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP7 timestamp = 3060=========
+NP7 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP8 timestamp = 3060=========
+NP8 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP9 timestamp = 3060=========
+NP9 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP10 timestamp = 3060=========
+NP10 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP11 timestamp = 3060=========
+NP11 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP12 timestamp = 3060=========
+NP12 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP13 timestamp = 3060=========
+NP13 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP14 timestamp = 3060=========
+NP14 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP15 timestamp = 3060=========
+NP15 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP16 timestamp = 3060=========
+NP16 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP17 timestamp = 3060=========
+NP17 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP18 timestamp = 3060=========
+NP18 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP19 timestamp = 3060=========
+NP19 had no class associated with it until the timestamp 3060
+====================================
+======== JI NP20 timestamp = 3060=========
+NP20 had no class associated with it until the timestamp 3060
+====================================
+Number of examples sent to short-time-memory = 1274
+Number of examples removed from short-time-memory = 0
+Number of NPs = 20

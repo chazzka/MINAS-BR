@@ -1,0 +1,19 @@
+
+
+
+
+
+Removed micro-clusters: 77 label: 0 category: normal
+Timestamp: 2000 - removed micro-clusters: 1 - model's size [0]:100
+Timestamp: 2000 - removed micro-clusters: 1 - model's size [1]:171
+Removed micro-clusters: 17 label: 2 category: normal
+Removed micro-clusters: 67 label: 2 category: normal
+Timestamp: 2000 - removed micro-clusters: 3 - model's size [2]:105
+Timestamp: 2000 - removed micro-clusters: 3 - model's size [3]:178
+Removed micro-clusters: 147 label: 4 category: normal
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [4]:169
+
+
+
+
+

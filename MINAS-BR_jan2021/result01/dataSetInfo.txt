@@ -1,0 +1,4 @@
+Train label cardinality: 2.4343138
+General label cardinality: 2.4343138
+Number of examples: 30603060
+Number of attributes: 2

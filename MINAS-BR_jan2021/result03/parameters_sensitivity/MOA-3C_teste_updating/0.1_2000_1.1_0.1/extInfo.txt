@@ -1,0 +1,4 @@
+*********Novelty Pattern**********
+Timestamp24
+Thinking np: N 0 - 6 examplesThinkingNov: Novelty NP2 - 1 micro-clusters
+

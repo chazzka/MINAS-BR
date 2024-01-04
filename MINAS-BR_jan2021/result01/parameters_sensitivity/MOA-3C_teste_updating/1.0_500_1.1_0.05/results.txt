@@ -1,0 +1,177 @@
+Removed micro-clusters: 7 label: 0 category: normal
+Removed micro-clusters: 20 label: 0 category: normal
+Removed micro-clusters: 49 label: 0 category: normal
+Timestamp: 500 - removed micro-clusters: 3 - model's size [0]:49
+Removed micro-clusters: 20 label: 1 category: normal
+Removed micro-clusters: 20 label: 1 category: normal
+Removed micro-clusters: 43 label: 1 category: normal
+Removed micro-clusters: 45 label: 1 category: normal
+Removed micro-clusters: 54 label: 1 category: normal
+Removed micro-clusters: 81 label: 1 category: normal
+Timestamp: 500 - removed micro-clusters: 9 - model's size [1]:83
+Removed micro-clusters: 35 label: 2 category: normal
+Removed micro-clusters: 37 label: 2 category: normal
+Removed micro-clusters: 38 label: 2 category: normal
+Timestamp: 500 - removed micro-clusters: 12 - model's size [2]:52
+Removed micro-clusters: 7 label: 3 category: normal
+Removed micro-clusters: 27 label: 3 category: normal
+Removed micro-clusters: 36 label: 3 category: normal
+Removed micro-clusters: 72 label: 3 category: normal
+Timestamp: 500 - removed micro-clusters: 16 - model's size [3]:86
+Removed micro-clusters: 8 label: 4 category: normal
+Removed micro-clusters: 15 label: 4 category: normal
+Removed micro-clusters: 31 label: 4 category: normal
+Removed micro-clusters: 40 label: 4 category: normal
+Removed micro-clusters: 41 label: 4 category: normal
+Removed micro-clusters: 59 label: 4 category: normal
+Removed micro-clusters: 66 label: 4 category: normal
+Timestamp: 500 - removed micro-clusters: 23 - model's size [4]:83
+Removed examples from short-time-memory: 106	 True labels: [0]
+Removed micro-clusters: 4 label: 0 category: normal
+Removed micro-clusters: 21 label: 0 category: normal
+Removed micro-clusters: 43 label: 0 category: normal
+Timestamp: 1000 - removed micro-clusters: 3 - model's size [0]:46
+Removed micro-clusters: 5 label: 1 category: normal
+Removed micro-clusters: 20 label: 1 category: normal
+Removed micro-clusters: 32 label: 1 category: normal
+Removed micro-clusters: 64 label: 1 category: normal
+Timestamp: 1000 - removed micro-clusters: 7 - model's size [1]:79
+Removed micro-clusters: 11 label: 2 category: normal
+Removed micro-clusters: 23 label: 2 category: normal
+Removed micro-clusters: 47 label: 2 category: normal
+Timestamp: 1000 - removed micro-clusters: 10 - model's size [2]:49
+Removed micro-clusters: 29 label: 3 category: normal
+Removed micro-clusters: 38 label: 3 category: normal
+Removed micro-clusters: 56 label: 3 category: normal
+Removed micro-clusters: 63 label: 3 category: normal
+Timestamp: 1000 - removed micro-clusters: 14 - model's size [3]:82
+Removed micro-clusters: 9 label: 4 category: normal
+Removed micro-clusters: 37 label: 4 category: normal
+Removed micro-clusters: 57 label: 4 category: normal
+Timestamp: 1000 - removed micro-clusters: 17 - model's size [4]:80
+Removed examples from short-time-memory: 729	 True labels: [1, 4]
+Removed examples from short-time-memory: 816	 True labels: [3, 4]
+Timestamp: 1500 - removed micro-clusters: 0 - model's size [0]:46
+Removed micro-clusters: 26 label: 1 category: normal
+Removed micro-clusters: 57 label: 1 category: normal
+Removed micro-clusters: 72 label: 1 category: normal
+Timestamp: 1500 - removed micro-clusters: 3 - model's size [1]:76
+Removed micro-clusters: 28 label: 2 category: normal
+Removed micro-clusters: 35 label: 2 category: normal
+Removed micro-clusters: 39 label: 2 category: normal
+Timestamp: 1500 - removed micro-clusters: 6 - model's size [2]:46
+Removed micro-clusters: 25 label: 3 category: normal
+Removed micro-clusters: 49 label: 3 category: normal
+Timestamp: 1500 - removed micro-clusters: 8 - model's size [3]:80
+Removed micro-clusters: 0 label: 4 category: normal
+Removed micro-clusters: 13 label: 4 category: normal
+Removed micro-clusters: 29 label: 4 category: normal
+Removed micro-clusters: 35 label: 4 category: normal
+Timestamp: 1500 - removed micro-clusters: 12 - model's size [4]:76
+Removed examples from short-time-memory: 1014	 True labels: [2]
+Removed examples from short-time-memory: 1020	 True labels: [1, 4]
+Removed examples from short-time-memory: 1025	 True labels: [2]
+Removed examples from short-time-memory: 1035	 True labels: [0]
+Removed examples from short-time-memory: 1051	 True labels: [0]
+Removed examples from short-time-memory: 1148	 True labels: [0]
+Removed examples from short-time-memory: 1231	 True labels: [1]
+Removed examples from short-time-memory: 1256	 True labels: [0]
+Removed examples from short-time-memory: 1258	 True labels: [3, 4]
+Removed examples from short-time-memory: 1290	 True labels: [0]
+Removed examples from short-time-memory: 1353	 True labels: [3, 4]
+Removed examples from short-time-memory: 1407	 True labels: [0]
+Removed examples from short-time-memory: 1465	 True labels: [1, 4]
+Removed micro-clusters: 16 label: 0 category: normal
+Removed micro-clusters: 37 label: 0 category: normal
+Timestamp: 2000 - removed micro-clusters: 2 - model's size [0]:44
+Removed micro-clusters: 41 label: 1 category: normal
+Removed micro-clusters: 74 label: 1 category: normal
+Timestamp: 2000 - removed micro-clusters: 4 - model's size [1]:74
+Removed micro-clusters: 16 label: 2 category: normal
+Removed micro-clusters: 17 label: 2 category: normal
+Removed micro-clusters: 30 label: 2 category: normal
+Removed micro-clusters: 32 label: 2 category: normal
+Timestamp: 2000 - removed micro-clusters: 8 - model's size [2]:42
+Removed micro-clusters: 53 label: 3 category: normal
+Removed micro-clusters: 65 label: 3 category: normal
+Timestamp: 2000 - removed micro-clusters: 10 - model's size [3]:78
+Removed micro-clusters: 11 label: 4 category: normal
+Removed micro-clusters: 33 label: 4 category: normal
+Removed micro-clusters: 53 label: 4 category: normal
+Timestamp: 2000 - removed micro-clusters: 13 - model's size [4]:73
+Removed examples from short-time-memory: 1510	 True labels: [2]
+Removed examples from short-time-memory: 1569	 True labels: [4]
+Removed examples from short-time-memory: 1583	 True labels: [1, 4]
+Removed examples from short-time-memory: 1603	 True labels: [0]
+Removed examples from short-time-memory: 1635	 True labels: [1, 4]
+Removed examples from short-time-memory: 1651	 True labels: [1, 4]
+Removed examples from short-time-memory: 1662	 True labels: [2]
+Removed examples from short-time-memory: 1690	 True labels: [2]
+Removed examples from short-time-memory: 1692	 True labels: [3, 4]
+Removed examples from short-time-memory: 1697	 True labels: [2, 3]
+Removed examples from short-time-memory: 1737	 True labels: [0]
+Removed examples from short-time-memory: 1754	 True labels: [2]
+Removed examples from short-time-memory: 1834	 True labels: [2]
+Removed examples from short-time-memory: 1849	 True labels: [0]
+Removed examples from short-time-memory: 1851	 True labels: [3, 4]
+Removed examples from short-time-memory: 1944	 True labels: [2]
+Removed examples from short-time-memory: 1945	 True labels: [2]
+Removed examples from short-time-memory: 1989	 True labels: [4]
+Removed micro-clusters: 8 label: 0 category: normal
+Removed micro-clusters: 36 label: 0 category: normal
+Timestamp: 2500 - removed micro-clusters: 2 - model's size [0]:42
+Removed micro-clusters: 5 label: 1 category: normal
+Timestamp: 2500 - removed micro-clusters: 3 - model's size [1]:73
+Removed micro-clusters: 1 label: 2 category: normal
+Timestamp: 2500 - removed micro-clusters: 4 - model's size [2]:41
+Removed micro-clusters: 5 label: 3 category: normal
+Removed micro-clusters: 13 label: 3 category: normal
+Removed micro-clusters: 20 label: 3 category: normal
+Timestamp: 2500 - removed micro-clusters: 7 - model's size [3]:75
+Removed micro-clusters: 27 label: 4 category: normal
+Removed micro-clusters: 62 label: 4 category: normal
+Timestamp: 2500 - removed micro-clusters: 9 - model's size [4]:71
+Removed examples from short-time-memory: 2002	 True labels: [1, 4]
+Removed examples from short-time-memory: 2019	 True labels: [1, 4]
+Removed examples from short-time-memory: 2024	 True labels: [4]
+Removed examples from short-time-memory: 2070	 True labels: [1, 4]
+Removed examples from short-time-memory: 2077	 True labels: [1, 3, 4]
+Removed examples from short-time-memory: 2098	 True labels: [4]
+Removed examples from short-time-memory: 2116	 True labels: [2]
+Removed examples from short-time-memory: 2120	 True labels: [3, 4]
+Removed examples from short-time-memory: 2123	 True labels: [3, 4]
+Removed examples from short-time-memory: 2125	 True labels: [3, 4]
+Removed examples from short-time-memory: 2147	 True labels: [1, 4]
+Removed examples from short-time-memory: 2163	 True labels: [1, 4]
+Removed examples from short-time-memory: 2172	 True labels: [4]
+Removed examples from short-time-memory: 2198	 True labels: [4]
+Removed examples from short-time-memory: 2285	 True labels: [3, 4]
+Removed examples from short-time-memory: 2319	 True labels: [3, 4]
+Removed examples from short-time-memory: 2333	 True labels: [1, 4]
+Removed examples from short-time-memory: 2358	 True labels: [0]
+Removed examples from short-time-memory: 2453	 True labels: [3, 4]
+Removed examples from short-time-memory: 2472	 True labels: [3, 4]
+Removed examples from short-time-memory: 2497	 True labels: [2]
+Removed examples from short-time-memory: 2499	 True labels: [1, 4]
+Removed micro-clusters: 1 label: 0 category: normal
+Removed micro-clusters: 3 label: 0 category: normal
+Removed micro-clusters: 36 label: 0 category: normal
+Timestamp: 3000 - removed micro-clusters: 3 - model's size [0]:39
+Removed micro-clusters: 26 label: 1 category: normal
+Removed micro-clusters: 41 label: 1 category: normal
+Removed micro-clusters: 48 label: 1 category: normal
+Removed micro-clusters: 59 label: 1 category: normal
+Timestamp: 3000 - removed micro-clusters: 7 - model's size [1]:69
+Removed micro-clusters: 2 label: 2 category: normal
+Removed micro-clusters: 22 label: 2 category: normal
+Removed micro-clusters: 23 label: 2 category: normal
+Removed micro-clusters: 23 label: 2 category: normal
+Timestamp: 3000 - removed micro-clusters: 11 - model's size [2]:37
+Removed micro-clusters: 25 label: 3 category: normal
+Removed micro-clusters: 60 label: 3 category: normal
+Timestamp: 3000 - removed micro-clusters: 13 - model's size [3]:73
+Removed micro-clusters: 17 label: 4 category: normal
+Removed micro-clusters: 25 label: 4 category: normal
+Removed micro-clusters: 34 label: 4 category: normal
+Removed micro-clusters: 59 label: 4 category: normal
+Timestamp: 3000 - removed micro-clusters: 17 - model's size [4]:67

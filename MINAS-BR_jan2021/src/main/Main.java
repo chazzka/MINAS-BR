@@ -25,52 +25,52 @@ public class Main {
     public static void main(String[] args) throws Exception {
           
         //****************General*********************
-        String dataSetName = args[1];
-        String trainPath = args[2];
-        String testPath = args[3];
-        int L = Integer.parseInt(args[4]);
-        String outputDirecotory = "";
-        if(args[0].equals("-p")){
-            outputDirecotory = args[5];
+        // String dataSetName = args[1];
+        // String trainPath = args[2];
+        // String testPath = args[3];
+        // int L = Integer.parseInt(args[4]);
+        // String outputDirecotory = "";
+        // if(args[0].equals("-p")){
+        //     outputDirecotory = args[5];
             
-            experimentsParameters(dataSetName,
-                trainPath,
-                testPath,
-                L,
-                outputDirecotory);
-        }else if (args[0].equals("-m")){
-            double k_ini = Double.parseDouble(args[5]);
-            String theta = "" + (int) Math.ceil(Double.parseDouble(args[6]) * Double.parseDouble(args[7]));
-            String omega = args[7];
-            outputDirecotory = args[8] + "/" + dataSetName;
+        //     experimentsParameters(dataSetName,
+        //         trainPath,
+        //         testPath,
+        //         L,
+        //         outputDirecotory);
+        // }else if (args[0].equals("-m")){
+        //     double k_ini = Double.parseDouble(args[5]);
+        //     String theta = "" + (int) Math.ceil(Double.parseDouble(args[6]) * Double.parseDouble(args[7]));
+        //     String omega = args[7];
+        //     outputDirecotory = args[8] + "/" + dataSetName;
             
-            experimentsMethods(trainPath, 
-                testPath, 
-                outputDirecotory,
-                L, 
-                k_ini,
-                theta, 
-                omega,
-                "1.1",
-                "kmeans+leader",
-                "JI");
-        }else if (args[0].equals("-b")){
-            outputDirecotory = args[5] + "/batch/"+dataSetName+"/";
-            ExperimentBatch.execute(trainPath, testPath, outputDirecotory, "50");
-        }else if(args[0].equals("-o")){
-            outputDirecotory = args[5] + "/upperBound/"+dataSetName+"/";
-            ExperimentUpperBound.execute(trainPath, testPath, outputDirecotory, 50);
-        }
+        //     experimentsMethods(trainPath, 
+        //         testPath, 
+        //         outputDirecotory,
+        //         L, 
+        //         k_ini,
+        //         theta, 
+        //         omega,
+        //         "1.1",
+        //         "kmeans+leader",
+        //         "JI");
+        // }else if (args[0].equals("-b")){
+        //     outputDirecotory = args[5] + "/batch/"+dataSetName+"/";
+        //     ExperimentBatch.execute(trainPath, testPath, outputDirecotory, "50");
+        // }else if(args[0].equals("-o")){
+        //     outputDirecotory = args[5] + "/upperBound/"+dataSetName+"/";
+        //     ExperimentUpperBound.execute(trainPath, testPath, outputDirecotory, 50);
+        // }
         
-//        //****************MOA-3C*********************
-//        String dataSetName = "MOA-3C_teste_updating";
-//        String trainPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-train.arff";
-//        String testPath = "/home/joel/datasets/datasets_sinteticos/MOA-3C-5C-2D/MOA-3C-5C-2D-test.arff";
-//        String outputDirecotory = "/home/joel/MINAS-BR_ASOC/results_fev/"+dataSetName+"/";
-//        double k_ini = 0.1;
-//        String theta = "20";
-//        String omega = "200";
-//        int L = 5;
+       //****************MOA-3C*********************
+       String dataSetName = "MOA-3C_teste_updating";
+       String trainPath = "/home/adamo/scripts/MINAS-BR/MINAS-BR_jan2021/traindelete.arff";
+       String testPath = "/home/adamo/scripts/MINAS-BR/MINAS-BR_jan2021/testdelete.arff";
+       String outputDirectory = "/home/adamo/scripts/MINAS-BR/MINAS-BR_jan2021/result04";
+       double k_ini = 0.1;
+       String theta_param = "20";
+       String omega = "200";
+       int L = 1;
         //*****************************************
         
 //        //****************MOA1*********************
@@ -148,29 +148,31 @@ public class Main {
 //        int L = 4;
 //        //*****************************************
         
-//        experimentsMethods(trainPath, 
-//                testPath, 
-//                outputDirecotory,
-//                L, 
-//                k_ini,
-//                theta_param, 
-//                omega,
-//                "1",
-//                "kmeans+leader",
-//                "JI");
-//        
-//        experimentsParameters(dataSetName,
-//                trainPath,
-//                testPath,
-//                L,
-//                outputDirecotory);
-//        ExperimentBatch.execute(trainPath, testPath, outputDirectory, "50");
+        experimentsMethods(trainPath,
+                testPath,
+                outputDirectory,
+                L,
+                k_ini,
+                theta_param,
+                omega,
+                "1",
+                "kmeans+leader",
+                "JI");
+
+        experimentsParameters(dataSetName,
+                trainPath,
+                testPath,
+                L,
+                outputDirectory);
+        ExperimentBatch.execute(trainPath, testPath, outputDirectory, "50");
 //        String dataSetName = "upper_nus-wide_original";
 //        String trainPath = "/home/joel/datasets/datasets_reais/Nuswide_cVLADplus/nus-wide_original_train.arff";
 //        String testPath = "/home/joel/datasets/datasets_reais/Nuswide_cVLADplus/nus-wide_original_test.arff";
 //        String outputDirecotory = "/home/joel/resultsAsoc2021/baseline_methods/upperBoundMethods/"+dataSetName+"/";
-//        int L = 81; 
-//        ExperimentUpperBound.execute(trainPath, testPath, outputDirecotory, 50);
+//        int L = 81;
+        ExperimentUpperBound.execute(trainPath, testPath, outputDirectory, 50);
+
+        System.out.println("koniec");
     }
     
     private static void experimentsParameters(String dataSetName,
@@ -281,7 +283,7 @@ public class Main {
         FileWriter fileOff = new FileWriter(new File(outputDirectory + "/faseOfflineInfo.txt"), false); //Armazena informações da fase online
         FileWriter fileOut = new FileWriter(new File(outputDirectory + "/results.txt"), false); //Armazena informações da fase de treinamento
         
-        int evaluationWindowSize = (int) Math.ceil(test.size()/50);
+        int evaluationWindowSize = (int) Math.ceil(test.size()/50.0);
         
         OfflinePhase treino = new OfflinePhase(train, k_ini, fileOff, outputDirectory);
         Model model = treino.getModel();
@@ -468,5 +470,6 @@ public class Main {
         }
         dataSetFile.close();
     }
-    
+
+
 }
